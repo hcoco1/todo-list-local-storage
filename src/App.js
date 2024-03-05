@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Todo List</h1>
+      <h1>Ivan's Audit</h1>
       <form onSubmit={addTodo}>
         <input
           type="text"
@@ -63,13 +63,13 @@ function App() {
           onChange={(e) => setNewTodo({ ...newTodo, durable: capitalizeFirstLetter(e.target.value) })}
           required
         />
-        <button type="submit">Add Todo</button>
+        <button type="submit">Add Audit</button>
       </form>
       <ul>
   {todos.map((todo, index) => (
     <li key={todo.id}>
-      <span>{index + 1}</span> {/* Number */}
-      <span>{todo.username}</span> {/* Username */}
+      <span className="number">{index + 1}</span> {/* Number */}
+      <span className="username">{todo.username}</span> {/* Username */}
       <span>{todo.processPath}</span> {/* Process Path */}
       <span>{todo.durable}</span> {/* Durable */}
       <span>{todo.date}</span> {/* Date */}

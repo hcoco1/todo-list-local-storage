@@ -40,7 +40,7 @@ input[type="text"] {
 
 li {
   display: grid;
-  grid-template-columns: 20px 60px 80px minmax(120px, 3fr) auto 40px 40px; /* Adjusted for Durable */
+  grid-template-columns: 20px 80px 80px minmax(120px, 3fr) auto 40px 40px; /* Adjusted for Durable */
   gap: 5px;
   align-items: start; /* Align items to the start to handle multiline text */
   background-color: #e4e6eb;
@@ -53,6 +53,14 @@ li span {
   overflow: hidden;
   text-overflow: ellipsis;
   display: block; /* Ensure text wraps correctly */
+}
+
+li .username {
+  font-weight: bold; /* Set username field to bold */
+}
+
+li .number {
+  color: red; /* Set number field to red color */
 }
 
 .durable {
@@ -106,6 +114,7 @@ button:hover {
 ul {
   list-style-type: none;
 }
+
 
 
 
