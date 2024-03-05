@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/git@github.com:hcoco1/todo-list-local-storage/static/css/main.9f8cbc5a.css",
-    "main.js": "/git@github.com:hcoco1/todo-list-local-storage/static/js/main.9dd5d829.js",
-    "static/js/453.b3fc2d17.chunk.js": "/git@github.com:hcoco1/todo-list-local-storage/static/js/453.b3fc2d17.chunk.js",
-    "index.html": "/git@github.com:hcoco1/todo-list-local-storage/index.html",
-    "main.9f8cbc5a.css.map": "/git@github.com:hcoco1/todo-list-local-storage/static/css/main.9f8cbc5a.css.map",
-    "main.9dd5d829.js.map": "/git@github.com:hcoco1/todo-list-local-storage/static/js/main.9dd5d829.js.map",
-    "453.b3fc2d17.chunk.js.map": "/git@github.com:hcoco1/todo-list-local-storage/static/js/453.b3fc2d17.chunk.js.map"
+    "main.css": "/todo-list-local-storage/static/css/main.9f8cbc5a.css",
+    "main.js": "/todo-list-local-storage/static/js/main.9eaa8de3.js",
+    "static/js/453.b3fc2d17.chunk.js": "/todo-list-local-storage/static/js/453.b3fc2d17.chunk.js",
+    "index.html": "/todo-list-local-storage/index.html",
+    "main.9f8cbc5a.css.map": "/todo-list-local-storage/static/css/main.9f8cbc5a.css.map",
+    "main.9eaa8de3.js.map": "/todo-list-local-storage/static/js/main.9eaa8de3.js.map",
+    "453.b3fc2d17.chunk.js.map": "/todo-list-local-storage/static/js/453.b3fc2d17.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9f8cbc5a.css",
-    "static/js/main.9dd5d829.js"
+    "static/js/main.9eaa8de3.js"
   ]
 }
