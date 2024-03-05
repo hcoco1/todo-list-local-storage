@@ -42,29 +42,39 @@ function App() {
     <div className="App">
       <h1>Ivan's Audit</h1>
       <form onSubmit={addTodo}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={newTodo.username}
-          onChange={(e) => setNewTodo({ ...newTodo, username: e.target.value })}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Process Path"
-          value={newTodo.processPath}
-          onChange={(e) => setNewTodo({ ...newTodo, processPath: capitalizeFirstLetter(e.target.value) })}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Durable"
-          value={newTodo.durable}
-          onChange={(e) => setNewTodo({ ...newTodo, durable: capitalizeFirstLetter(e.target.value) })}
-          required
-        />
-        <button type="submit">Add Audit</button>
-      </form>
+  <input
+    type="text"
+    placeholder="Username"
+    value={newTodo.username}
+    onChange={(e) => setNewTodo({ ...newTodo, username: e.target.value })}
+    required
+  />
+
+  <select
+    value={newTodo.processPath}
+    onChange={(e) => setNewTodo({ ...newTodo, processPath: e.target.value })}
+    required
+  >
+    <option value="">Select Process Path</option> {/* Placeholder option */}
+    <option value="ProcessPath1">Pack</option>
+    <option value="ProcessPath2">Induct</option>
+    <option value="ProcessPath3">Rebin</option>
+    <option value="ProcessPath4">Pack-other</option>
+    <option value="ProcessPath5">Smartpac</option>
+    {/* Add additional options as needed */}
+  </select>
+
+  <input
+    type="text"
+    placeholder="Durable"
+    value={newTodo.durable}
+    onChange={(e) => setNewTodo({ ...newTodo, durable: capitalizeFirstLetter(e.target.value) })}
+    required
+  />
+
+  <button type="submit">Add Audit</button>
+</form>
+
       <ul>
   {todos.map((todo, index) => (
     <li key={todo.id}>
