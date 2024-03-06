@@ -11,7 +11,7 @@ body {
 }
 
 .App {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
   background-color: white;
@@ -51,30 +51,35 @@ select {
 
 
 
-li {
-  display: grid;
-  grid-template-columns: 20px 80px 80px minmax(120px, 3fr) auto 40px 40px; /* Adjusted for Durable */
-  gap: 5px;
-  align-items: start; /* Align items to the start to handle multiline text */
-  background-color: #e4e6eb;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 8px;
+.App table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2%;
 }
 
-li span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block; /* Ensure text wraps correctly */
+.App th, .App td {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 8px;
 }
 
-li .username {
-  font-weight: bold; /* Set username field to bold */
+.App th {
+  background-color: #f2f2f2;
+  font-size: 14px; /* Larger font size for headers */
 }
 
-li .number {
-  color: red; /* Set number field to red color */
+.App td {
+  font-size: 12px; /* Smaller font size for data cells */
 }
+
+/* Column widths */
+.App th:nth-child(1), .App td:nth-child(1) { width: 3%; }
+.App th:nth-child(2), .App td:nth-child(2) { width: 10%; }
+.App th:nth-child(3), .App td:nth-child(3) { width: 10%; }
+.App th:nth-child(4), .App td:nth-child(4) { width: 54%; }
+.App th:nth-child(5), .App td:nth-child(5) { width: 20%; }
+
+
 
 .durable {
   white-space: normal; /* Allow wrapping */
@@ -92,7 +97,7 @@ li .number {
 
 
 button {
-  padding: 6px ;
+  padding: 4px ;
   border-radius: 20px;
   border: none;
   background-color: #1877f2;
@@ -115,7 +120,7 @@ button {
 
 .button-container {
   text-align: right; /* Keeps buttons aligned to the right */
-  padding-top: 10px; /* Adds some space above the buttons */
+  padding-top: 5px; /* Adds some space above the buttons */
 }
 
 
