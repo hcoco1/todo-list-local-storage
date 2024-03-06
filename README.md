@@ -50,4 +50,10 @@ The application also includes functionality to delete individual audits, allowin
 
 The app's most powerful feature is its report-generation capability. With a single click, users can compile the audits into a downloadable text file. This capability makes sharing audit reports with stakeholders incredibly easy and provides a clear and concise overview of the audits conducted.
 
-In short, the development of this audit management application was driven by the need to simplify the complex process of handling audits. By leveraging React and modern web technologies, I created a tool that not only meets this need but also enhances the overall efficiency of audit management. This app stands as a testament to the power of technology in solving practical problems, making the daunting task of audit compilation a thing of the past.
+>In short, the development of this audit management application was driven by the need to simplify the complex process of handling audits. By leveraging React and modern web technologies, I created a tool that not only meets this need but also enhances the overall efficiency of audit management. This app stands as a testament to the power of technology in solving practical problems, making the daunting task of audit compilation a thing of the past.
+
+### Future enhancements:
+
+- Adding a button to edit audits.
+
+- Adding authentication.
