@@ -38,6 +38,19 @@ input[type="text"] {
   display: block; /* Ensure inputs are full width */
 }
 
+input[type="text"],
+select {
+  padding: 8px 12px;
+  margin-bottom: 5px;
+  border-radius: 20px;
+  border: 1px solid #ccd0d5;
+  width: calc(100% - 24px); /* Adjusted for padding and border */
+  font-size: 14px;
+  display: block; /* Ensure elements are full width */
+}
+
+
+
 li {
   display: grid;
   grid-template-columns: 20px 80px 80px minmax(120px, 3fr) auto 40px 40px; /* Adjusted for Durable */
