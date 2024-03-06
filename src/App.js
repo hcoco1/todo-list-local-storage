@@ -38,6 +38,29 @@ function App() {
     setTodos(todos.filter(todo => todo.id !== id));
   };
 
+  const generateReport = () => {
+    // Format todos into a string, using index for sequential numbers
+    const reportLines = todos.map((todo, index) => 
+      `${index + 1}, ${todo.username}, ${todo.processPath}, ${todo.durable}, ${todo.date}`
+    ).join('\n');
+  
+    // Convert string to a Blob
+    const blob = new Blob([reportLines], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+  
+    // Create a temporary link and trigger the download
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'audit-report.txt'; // Name of the file to be downloaded
+    document.body.appendChild(link); // Append to the document
+    link.click();
+  
+    // Clean up by removing the temporary link and revoking the Blob URL
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+  
+
   return (
     <div className="App">
       <h1>Ivan's Audit</h1>
@@ -89,7 +112,7 @@ function App() {
   ))}
 </ul>
 
-
+<button onClick={generateReport}>Download Report</button>
     </div>
   );
 }
