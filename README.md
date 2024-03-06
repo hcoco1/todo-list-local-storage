@@ -29,6 +29,10 @@ The core idea was to develop an app that simplifies the process of adding and ma
 
 The application's structure is straightforward. It utilizes React's useState hook to manage the state of audits (or "todos" in the context of the code), storing them locally in the browser's localStorage. This ensures that the data persists even after the browser is closed, providing a persistent storage solution without needing a backend database.
 
+---
+![how this app works](https://github.com/hcoco1/todo-list-local-storage/blob/main/audit_tool.png?raw=true) 
+
+---
 Users can add new audits through a simple form, inputting details such as the username, process path, and whether the process is durable. The form is designed to be intuitive, with placeholders and dropdown menus guiding the user through the data entry process. The audit is added to the list upon submission, and the form is reset and ready for the next entry.
 
 One of the critical features of this app is its ability to capitalize the first letter of specific inputs automatically, ensuring consistency and readability in the data stored. This small but significant detail enhances the user experience by reducing the need for manual text formatting.
