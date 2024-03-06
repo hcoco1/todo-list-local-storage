@@ -78,7 +78,7 @@ function App() {
     onChange={(e) => setNewTodo({ ...newTodo, processPath: e.target.value })}
     required
   >
-    <option value="">Select Process Path</option> {/* Placeholder option */}
+    <option value="">Process Path</option> {/* Placeholder option */}
     <option value="Pack">Pack</option>
     <option value="Induct">Induct</option>
     <option value="Rebin">Rebin</option>
