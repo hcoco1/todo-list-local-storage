@@ -56,11 +56,11 @@ function App() {
     required
   >
     <option value="">Select Process Path</option> {/* Placeholder option */}
-    <option value="ProcessPath1">Pack</option>
-    <option value="ProcessPath2">Induct</option>
-    <option value="ProcessPath3">Rebin</option>
-    <option value="ProcessPath4">Pack-other</option>
-    <option value="ProcessPath5">Smartpac</option>
+    <option value="Pack">Pack</option>
+    <option value="Induct">Induct</option>
+    <option value="Rebin">Rebin</option>
+    <option value="Pack-other">Pack-other</option>
+    <option value="Smartpac">Smartpac</option>
     {/* Add additional options as needed */}
   </select>
 
