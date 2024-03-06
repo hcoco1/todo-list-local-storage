@@ -56,7 +56,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Ivan's Audit</h1>
+      <h1>Audit Solution</h1>
       <form onSubmit={addTodo}>
         <input
           type="text"
