@@ -81,7 +81,7 @@ function App() {
 
         <input
           type="text"
-          placeholder="Durable"
+          placeholder="Audit"
           value={newTodo.durable}
           onChange={(e) => setNewTodo({ ...newTodo, durable: capitalizeFirstLetter(e.target.value) })}
           required
