@@ -37,22 +37,28 @@ function App() {
   };
 
   const generateReport = () => {
+    // Generate report lines with the new format
     const reportLines = todos.map((todo, index) => 
-      `${index + 1}, ${todo.username}, ${todo.processPath}, ${todo.durable}, ${todo.date}`
+      `${index + 1}. Username: "${todo.username}", Process Path: "${todo.processPath}", Durable: "${todo.durable}", Date: "${todo.date}"`
     ).join('\n');
   
+    // Create a blob with the report content
     const blob = new Blob([reportLines], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
   
+    // Create a link and trigger the download
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'audit-report.txt';
+    link.download = 'audit-report.txt'; // Extension changed to .txt to reflect the plain text format
     document.body.appendChild(link);
     link.click();
   
+    // Clean up
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   };
+  
+  
 
   return (
     <div className="App">
