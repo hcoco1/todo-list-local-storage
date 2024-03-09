@@ -66,7 +66,7 @@ function App() {
     <div className="App">
 
       <main>
-      <h1>Audit Insights: Simplifying Your Note-Taking Process</h1>
+      <h1>Note-Taking App</h1>
 
         <form onSubmit={addTodo}>
           <input
