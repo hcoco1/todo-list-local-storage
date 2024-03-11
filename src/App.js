@@ -86,41 +86,39 @@ function App() {
   return (
     <div className="App">
       <main>
-        <h1>Note-Taking App</h1>
+        <h1>Note-Taking App 🪄</h1>
 
         <form onSubmit={addTodo}>
-  <div className="form-row"> {/* Container to hold inline elements */}
-    <input
-      type="text"
-      placeholder="Username"
-      value={newTodo.username}
-      onChange={(e) => setNewTodo({ ...newTodo, username: e.target.value })}
-      required
-    />
-    <select
-      value={newTodo.processPath}
-      onChange={(e) => setNewTodo({ ...newTodo, processPath: e.target.value })}
-      required
-    >
-      <option value="">Process Path</option>
-      <option value="Pack">Pack</option>
-      <option value="Induct">Induct</option>
-      <option value="Rebin">Rebin</option>
-      <option value="Pack-other">Pack-other</option>
-      <option value="Smartpac">Smartpac</option>
-    </select>
-  </div>
-  <textarea
-    placeholder="Audit"
-    value={newTodo.durable}
-    onChange={(e) => setNewTodo({ ...newTodo, durable: e.target.value })}
-    required
-    rows="2" // Makes the textarea about two lines high
-  ></textarea>
-  <button type="submit">Add Audit</button>
-</form>
-
-
+          <div className="form-row"> {/* Container to hold inline elements */}
+            <input
+              type="text"
+              placeholder="Username 🙀"
+              value={newTodo.username}
+              onChange={(e) => setNewTodo({ ...newTodo, username: e.target.value })}
+              required
+            />
+            <select
+              value={newTodo.processPath}
+              onChange={(e) => setNewTodo({ ...newTodo, processPath: e.target.value })}
+              required
+            >
+              <option value="">Process Path 🔎</option>
+              <option value="Pack">Pack</option>
+              <option value="Induct">Induct</option>
+              <option value="Rebin">Rebin</option>
+              <option value="Pack-other">Pack-other</option>
+              <option value="Smartpac">Smartpac</option>
+            </select>
+          </div>
+          <textarea
+            placeholder="Audit 🪲"
+            value={newTodo.durable}
+            onChange={(e) => setNewTodo({ ...newTodo, durable: e.target.value })}
+            required
+            rows="2" // Makes the textarea about two lines high
+          ></textarea>
+          <button type="submit">Add Audit</button>
+        </form>
         <table>
           <thead>
             <tr>
@@ -140,7 +138,6 @@ function App() {
                   {todo.isEditing ? (
                     <input
                       type="text"
-                      
                       name="username"
                       className="edit-mode-input"
                       value={todo.username}
@@ -183,11 +180,11 @@ function App() {
                 </td>
                 <td>{todo.date}</td>
                 <td>
-                  <button className="delete-btn" onClick={() => deleteTodo(todo.id)}>Delete</button>
+                  <button className="delete-btn" onClick={() => deleteTodo(todo.id)}>X</button>
                   {todo.isEditing ? (
-                    <button   onClick={() => saveEdit(todo.id)}>Save</button>
+                    <button onClick={() => saveEdit(todo.id)}>Save</button>
                   ) : (
-                    <button  onClick={() => toggleEdit(todo.id)}>Edit</button>
+                    <button onClick={() => toggleEdit(todo.id)}>Edit</button>
                   )}
                 </td>
               </tr>

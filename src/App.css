@@ -75,7 +75,7 @@ select {
 
 .App th:nth-child(2),
 .App td:nth-child(2) {
-  width: 8%;
+  width: 10%;
 }
 
 .App th:nth-child(3),
@@ -85,7 +85,7 @@ select {
 
 .App th:nth-child(4),
 .App td:nth-child(4) {
-  width: 49%;
+  width: 48%;
 }
 
 .App th:nth-child(5),
@@ -95,7 +95,7 @@ select {
 
 .App th:nth-child(6),
 .App td:nth-child(6) {
-  width: 08%;
+  width: 07%;
 }
 
 /* Buttons */
@@ -111,7 +111,7 @@ select {
 
 .delete-btn {
   background-color: #ff004c;
-  margin-right: 4%;
+  margin-right: 6%;
   padding: 5px 8px ;
   font-size: 12px;
 }
