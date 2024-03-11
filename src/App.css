@@ -6,10 +6,9 @@
   font-family: Arial, sans-serif;
 }
 
-body {
-  background-color: #f0f2f5;
-}
 
+
+/* App Container */
 .App {
   max-width: 1200px;
   margin: 20px auto;
@@ -19,126 +18,146 @@ body {
   border-radius: 8px;
 }
 
+/* Typography */
 h1 {
-  color: #333; /* Adjust the color to fit your design */
-  text-align: center; /* Centers your title */
-  font-size: 2rem; /* Adjust the size as needed */
-  margin-top: 20px; /* Adds space at the top */
-  margin-bottom: 30px; /* Adds space at the bottom */
-  font-family: 'Arial', sans-serif; /* Use a font that matches your app's style */
-  font-weight: normal; /* Adjust as needed, depending on the font and your preference */
+  color: #333;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
-
+/* Forms and Inputs */
 form {
   margin-bottom: 20px;
-}
-
-input[type="text"] {
-  padding: 8px 12px;
-  margin-bottom: 5px;
-  border-radius: 20px;
-  border: 1px solid #ccd0d5;
-  width: calc(100% - 24px); /* Adjusted for padding and border */
-  font-size: 14px;
-  display: block; /* Ensure inputs are full width */
 }
 
 input[type="text"],
 select {
   padding: 8px 12px;
   margin-bottom: 5px;
-  border-radius: 20px;
   border: 1px solid #ccd0d5;
-  width: calc(100% - 24px); /* Adjusted for padding and border */
+  width: calc(100% - 24px);
   font-size: 14px;
-  display: block; /* Ensure elements are full width */
+  display: block;
 }
 
 
 
+/* Tables */
 .App table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 2%;
 }
 
-.App th, .App td {
+.App th,
+.App td {
   border: 1px solid #ddd;
-  text-align: left;
   padding: 8px;
+  text-align: left;
 }
 
 .App th {
   background-color: #f2f2f2;
-  font-size: 14px; /* Larger font size for headers */
+  font-size: 14px;
 }
 
 .App td {
-  font-size: 12px; /* Smaller font size for data cells */
+  font-size: 12px;
 }
 
-/* Column widths */
-.App th:nth-child(1), .App td:nth-child(1) { width: 3%; }
-.App th:nth-child(2), .App td:nth-child(2) { width: 10%; }
-.App th:nth-child(3), .App td:nth-child(3) { width: 10%; }
-.App th:nth-child(4), .App td:nth-child(4) { width: 54%; }
-.App th:nth-child(5), .App td:nth-child(5) { width: 20%; }
-
-
-
-.durable {
-  white-space: normal; /* Allow wrapping */
-  overflow: visible; /* Let text take the space it needs */
+/* Column Widths */
+.App th:nth-child(1),
+.App td:nth-child(1) {
+  width: 3%;
 }
 
-.edit-btn, .delete-btn {
-  justify-self: center; /* Center buttons in their cell */
-  width: 30px; /* Set fixed width for buttons */
-  text-align: center;
-  align-items: flex-end;
+.App th:nth-child(2),
+.App td:nth-child(2) {
+  width: 8%;
+}
+
+.App th:nth-child(3),
+.App td:nth-child(3) {
+  width: 10%;
+}
+
+.App th:nth-child(4),
+.App td:nth-child(4) {
+  width: 49%;
+}
+
+.App th:nth-child(5),
+.App td:nth-child(5) {
+  width: 12%;
+}
+
+.App th:nth-child(6),
+.App td:nth-child(6) {
+  width: 08%;
+}
+
+/* Buttons */
+
+/* Edit Mode Input - Specific Style */
+.App input.edit-mode-input,
+.App select.edit-mode-input {
+  border-radius: 0 ;
+  font-size: 10px;
+}
+
+
+
+.delete-btn {
   background-color: #ff004c;
+  margin-right: 4%;
+  padding: 5px 8px ;
+  font-size: 12px;
 }
 
+.download-btn {
+  background-color: #10ac3a;
 
+}
 
 button {
-  padding: 4px ;
-  border-radius: 20px;
+  padding: 4px;
   border: none;
   background-color: #1877f2;
   color: white;
   cursor: pointer;
-  font-size: 14px;
-  /* Remove margin-left if using grid */
-  /* margin-left: 5px; */
-  text-align: center;
+  font-size: 12px;
+  border-radius: 15px;
 }
 
+button:hover {
+  background-color: #e5b116;
+}
+
+/* Footer */
 footer {
-  background-color: #f1f1f1; /* Change this color to fit your design */
+
   text-align: center;
-  padding-top: 20px; /* Adds padding at the top of the footer */
-  padding-bottom: 20px; /* Adds padding at the bottom for spacing */
+  padding: 20px;
 }
 
 footer p {
-  color: #333; /* Change this color to fit your design */
-  font-size: 14px; /* Adjust the font size as needed */
-  margin-top: 10px; /* Adds spacing between the icons and the copyright text */
+  font-size: 14px;
+  margin-top: 10px;
 }
 
+/* Social Media Links */
 .social-media {
   display: flex;
   justify-content: center;
-  gap: 15px; /* Adjust the space between icons */
-  padding: 10px 0; /* Adds padding around the social media links for better spacing */
+  gap: 15px;
+  padding: 10px 0;
 }
 
 .social-icon {
-  display: inline-block;
-  color: #fff; /* This sets the icon color */
-  background-color: #007bff; /* Change this to match your design or to differ for each platform */
+  color: #fff;
+  background-color: #007bff;
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -149,9 +168,10 @@ footer p {
 }
 
 .social-icon:hover {
-  background-color: #0056b3; /* Darker shade for hover effect, customize as needed */
+  background-color: #0056b3;
 }
 
+/* Specific Social Icon Colors */
 .social-icon.linkedin {
   background-color: #0077b5;
 }
@@ -168,42 +188,49 @@ footer p {
   background-color: #1A91DA;
 }
 
-/* Customize user icon color if needed */
 .social-icon.user {
-  background-color: #333; /* Dark background for user icon */
+  background-color: #333;
 }
 
 .social-icon.user:hover {
-  background-color: #555; /* Darker shade for hover effect */
+  background-color: #555;
 }
 
-
-
-
-/* Style adjustments for smaller screens or specific preferences */
+/* Responsive Design */
 @media (max-width: 768px) {
   button {
-    padding: 4px 10px; /* Smaller padding for smaller screens */
+    padding: 4px 10px;
     font-size: 12px;
   }
 }
 
+/* Additional Styles */
 
-.button-container {
-  text-align: right; /* Keeps buttons aligned to the right */
-  padding-top: 5px; /* Adds some space above the buttons */
+
+.form-row {
+  display: flex;
+  /* Aligns children inline */
+  gap: 10px;
+  /* Adds some space between the elements */
+  margin-bottom: 5px;
+  /* Space below the row */
 }
 
-
-button:hover {
-  background-color: #166fe5;
+input[type="text"],
+select,
+textarea {
+  padding: 8px 12px;
+  border-radius: 20px;
+  /* Maintains style consistency */
+  border: 1px solid #ccd0d5;
+  font-size: 14px;
+  display: block;
 }
 
-
-ul {
-  list-style-type: none;
+textarea {
+  width: calc(100% - 4px);
+  /* Matches the input and select width */
+  resize: vertical;
+  /* Allows vertical resizing only */
+  margin-bottom: 10px;
 }
-
-
-
-
