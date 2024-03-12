@@ -23,7 +23,7 @@ const AuditSummary = ({ todos }) => {
         <thead>
           <tr>
             <th>Process Path</th>
-            <th>Total Audits</th>
+            <th>N</th>
           </tr>
         </thead>
         <tbody>

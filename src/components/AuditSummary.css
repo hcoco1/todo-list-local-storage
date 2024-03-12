@@ -39,3 +39,13 @@ div.audit-summary-container .audit-summary {
 .audit-summary td:nth-child(2) {
   width: 7px; /* Example adjustment */
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+  div.audit-summary-container .audit-summary {
+    width: 50%;
+  
+    border-collapse: collapse;
+  }
+}

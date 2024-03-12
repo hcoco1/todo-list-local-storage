@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import TodoForm from './components/TodoForm'; 
-import TodoList from './components/TodoList'; 
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
 import Footer from './components/Footer';
 import ReportGenerator from './components/ReportGenerator';
 import AuditorNameForm from './components/AuditorNameForm';
@@ -20,13 +20,22 @@ function App() {
     durable: ''
   });
 
-  const [auditorName, setAuditorName] = useState('');
+  const [auditorName, setAuditorName] = useState(() => {
+    const storedName = localStorage.getItem('auditorName');
+    return storedName || '';
+  });
+
+
+
   const [isEditingName, setIsEditingName] = useState(false); // New state to control the editing state
 
   const handleNameSubmit = (name) => {
     setAuditorName(name);
     setIsEditingName(false); // Hide form after submission
   };
+  useEffect(() => {
+    localStorage.setItem('auditorName', auditorName);
+  }, [auditorName]);
 
   // Effect for persisting todos in localStorage
   useEffect(() => {
@@ -70,20 +79,24 @@ function App() {
   return (
     <div className="App">
       <main>
+        <div className="orientation-message">
+          For the best experience, please rotate your device to landscape mode.
+        </div>
+
         <h1>Note-Taking App 🪄</h1>
         {auditorName && !isEditingName ? (
-      <div className="auditor-display">
-        <h2>Auditor's Name: {auditorName}</h2>
-        <button 
-          onClick={() => setIsEditingName(true)} 
-          className="edit-name-button">
-          Edit
-        </button>
-      </div>
-    ) : (
-      <AuditorNameForm onNameSubmit={handleNameSubmit} />
-    )}
-      
+          <div className="auditor-display">
+            <h2>Auditor's Name: {auditorName}</h2>
+            <button
+              onClick={() => setIsEditingName(true)}
+              className="edit-name-button">
+              Edit
+            </button>
+          </div>
+        ) : (
+          <AuditorNameForm onNameSubmit={handleNameSubmit} />
+        )}
+
         <TodoForm addTodo={addTodo} newTodo={newTodo} setNewTodo={setNewTodo} />
         <TodoList
           todos={todos}
@@ -92,7 +105,7 @@ function App() {
           handleEditChange={handleEditChange}
           saveEdit={saveEdit}
         />
-         <ReportGenerator todos={todos} />
+        <ReportGenerator todos={todos} />
       </main>
       <Footer />
     </div>
