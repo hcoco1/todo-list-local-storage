@@ -3,6 +3,8 @@ import './App.css';
 import TodoForm from './components/TodoForm'; 
 import TodoList from './components/TodoList'; 
 import Footer from './components/Footer';
+import ReportGenerator from './components/ReportGenerator';
+import AuditorNameForm from './components/AuditorNameForm';
 
 function App() {
   // State for storing todos
@@ -17,6 +19,14 @@ function App() {
     processPath: '',
     durable: ''
   });
+
+  const [auditorName, setAuditorName] = useState('');
+  const [isEditingName, setIsEditingName] = useState(false); // New state to control the editing state
+
+  const handleNameSubmit = (name) => {
+    setAuditorName(name);
+    setIsEditingName(false); // Hide form after submission
+  };
 
   // Effect for persisting todos in localStorage
   useEffect(() => {
@@ -61,6 +71,19 @@ function App() {
     <div className="App">
       <main>
         <h1>Note-Taking App 🪄</h1>
+        {auditorName && !isEditingName ? (
+      <div className="auditor-display">
+        <h2>Auditor's Name: {auditorName}</h2>
+        <button 
+          onClick={() => setIsEditingName(true)} 
+          className="edit-name-button">
+          Edit
+        </button>
+      </div>
+    ) : (
+      <AuditorNameForm onNameSubmit={handleNameSubmit} />
+    )}
+      
         <TodoForm addTodo={addTodo} newTodo={newTodo} setNewTodo={setNewTodo} />
         <TodoList
           todos={todos}
@@ -69,6 +92,7 @@ function App() {
           handleEditChange={handleEditChange}
           saveEdit={saveEdit}
         />
+         <ReportGenerator todos={todos} />
       </main>
       <Footer />
     </div>

@@ -27,6 +27,7 @@ h1 {
   margin-bottom: 30px;
 }
 
+
 /* Forms and Inputs */
 form {
   margin-bottom: 20px;
@@ -104,13 +105,13 @@ select {
 .App input.edit-mode-input,
 .App select.edit-mode-input {
   border-radius: 0 ;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 
 
 .delete-btn {
-  background-color: #ff004c;
+  
   margin-right: 6%;
   padding: 5px 8px ;
   font-size: 12px;
@@ -234,3 +235,28 @@ textarea {
   /* Allows vertical resizing only */
   margin-bottom: 10px;
 }
+
+/* App.css or another relevant CSS file */
+
+
+
+.auditor-display {
+  display: flex;
+  align-items: center; /* This ensures vertical centering of all children */
+  justify-content: start; /* Align items to the start of the container */
+  margin-bottom: 10px;
+}
+
+.auditor-display h2 {
+  margin: 0;
+  margin-right: 10px; /* Space between the h2 and the button */
+  flex-grow: 0; /* Prevent the h2 from growing to fill the container */
+}
+
+.edit-name-button {
+  padding: 4px 8px; /* Adjust as needed for a smaller button */
+  font-size: 0.6rem; /* Smaller text within the button */
+  cursor: pointer; /* Change cursor to indicate clickable action */
+  flex-grow: 0; /* Prevent the button from growing */
+}
+

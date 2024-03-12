@@ -1,0 +1,41 @@
+/* AuditSummary.css */
+
+div.audit-summary-container .audit-summary {
+  width: 20%;
+
+  border-collapse: collapse;
+}
+
+.audit-summary {
+  width: 50%; /* Adjusted width for the specific table */
+  border-collapse: collapse;
+  margin-bottom: 2%;
+  margin-top: 1%;
+}
+
+.audit-summary th,
+.audit-summary td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.audit-summary th {
+  background-color: #9fe7e4;
+  font-size: 14px;
+}
+
+.audit-summary td {
+  font-size: 12px;
+}
+
+/* Adjust column widths as needed */
+.audit-summary th:nth-child(1),
+.audit-summary td:nth-child(1) {
+  width: 7px; /* Example adjustment */
+}
+
+.audit-summary th:nth-child(2),
+.audit-summary td:nth-child(2) {
+  width: 7px; /* Example adjustment */
+}

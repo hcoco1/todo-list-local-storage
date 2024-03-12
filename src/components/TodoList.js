@@ -1,9 +1,14 @@
 // src/components/TodoList.js
 import React from 'react';
 import TodoItem from './TodoItem';
+import AuditSummary from './AuditSummary';
+
 
 function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit }) {
   return (
+    <div>
+      <AuditSummary todos={todos} />
+    
     <table>
       <thead>
         <tr>
@@ -29,6 +34,7 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
         ))}
       </tbody>
     </table>
+    </div>
   );
 }
 

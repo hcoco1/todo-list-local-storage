@@ -48,11 +48,11 @@ function TodoItem({ todo, index, deleteTodo, toggleEdit, handleEditChange, saveE
       </td>
       <td>{todo.date}</td>
       <td>
-        <button className="delete-btn" onClick={() => deleteTodo(todo.id)}>X</button>
+        <button className="delete-btn" onClick={() => deleteTodo(todo.id)}>❌</button>
         {todo.isEditing ? (
-          <button onClick={() => saveEdit(todo.id)}>Save</button>
+          <button onClick={() => saveEdit(todo.id)}>✅</button>
         ) : (
-          <button onClick={() => toggleEdit(todo.id)}>Edit</button>
+          <button onClick={() => toggleEdit(todo.id)}>🖋</button>
         )}
       </td>
     </tr>
