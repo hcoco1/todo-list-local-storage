@@ -79,15 +79,14 @@
 
 - Formats the current date and time to Eastern Time using `toLocaleString` when adding a new todo, addressing date handling and localization within React applications.
 
-### Deployment and Custom Domain Configuration
+## Deployment and Custom Domain Configuration
 
 GitHub Pages: Utilized for its simplicity in deploying static sites directly from a GitHub repository, offering a streamlined workflow for pushing updates and managing releases.
 
 Custom Subdomain Configuration: Involves setting a CNAME record in GoDaddy’s DNS settings to point the chosen subdomain (audits.hcoco1.com) to the GitHub Pages URL. This process exemplifies domain management and the integration of external DNS services with GitHub-hosted projects.
 
 
-
-### Directories
+## Directories (Project Structure)
 
 ```bash
 tree -L 3 -I node_modules
@@ -116,3 +115,8 @@ tree -L 3 -I node_modules
     │   └── form_components
     └── index.js
 ```
+
+## Future enhancements:
+
+- Adding authentication.
+- Adding a database.
