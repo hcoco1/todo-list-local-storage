@@ -23,6 +23,7 @@ function Footer() {
         />
       </div>
       <p>COPYRIGHT © 2024 Ivan Arias</p>
+      <a className = "question" href="https://www.hcoco1.com/blog/2024-03-13-audits-tool" target="_blank" rel="noreferrer" >Why did I decide to build this app?</a>
     </footer>
   );
 }
