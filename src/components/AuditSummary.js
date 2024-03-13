@@ -18,7 +18,7 @@ const AuditSummary = ({ todos }) => {
 
   return (
     <div className="audit-summary-container">
-      <h3>Process Summary</h3>
+      <h3>Audits Summary</h3>
       <table className="audit-summary">
         <thead>
           <tr>
