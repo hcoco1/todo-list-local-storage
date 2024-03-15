@@ -20,7 +20,7 @@ function AuditorNameForm({ onNameSubmit }) {
         onChange={(e) => setName(e.target.value)}
         required
       />
-      <button type="submit">Submit</button>
+      <button type="submit">Set Name</button>
     </form>
   );
 }
