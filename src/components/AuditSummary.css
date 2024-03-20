@@ -1,51 +1,24 @@
 /* AuditSummary.css */
 
-div.audit-summary-container .audit-summary {
-  width: 20%;
-
-  border-collapse: collapse;
+.audit-summary-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px; /* Adjust the space between tables as necessary */
+  justify-content: center;
 }
 
-.audit-summary {
-  width: 50%; /* Adjusted width for the specific table */
+.audit-summary-table {
   border-collapse: collapse;
-  margin-bottom: 2%;
-  margin-top: 1%;
+  width: auto; /* Or specify a width */
+  margin: 0 auto; /* Center the table if there's only one per row */
 }
 
-.audit-summary th,
-.audit-summary td {
-  border: 1px solid #ddd;
+.audit-summary-table th, .audit-summary-table td {
+  border: 1px solid #ddd; /* Optional: adds border to cells */
   padding: 8px;
+}
+
+.audit-summary-table th {
   text-align: left;
-}
-
-.audit-summary th {
-  background-color: #9fe7e4;
-  font-size: 14px;
-}
-
-.audit-summary td {
-  font-size: 12px;
-}
-
-/* Adjust column widths as needed */
-.audit-summary th:nth-child(1),
-.audit-summary td:nth-child(1) {
-  width: 7px; /* Example adjustment */
-}
-
-.audit-summary th:nth-child(2),
-.audit-summary td:nth-child(2) {
-  width: 7px; /* Example adjustment */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-
-  div.audit-summary-container .audit-summary {
-    width: 50%;
-  
-    border-collapse: collapse;
-  }
+  background-color: #f2f2f2; /* Optional: styles the header row */
 }

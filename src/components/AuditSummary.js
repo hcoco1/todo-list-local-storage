@@ -1,42 +1,111 @@
-// src/components/AuditSummary.js
 import React from 'react';
 import './AuditSummary.css';
 
 const AuditSummary = ({ todos }) => {
-  const processTotals = todos.reduce((acc, todo) => {
-    const { processPath } = todo;
-    if (acc[processPath]) {
-      acc[processPath] += 1;
+  const calculateTotals = (key) => todos.reduce((acc, todo) => {
+    const keyValue = todo[key];
+    if (acc[keyValue]) {
+      acc[keyValue] += 1;
     } else {
-      acc[processPath] = 1;
+      acc[keyValue] = 1;
     }
     return acc;
   }, {});
 
-  // Calculate the total number of audits
-  const totalAudits = Object.values(processTotals).reduce((acc, currentValue) => acc + currentValue, 0);
+  const calculateSortAndPackForAFE = (afe) => {
+    return todos.filter(todo => todo.afe === afe).reduce((acc, todo) => {
+      if (todo.processPath === 'Induct' || todo.processPath === 'Rebin') {
+        acc.Sort = (acc.Sort || 0) + 1;
+      } else if (todo.processPath === 'Pack' || todo.processPath === 'Pack-other' || todo.processPath === 'Smartpac') {
+        acc.Pack = (acc.Pack || 0) + 1;
+      }
+      return acc;
+    }, {});
+  };
+
+  const afeTotals = calculateTotals('afe');
+  const processPathTotals = calculateTotals('processPath');
+  const errorTotals = calculateTotals('error');
+
+  const renderAFEWithSortAndPackTable = (data) => {
+    const sortAndPackAFE1 = calculateSortAndPackForAFE('AFE1');
+    const sortAndPackAFE2 = calculateSortAndPackForAFE('AFE2');
+
+    // Calculate the total counts for AFE1 and AFE2
+    const totalAFE1AndAFE2 = (data['AFE1'] || 0) + (data['AFE2'] || 0);
+    const totalSort = (sortAndPackAFE1.Sort || 0) + (sortAndPackAFE2.Sort || 0);
+    const totalPack = (sortAndPackAFE1.Pack || 0) + (sortAndPackAFE2.Pack || 0);
+
+    return (
+      <div>
+       
+        <table className="audit-summary-table">
+          <thead>
+            <tr>
+              <th>AFE</th>
+              <th>Sub total</th>
+              <th>Sort</th>
+              <th>Pack</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AFE1</td>
+              <td>{data['AFE1'] || 0}</td>
+              <td>{sortAndPackAFE1.Sort || 0}</td>
+              <td>{sortAndPackAFE1.Pack || 0}</td>
+            </tr>
+            <tr>
+              <td>AFE2</td>
+              <td>{data['AFE2'] || 0}</td>
+              <td>{sortAndPackAFE2.Sort || 0}</td>
+              <td>{sortAndPackAFE2.Pack || 0}</td>
+            </tr>
+            {/* Add a row for total counts */}
+            <tr>
+              <td><strong>Total</strong></td>
+              <td><strong>{totalAFE1AndAFE2}</strong></td>
+              <td><strong>{totalSort}</strong></td>
+              <td><strong>{totalPack}</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
+  };
 
   return (
     <div className="audit-summary-container">
-      <h3>Audits Summary</h3>
-      <table className="audit-summary">
+      {renderAFEWithSortAndPackTable(afeTotals)}
+      {renderTable(processPathTotals, 'Process')}
+      {renderTable(errorTotals, 'Error')}
+    </div>
+  );
+};
+
+const renderTable = (data, title) => {
+  const totalCounts = Object.values(data).reduce((acc, currentValue) => acc + currentValue, 0);
+
+  return (
+    <div>
+      
+      <table className="audit-summary-table">
         <thead>
           <tr>
-            <th>Process Path</th>
-            <th>N</th>
+            <th>{title}</th>
+            <th>Audits</th>
           </tr>
         </thead>
         <tbody>
-          {Object.entries(processTotals).map(([process, total]) => (
-            <tr key={process}>
-              <td>{process}</td>
-              <td>{total}</td>
+          {Object.entries(data).map(([key, value]) => (
+            <tr key={key}>
+              <td>{key}</td>
+              <td>{value}</td>
             </tr>
           ))}
-          {/* Add a row for the total audits */}
           <tr>
-            <td><strong>Total Audits</strong></td>
-            <td><strong>{totalAudits}</strong></td>
+            <td><strong>Total</strong></td>
+            <td><strong>{totalCounts}</strong></td>
           </tr>
         </tbody>
       </table>
@@ -45,4 +114,3 @@ const AuditSummary = ({ todos }) => {
 };
 
 export default AuditSummary;
-
