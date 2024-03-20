@@ -15,7 +15,7 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
       <div className="form-row">
         <FormInput
           name="username"
-          placeholder="Username 🙀"
+          placeholder="Username"
           value={newTodo.username}
           onChange={handleInputChange}
         />
@@ -35,7 +35,7 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
           value={newTodo.processPath}
           onChange={handleInputChange}
           options={[
-            { label: 'Process Path 🔎', value: '' },
+            { label: 'Process', value: '' },
             { label: 'Pack', value: 'Pack' },
             { label: 'Induct', value: 'Induct' },
             { label: 'Rebin', value: 'Rebin' },
@@ -61,7 +61,7 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
       </div>
       <FormTextarea
         name="durable"
-        placeholder="Audit 🪲"
+        placeholder="Audit"
         value={newTodo.durable}
         onChange={handleInputChange}
         rows="2"
