@@ -20,7 +20,9 @@ function App() {
   // State for handling inputs for a new todo. Default values are empty.
   const [newTodo, setNewTodo] = useState({
     username: '',
+    afe: '',
     processPath: '',
+    error: '',
     durable: ''
   });
 
@@ -59,7 +61,13 @@ function App() {
       id: Date.now(),
       isEditing: false
     }]);
-    setNewTodo({ username: '', processPath: '', durable: '' });
+    setNewTodo({
+      username: '',
+      afe: '',
+      processPath: '',
+      error: '',
+      durable: ''
+    });
   };
 
   // Removes a todo item based on its id.

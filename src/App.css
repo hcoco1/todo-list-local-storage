@@ -71,22 +71,22 @@ select {
 /* Column Widths */
 .App th:nth-child(1),
 .App td:nth-child(1) {
-  width: 3%;
+  width: 03%;
 }
 
 .App th:nth-child(2),
 .App td:nth-child(2) {
-  width: 10%;
+  width: 12%;
 }
 
 .App th:nth-child(3),
 .App td:nth-child(3) {
-  width: 10%;
+  width: 12%;
 }
 
 .App th:nth-child(4),
 .App td:nth-child(4) {
-  width: 48%;
+  width: 12%;
 }
 
 .App th:nth-child(5),
@@ -96,7 +96,17 @@ select {
 
 .App th:nth-child(6),
 .App td:nth-child(6) {
-  width: 07%;
+  width: 25%;
+}
+
+.App th:nth-child(7),
+.App td:nth-child(7) {
+  width: 12%;
+}
+
+.App th:nth-child(8),
+.App td:nth-child(8) {
+  width: 12%;
 }
 
 /* Buttons */

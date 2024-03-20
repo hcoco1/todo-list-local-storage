@@ -14,7 +14,9 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
         <tr>
           <th>N</th>
           <th>AA</th>
+          <th>AFE</th>
           <th>Process</th>
+          <th>Error</th>
           <th>Durable</th>
           <th>Date</th>
           <th>Action</th>

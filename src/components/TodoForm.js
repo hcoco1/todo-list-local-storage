@@ -19,6 +19,17 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
           value={newTodo.username}
           onChange={handleInputChange}
         />
+
+        <FormSelect
+          name="afe"
+          value={newTodo.afe}
+          onChange={handleInputChange}
+          options={[
+            { label: 'AFE', value: '' },
+            { label: 'AFE1', value: 'AFE1' },
+            { label: 'AFE2', value: 'AFE2' },
+          ]}
+        />
         <FormSelect
           name="processPath"
           value={newTodo.processPath}
@@ -30,6 +41,21 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
             { label: 'Rebin', value: 'Rebin' },
             { label: 'Pack-other', value: 'Pack-other' },
             { label: 'Smartpac', value: 'Smartpac' },
+          ]}
+        />
+        <FormSelect
+          name="error"
+          value={newTodo.error}
+          onChange={handleInputChange}
+          options={[
+            { label: 'Error', value: '' },
+            { label: 'Error Indicator', value: 'Error Indicator' },
+            { label: 'Shortage', value: 'Shortage' },
+            { label: 'Wrong Box', value: 'Wrong Box' },
+            { label: 'Slam Kickout', value: 'Slam Kickout' },
+            { label: 'Missing Item', value: 'Missing Item' },
+            { label: 'Damaged', value: 'Damaged' },
+            { label: 'Unscannable', value: 'Unscannable' },
           ]}
         />
       </div>
