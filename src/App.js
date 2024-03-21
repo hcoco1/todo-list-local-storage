@@ -99,7 +99,7 @@ function App() {
           For the best experience, please rotate your device to landscape mode.
         </div>
 
-        <h1>Note-Taking App 🪄</h1>
+        <h1>Notes-Taking App</h1>
         {auditorName && !isEditingName ? (
           <div className="auditor-display">
             <h2>Auditor's Name: {auditorName}</h2>
