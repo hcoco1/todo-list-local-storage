@@ -2,23 +2,39 @@
 
 .audit-summary-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 30px; /* Adjust the space between tables as necessary */
-  justify-content: center;
+  flex-direction: column; /* Arrange items in columns */
+  gap: 30px; /* Adjust the space between items */
+  align-items: center; /* Center items horizontally */
+}
+
+.charts-container {
+  display: flex;
+  flex-direction: row; /* Arrange charts in a row */
+  gap: 20px; /* Adjust the space between charts */
+}
+
+.tables-container {
+  display: flex;
+  flex-direction: row; /* Arrange tables in a row */
+  gap: 30px; /* Adjust the space between tables */
+}
+
+.chart,
+.table {
+  flex: 1; /* Each item takes equal space */
 }
 
 .audit-summary-table {
   border-collapse: collapse;
-  width: auto; /* Or specify a width */
-  margin: 0 auto; /* Center the table if there's only one per row */
+  width: auto; /* Adjust table width */
 }
 
-.audit-summary-table th, .audit-summary-table td {
-  border: 1px solid #ddd; /* Optional: adds border to cells */
+.audit-summary-table th,
+.audit-summary-table td {
+  border: 1px solid #ddd;
   padding: 8px;
 }
 
 .audit-summary-table th {
-  text-align: left;
-  background-color: #bbeec1; /* Optional: styles the header row */
+  background-color: #bbeec1;
 }
