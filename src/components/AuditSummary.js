@@ -44,6 +44,8 @@ const AuditSummary = ({ todos }) => {
         afeChartInstanceRef.current.destroy();
       }
 
+      
+
       const chartData = {
         labels: Object.keys(afeTotals),
         datasets: [{
