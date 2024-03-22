@@ -65,6 +65,7 @@ function TodoItem({ todo, index, deleteTodo, toggleEdit, handleEditChange, saveE
             <option value="missing">Missing Item</option>
             <option value="damaged">Damaged</option>
             <option value="unscannable">Unscannable</option>
+            <option value="Shipment Exceptions">Shipment Exceptions</option>
           </select>
         ) : (
           todo.error

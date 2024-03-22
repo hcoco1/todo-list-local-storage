@@ -56,6 +56,7 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
             { label: 'Missing Item', value: 'Missing Item' },
             { label: 'Damaged', value: 'Damaged' },
             { label: 'Unscannable', value: 'Unscannable' },
+            { label: 'Shipment Exceptions', value: 'Shipment Exceptions' },
           ]}
         />
       </div>
