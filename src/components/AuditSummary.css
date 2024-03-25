@@ -7,21 +7,21 @@
   align-items: center; /* Center items horizontally */
 }
 
-.charts-container {
+.row {
   display: flex;
-  flex-direction: row; /* Arrange charts in a row */
-  gap: 20px; /* Adjust the space between charts */
+  flex-direction: row; /* Arrange items in a row */
+  gap: 40px; /* Adjust the space between items */
+  align-items: center;
 }
 
-.tables-container {
-  display: flex;
-  flex-direction: row; /* Arrange tables in a row */
-  gap: 30px; /* Adjust the space between tables */
+.chart-container,
+.table-container {
+  flex: 1; /* Each item takes equal space */
 }
 
 .chart,
 .table {
-  flex: 1; /* Each item takes equal space */
+  width: 100%; /* Ensure charts and tables take full width */
 }
 
 .audit-summary-table {
@@ -37,4 +37,12 @@
 
 .audit-summary-table th {
   background-color: #bbeec1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
 }
