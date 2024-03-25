@@ -19,10 +19,12 @@ function App() {
 
   // State for handling inputs for a new todo. Default values are empty.
   const [newTodo, setNewTodo] = useState({
+    period: '',
     username: '',
     afe: '',
     processPath: '',
     error: '',
+    coaching: '',
     durable: ''
   });
 
@@ -62,10 +64,12 @@ function App() {
       isEditing: false
     }]);
     setNewTodo({
+      period: '',
       username: '',
       afe: '',
       processPath: '',
       error: '',
+      coaching: '',
       durable: ''
     });
   };

@@ -1,42 +1,117 @@
-// src/components/TodoList.js
-import React from 'react';
-import TodoItem from './TodoItem';
+import React, { useMemo, useState } from 'react';
+import { useTable, useSortBy } from 'react-table';
 import AuditSummary from './AuditSummary';
 
-
 function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit }) {
+  const [filterInput, setFilterInput] = useState("");
+
+  const data = useMemo(() => todos.filter(
+    todo => todo.username.toLowerCase().includes(filterInput.toLowerCase())), 
+    [todos, filterInput]
+  );
+
+  const columns = useMemo(() => [
+    {
+      Header: 'N',
+      accessor: (_, i) => i + 1,
+      id: 'row',
+      disableSortBy: true, // Disabling sort on index
+    },
+    {
+      Header: 'Period',
+      accessor: 'period',
+    },
+    {
+      Header: 'AA',
+      accessor: 'username',
+    },
+    {
+      Header: 'AFE',
+      accessor: 'afe',
+    },
+    {
+      Header: 'Process',
+      accessor: 'processPath',
+    },
+    {
+      Header: 'Error',
+      accessor: 'error',
+    },
+    {
+      Header: 'Coaching',
+      accessor: 'coaching',
+      disableSortBy: true, // Assuming you might not want to sort by this complex text
+    },
+    {
+      Header: 'Observations',
+      accessor: 'durable', // Assuming 'durable' corresponds to observations
+      disableSortBy: true, // Assuming sorting is not required
+    },
+    {
+      Header: 'Action',
+      id: 'action',
+      accessor: (row) => row,
+      Cell: ({ value }) => (
+        <div>
+          <button className="delete-btn" onClick={() => deleteTodo(value.id)}>❌</button>
+{/*           <button onClick={() => toggleEdit(value.id)}>🖋</button>
+          <button onClick={() => saveEdit(value.id)}>✅</button> */}
+        </div>
+      ),
+      disableSortBy: true, // Actions don't need sorting
+    },
+  ], [deleteTodo, toggleEdit, saveEdit]);
+
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+  } = useTable({ columns, data }, useSortBy);
+
   return (
     <div>
       <AuditSummary todos={todos} />
-    
-    <table>
-      <thead>
-        <tr>
-          <th>N</th>
-          <th>AA</th>
-          <th>AFE</th>
-          <th>Process</th>
-          <th>Error</th>
-          <th>Coaching</th>
-          <th>Observations</th>
-          <th>Date</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {todos.map((todo, index) => (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            index={index}
-            deleteTodo={deleteTodo}
-            toggleEdit={toggleEdit}
-            handleEditChange={handleEditChange}
-            saveEdit={saveEdit}
-          />
-        ))}
-      </tbody>
-    </table>
+      <input
+        value={filterInput}
+        onChange={(e) => setFilterInput(e.target.value)}
+        placeholder={"Search by AA (Username)"}
+      />
+      <table {...getTableProps()}>
+        <thead>
+          {headerGroups.map(headerGroup => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map(column => (
+                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {column.render('Header')}
+                  <span>
+                    {column.isSorted
+                      ? column.isSortedDesc ? ' 🔽' : ' 🔼'
+                      : ''}
+                  </span>
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map(row => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map(cell => {
+                  return (
+                    <td {...cell.getCellProps()}>
+                      {cell.render('Cell')}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }
