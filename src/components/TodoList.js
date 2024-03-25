@@ -5,10 +5,10 @@ import AuditSummary from './AuditSummary';
 function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit }) {
   const [filterInput, setFilterInput] = useState("");
 
-  const data = useMemo(() => todos.filter(
-    todo => todo.username.toLowerCase().includes(filterInput.toLowerCase())), 
-    [todos, filterInput]
-  );
+  const data = useMemo(() => todos.filter(todo => 
+    todo.username.toLowerCase().includes(filterInput.toLowerCase()) || 
+    (todo.auditor && todo.auditor.toLowerCase().includes(filterInput.toLowerCase()))
+  ), [todos, filterInput]);
 
   const columns = useMemo(() => [
     {
@@ -16,6 +16,10 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
       accessor: (_, i) => i + 1,
       id: 'row',
       disableSortBy: true, // Disabling sort on index
+    },
+    {
+      Header: 'Auditor',
+      accessor: 'auditor',
     },
     {
       Header: 'Period',
@@ -38,7 +42,7 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
       accessor: 'error',
     },
     {
-      Header: 'Coaching',
+      Header: 'General Coaching',
       accessor: 'coaching',
       disableSortBy: true, // Assuming you might not want to sort by this complex text
     },
@@ -76,7 +80,7 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
       <input
         value={filterInput}
         onChange={(e) => setFilterInput(e.target.value)}
-        placeholder={"Search by AA (Username)"}
+        placeholder={"Search by AA or Auditor"}
       />
       <table {...getTableProps()}>
         <thead>

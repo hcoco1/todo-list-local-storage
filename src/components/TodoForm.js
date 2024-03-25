@@ -15,6 +15,18 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
       <div className="form-row">
 
       <FormSelect
+          name="auditor"
+          value={newTodo.auditor}
+          onChange={handleInputChange}
+          options={[
+            { label: 'Auditor', value: '' },
+            { label: 'Ivan', value: 'ivan' },
+            { label: 'Yoanli', value: 'yoanli' },
+ 
+          ]}
+        />
+
+      <FormSelect
           name="period"
           value={newTodo.period}
           onChange={handleInputChange}
@@ -43,7 +55,7 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
             { label: 'AFE', value: '' },
             { label: 'AFE1', value: 'AFE1' },
             { label: 'AFE2', value: 'AFE2' },
-            { label: 'SINGLES', value: 'SINGLES' },
+            { label: 'AFE3', value: 'AFE3' },
           ]}
         />
         <FormSelect
@@ -65,14 +77,15 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
           onChange={handleInputChange}
           options={[
             { label: 'Error', value: '' },
-            { label: 'Error I', value: 'Error I' },
-            { label: 'Shortage', value: 'Shortage' },
+            { label: 'Rebin Error Ind', value: 'Reb Err Ind' },
+            { label: 'Ind Error Ind', value: 'Ind Err Ind' },
+            { label: 'Induct Shortage', value: 'Ind Shor' },
             { label: 'Wrong Box', value: 'Wrong Box' },
-            { label: 'Kickout', value: 'Kickout' },
-            { label: 'Missing Item', value: 'Missing Item' },
-            { label: 'Damaged', value: 'Damaged' },
-            { label: 'Unscannable', value: 'Unscannable' },
-            { label: 'Shipment E', value: 'Shipment E' },
+            { label: 'Slam Kickout', value: 'Slam Kic' },
+            { label: 'Item Missing ', value: 'Item Miss' },
+            { label: 'Item Damaged', value: 'Item Dam' },
+            { label: 'Item Unscannable', value: 'Item Unsca' },
+            { label: 'Ship Exception', value: 'Ship Exce' },
           ]}
         />
       </div>

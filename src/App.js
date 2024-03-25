@@ -35,6 +35,7 @@ function App() {
 
   // State for handling inputs for a new todo. Default values are empty.
   const [newTodo, setNewTodo] = useState({
+    auditor: '',
     period: '',
     username: '',
     afe: '',
@@ -105,6 +106,7 @@ function App() {
       
       // Reset newTodo state to default values after successful submission
       setNewTodo({
+        auditor: '',
         period: '',
         username: '',
         afe: '',

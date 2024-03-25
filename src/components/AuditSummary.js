@@ -55,9 +55,15 @@ const AuditSummary = ({ todos }) => {
             borderWidth: 1,
         }],
     };
-
-    const periodChartData = {
-        labels: Object.keys(periodTotals),
+    const periodLabels = {
+        '1': '6:30-10:00',
+        '2': '10:30-02:00',
+        '3': '2:30-05:00',
+        '4': '5:15-07:00',
+      };
+      
+      const periodChartData = {
+        labels: Object.keys(periodTotals).map(period => periodLabels[period] || period),
         datasets: [{
             label: 'Total Audits by Period',
             data: Object.values(periodTotals).map(entry => entry.total),
@@ -66,6 +72,7 @@ const AuditSummary = ({ todos }) => {
             borderWidth: 1,
         }],
     };
+    
 
     // Common Chart Options
     const chartOptions = {

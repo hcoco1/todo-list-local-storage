@@ -81,7 +81,7 @@ select {
 
 .App th:nth-child(3),
 .App td:nth-child(3) {
-  width: 04%;
+  width: 03%;
 }
 
 .App th:nth-child(4),
@@ -91,27 +91,31 @@ select {
 
 .App th:nth-child(5),
 .App td:nth-child(5) {
-  width: 08%;
+  width: 05%;
 }
 
 .App th:nth-child(6),
 .App td:nth-child(6) {
-  width: 10%;
+  width: 06%;
 }
 
 .App th:nth-child(7),
 .App td:nth-child(7) {
-  width: 40%;
+  width: 10%;
 }
 
 .App th:nth-child(8),
 .App td:nth-child(8) {
-  width: 15%;
+  width: 45%;
 }
 
-.App th:nth-child(),
+.App th:nth-child(9),
 .App td:nth-child(9) {
-  width: 10%;
+  width: 30%;
+}
+.App th:nth-child(10),
+.App td:nth-child(10) {
+  width: 05%;
 }
 
 /* Buttons */
