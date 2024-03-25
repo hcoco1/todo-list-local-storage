@@ -20,10 +20,10 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
           onChange={handleInputChange}
           options={[
             { label: 'Period', value: '' },
-            { label: '6:30 -10:00 PM', value: '1' },
-            { label: '10:30 PM -02:00 AM', value: '2' },
-            { label: '2:30 AM -05:00 AM', value: '3' },
-            { label: '5:15 AM -07:00 AM', value: '4' },
+            { label: '1 (6:30 -10:00 PM)', value: '1' },
+            { label: '2 (10:30 PM -02:00 AM)', value: '2' },
+            { label: '3 (2:30 AM -05:00 AM)', value: '3' },
+            { label: '4 (5:15 AM -07:00 AM)', value: '4' },
           ]}
         />
         <FormInput
