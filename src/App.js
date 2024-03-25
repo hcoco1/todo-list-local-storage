@@ -1,39 +1,34 @@
-// Importing necessary React hooks and CSS for styling
-import { 
-  getFirestore, 
-  collection, 
-  addDoc, 
-  getDocs, 
-  query, 
-  where, 
-  doc, 
-  updateDoc, 
-  deleteDoc, 
-  setDoc, 
-  getDoc // Make sure getDoc is included here
-} from "firebase/firestore";
-
 import React, { useState, useEffect } from 'react';
-import './App.css'; // Styling for the app
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth, db } from './components/firebase-config'; // Adjust according to your actual import
+import './App.css';
+import Greeting from './components/Greeting';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
+/* import Navbar from './components/Navbar'; */
+import Footer from './components/Footer';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
-import Footer from './components/Footer';
 import ReportGenerator from './components/ReportGenerator';
 import AuditorNameForm from './components/AuditorNameForm';
-
-import { db, app } from '../src/firebase'; // Only import what's being exported
+import LogOutButton from './components/LogOutButton'; // Ensure this path is correct
+import {
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  setDoc,
+  getDoc,
+  deleteDoc
+} from "firebase/firestore";
 
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true); // Add a loading state
   const [auditorName, setAuditorName] = useState('');
-  // Initializes 'todos' state with data from localStorage or as an empty array if none is found.
-  // This is used to persist todo items between sessions.
-  const [todos, setTodos] = useState(() => {
-    const storedTodos = localStorage.getItem('todos');
-    return storedTodos ? JSON.parse(storedTodos) : [];
-  });
-
-  // State for handling inputs for a new todo. Default values are empty.
+  const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState({
     auditor: '',
     period: '',
@@ -44,67 +39,55 @@ function App() {
     coaching: '',
     durable: ''
   });
-
-
-
-  useEffect(() => {
-    const fetchTodos = async () => {
-      const todosCollectionRef = collection(db, "todos");
-      const todosSnapshot = await getDocs(todosCollectionRef);
-      const todosList = todosSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setTodos(todosList);
-    };
-  
-    fetchTodos();
-  }, []);
-  
-
-  // State to control the visibility of the auditor name editing form.
   const [isEditingName, setIsEditingName] = useState(false);
 
-  // Handles submission of a new auditor name, updates state, and hides the form.
+  // Authentication state management
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      setCurrentUser(user);
+      if (user) {
+        fetchTodos();
+        fetchAuditorName();
+      } else {
+        setTodos([]);
+        setAuditorName('');
+      }
+    });
+    return unsubscribe; // Cleanup on unmount
+  }, []);
+
+  const fetchTodos = async () => {
+    const todosCollectionRef = collection(db, "todos");
+    const todosSnapshot = await getDocs(todosCollectionRef);
+    const todosList = todosSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    setTodos(todosList);
+  };
+
   const handleNameSubmit = async (name) => {
     const docRef = doc(db, "settings", "auditorName");
     await setDoc(docRef, { name }, { merge: true });
     setAuditorName(name);
     setIsEditingName(false);
   };
-  
 
-  useEffect(() => {
-    const fetchAuditorName = async () => {
-      const docRef = doc(db, "settings", "auditorName");
-      const docSnap = await getDoc(docRef); // Use getDoc here
-  
-      if (docSnap.exists()) {
-        setAuditorName(docSnap.data().name); // Correct use of getDoc
-      } else {
-        console.log("No auditor name set.");
-      }
-    };
-  
-    fetchAuditorName();
-  }, []);
-  
+  const fetchAuditorName = async () => {
+    const docRef = doc(db, "settings", "auditorName");
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      setAuditorName(docSnap.data().name);
+    } else {
+      console.log("No auditor name set.");
+    }
+  };
 
- 
-
-  // Adds a new todo item to the list with current date and unique ID.
   const addTodo = async (e) => {
     e.preventDefault();
     const currentEasternTime = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
-    const newTodoData = {
-      ...newTodo,
-      date: currentEasternTime,
-      isEditing: false
-    };
+    const newTodoData = { ...newTodo, date: currentEasternTime, isEditing: false };
   
     try {
       await addDoc(collection(db, "todos"), newTodoData);
-      // Optimistically update the todos state with the new todo
-      setTodos(prevTodos => [...prevTodos, { ...newTodoData, id: Date.now().toString() }]); // Using Date.now().toString() as a temporary ID. Firestore will provide the real ID.
-      
-      // Reset newTodo state to default values after successful submission
+      setTodos(prevTodos => [...prevTodos, { ...newTodoData, id: Date.now().toString() }]); // Placeholder ID, replaced upon re-fetch
       setNewTodo({
         auditor: '',
         period: '',
@@ -119,55 +102,58 @@ function App() {
       console.error("Error adding document: ", error);
     }
   };
-  
-  
-  
 
-  // Removes a todo item based on its id.
   const deleteTodo = async (id) => {
     await deleteDoc(doc(db, "todos", id));
-    
-    // Update the todos state to remove the deleted todo
     setTodos(todos.filter(todo => todo.id !== id));
   };
-  
-  
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+        setCurrentUser(user);
+        setLoading(false); // Set loading to false once we get the user state
+    });
+    return unsubscribe;
+}, []);
 
+if (loading) {
+    return <div>Loading...</div>; // Or any other loading indicator
+}
 
-
-
-
-
-  // Render method for the App component, which includes UI for auditor name, todo form, todo list, and report generation.
   return (
-    <div className="App">
-      <main>
-        <div className="orientation-message">
-          For the best experience, please rotate your device to landscape mode.
-        </div>
+    <Router>
+      <div className="App">
+       {/*  <Navbar /> */}
+       {currentUser && <LogOutButton />}
+        <Routes>
+          <Route path="/signin" element={!currentUser ? <SignIn /> : <Navigate replace to="/" />} />
+          <Route path="/signup" element={!currentUser ? <SignUp /> : <Navigate replace to="/signin" />} />
+          <Route path="/" element={currentUser ? (
+            <main>
+              <div className="orientation-message">For the best experience, please rotate your device to landscape mode.</div>
+              <h1>Notes-Taking App</h1>
+              <Greeting />
+              {auditorName && !isEditingName ? (
+                <div className="auditor-display">
+                                    <h2>Auditor's Name: {auditorName}</h2>
+                  <button onClick={() => setIsEditingName(true)} className="edit-name-button">Edit</button>
+                </div>
+              ) : (
+                <AuditorNameForm onNameSubmit={handleNameSubmit} />
+              )}
 
-        <h1>Notes-Taking App</h1>
-        {auditorName && !isEditingName ? (
-          <div className="auditor-display">
-            <h2>Auditor's Name: {auditorName}</h2>
-            <button onClick={() => setIsEditingName(true)} className="edit-name-button">Edit</button>
-          </div>
-        ) : (
-          <AuditorNameForm onNameSubmit={handleNameSubmit} />
-
-        )}
-
-        <TodoForm addTodo={addTodo} newTodo={newTodo} setNewTodo={setNewTodo} />
-        <TodoList todos={todos} deleteTodo={deleteTodo}  />
-        <ReportGenerator todos={todos} />
-      </main>
-      <Footer />
-    </div>
+              <TodoForm addTodo={addTodo} newTodo={newTodo} setNewTodo={setNewTodo} />
+              <TodoList todos={todos} deleteTodo={deleteTodo} />
+              <ReportGenerator todos={todos} />
+            </main>
+          ) : <Navigate replace to="/signin" />} />
+          {/* Optionally, you could add more authenticated or public routes here */}
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
 export default App;
-
-
 
