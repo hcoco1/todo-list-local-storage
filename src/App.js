@@ -133,14 +133,14 @@ if (loading) {
               <div className="orientation-message">For the best experience, please rotate your device to landscape mode.</div>
               <h1>Notes-Taking App</h1>
               <Greeting />
-              {auditorName && !isEditingName ? (
+{/*               {auditorName && !isEditingName ? (
                 <div className="auditor-display">
                                     <h2>Auditor's Name: {auditorName}</h2>
                   <button onClick={() => setIsEditingName(true)} className="edit-name-button">Edit</button>
                 </div>
               ) : (
                 <AuditorNameForm onNameSubmit={handleNameSubmit} />
-              )}
+              )} */}
 
               <TodoForm addTodo={addTodo} newTodo={newTodo} setNewTodo={setNewTodo} />
               <TodoList todos={todos} deleteTodo={deleteTodo} />
