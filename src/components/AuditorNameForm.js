@@ -1,13 +1,12 @@
-// src/components/AuditorNameForm.js
 import React, { useState } from 'react';
 
 function AuditorNameForm({ onNameSubmit }) {
   const [name, setName] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    onNameSubmit(name);
-    setName(''); // Reset the input field after submission
+    e.preventDefault(); // Prevent the default form submission
+    onNameSubmit(name); // Call the passed in onNameSubmit function with the current name
+    setName(''); // Optionally reset the name to empty string
   };
 
   return (
@@ -26,3 +25,4 @@ function AuditorNameForm({ onNameSubmit }) {
 }
 
 export default AuditorNameForm;
+
