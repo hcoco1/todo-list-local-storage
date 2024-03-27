@@ -96,27 +96,24 @@ select {
 
 .App th:nth-child(6),
 .App td:nth-child(6) {
-  width: 06%;
+  width: 10%;
 }
 
 .App th:nth-child(7),
 .App td:nth-child(7) {
-  width: 10%;
+  width: 50%;
 }
 
 .App th:nth-child(8),
 .App td:nth-child(8) {
-  width: 45%;
+  width: 15%;
 }
 
 .App th:nth-child(9),
 .App td:nth-child(9) {
-  width: 30%;
+  width: 20%;
 }
-.App th:nth-child(10),
-.App td:nth-child(10) {
-  width: 05%;
-}
+
 
 /* Buttons */
 

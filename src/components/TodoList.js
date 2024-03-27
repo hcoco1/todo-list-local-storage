@@ -18,10 +18,6 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
       disableSortBy: true, // Disabling sort on index
     },
     {
-      Header: 'Auditor',
-      accessor: 'auditor',
-    },
-    {
       Header: 'Period',
       accessor: 'period',
     },
@@ -64,7 +60,7 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
       ),
       disableSortBy: true, // Actions don't need sorting
     },
-  ], [deleteTodo, toggleEdit, saveEdit]);
+  ], [deleteTodo]);
 
   const {
     getTableProps,
