@@ -3,7 +3,7 @@
 .audit-summary-container {
   display: flex;
   flex-direction: column; /* Arrange items in columns */
-  gap: 30px; /* Adjust the space between items */
+  gap: 20px; /* Adjust the space between items */
   align-items: center; /* Center items horizontally */
 }
 
@@ -14,30 +14,22 @@
   align-items: center;
 }
 
-.chart-container,
-.table-container {
-  flex: 1; /* Each item takes equal space */
-}
+
 
 .chart,
 .table {
-  width: 100%; /* Ensure charts and tables take full width */
+  width: 90%; /* Ensure charts and tables take full width */
 }
 
-.audit-summary-table {
-  border-collapse: collapse;
-  width: auto; /* Adjust table width */
+
+
+
+
+.audits-summary-title {
+  font-size: 12px;
+  /* Other styling properties */
 }
 
-.audit-summary-table th,
-.audit-summary-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-.audit-summary-table th {
-  background-color: #bbeec1;
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

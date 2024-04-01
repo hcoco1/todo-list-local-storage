@@ -126,12 +126,7 @@ select {
 
 
 
-.delete-btn {
-  
-  margin-right: 6%;
-  padding: 5px 8px ;
-  font-size: 12px;
-}
+
 
 .download-btn {
   background-color: #10ac3a;
@@ -343,11 +338,19 @@ textarea {
 }
 
 .header {
-/*   border-color: #007bff;
-  border-style: groove;
-  border-radius: 8px; */
   display: flex;
-  justify-content: space-between;
+  justify-content:space-between;
   align-items: center;
   padding: 2px 5px;
 }
+
+.header-summary {
+  /*   border-color: #007bff;
+    border-style: groove;
+    border-radius: 8px; */
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    padding: 2px 5px;
+  }
+  

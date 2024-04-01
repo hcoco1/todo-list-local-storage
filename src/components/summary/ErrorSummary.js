@@ -2,7 +2,7 @@ import React from 'react';
 import { PieChart, Pie, Tooltip, Legend, Cell } from 'recharts';
 import './ErrorSummary.css'; // Import the CSS file
 
-const ErrorSummary = ({ todos, className }) => {
+const ErrorSummary = ({ filteredTodos, className }) => {
   // Define the fields and values you want to count
   const fieldsToCount = [
     { field: 'error', value: 'Rebin Error Indicator' },
@@ -19,7 +19,7 @@ const ErrorSummary = ({ todos, className }) => {
 
   // Function to count the occurrences of a value in a given field
   const countNotes = (field, value) => {
-    return todos.filter(note => note[field] === value).length;
+    return filteredTodos.filter(note => note[field] === value).length;
   };
 
 
@@ -32,13 +32,17 @@ const ErrorSummary = ({ todos, className }) => {
   const colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff7300', '#00bfff', '#ff4040', '#008080', '#800080', '#008000'];
 
   return (
-    <div className={`audits-summary-container ${className}`}>
+
+    <>
+    <h4 className="audits-summary-title">Errors</h4>
+
+        <div className={`audits-summary-container ${className}`}>
       <div>
-        <h2 className="audits-summary-title">Errors</h2>
+        
       </div>
       
       <div className="audits-summary-chart">
-        <PieChart width={500} height={400}>
+        <PieChart width={600} height={400}>
           <Pie
             data={data}
             cx="50%"
@@ -61,14 +65,16 @@ const ErrorSummary = ({ todos, className }) => {
       </div>
 
       {/* Display counts */}
-      <div className="audits-summary-counts">
+{/*       <div className="audits-summary-counts">
         {fieldsToCount.map(({ field, value }) => (
           <div key={`${field}-${value}`} className="audits-summary-item">
             <p>{`${value}: ${countNotes(field, value)}`}</p>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
+    </>
+
   );
 };
 

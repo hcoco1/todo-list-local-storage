@@ -39,7 +39,7 @@ ul {
   text-align: left;
   padding-right: 1rem;
   padding-bottom: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
 }
 
@@ -58,20 +58,22 @@ ul {
 
 /* Button Style Adjustments */
 .delete-btn {
+ 
   background-color: #FF1744;
   color: white;
   border: none;
   padding: 8px 12px;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 10px; /* Space from the last info group */
-  align-self: flex-start; /* Aligns to the start of the flex container */
+  margin-top: 1px; /* Space from the last info group */
+  
 }
 
 /* Consolidated Filter Container and Item Styles */
 .filter-container, .NotesContainer .filter-container {
   display: flex;
-  align-items: center;
+  justify-content:space-between;
+  align-items:first baseline;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 1cap;

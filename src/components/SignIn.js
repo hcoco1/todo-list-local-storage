@@ -28,25 +28,25 @@ function SignIn() {
     };
 
     return (
-        <>
-             <form className="auth-form" onSubmit={handleSubmit}>
-            <h2>Sign In</h2>
-            <div>
-                <label htmlFor="email">Email</label>
-                <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-            </div>
-            <div>
-                <label htmlFor="password">Password</label>
-                <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-            </div>
-            {error && <div className="error">{error}</div>}
-            <button type="submit">Sign In</button>
-        </form>
-             <p>
-             Don't have an account? <Link to="/signup">Sign Up</Link>
-           </p>
-        </>
-   
+        <div>
+            <form className="auth-form" onSubmit={handleSubmit}>
+                <h2>Sign In</h2>
+                <div>
+                    <label htmlFor="email">Email</label>
+                    <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                </div>
+                <div>
+                    <label htmlFor="password">Password</label>
+                    <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                </div>
+                {error && <div className="error">{error}</div>}
+                <button type="submit">Sign In</button>
+            </form>
+            <p style={{ textAlign: 'center' }} >
+                Don't have an account? <Link to="/signup">Sign Up</Link>
+            </p>
+        </div>
+
     );
 }
 

@@ -58,7 +58,7 @@ function SignUp() {
                 {error && <div className="error">{error}</div>}
                 <button type="submit" disabled={isLoading}>{isLoading ? 'Signing Up...' : 'Sign Up'}</button>
             </form>
-            <p>
+            <p style={{ textAlign: 'center' }}>
                 Already have an account? <Link to="/signin">Sign In</Link>
             </p>
         </>
