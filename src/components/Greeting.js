@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { auth } from './firebase-config';
 
-function Greeting() {
+function Greeting({ todos }) {
     const [userName, setUserName] = useState('');
 
     useEffect(() => {
@@ -11,10 +11,16 @@ function Greeting() {
         return () => unsubscribe();
     }, []);
 
-    return <h1>Hello {userName || 'Guest'}!</h1>;
+    return (
+        <h1>
+            Hello {userName || 'Guest'}! 
+            {todos && todos.length > 0 && ` Total Audits: ${todos.length}`}
+        </h1>
+    );
 }
 
 export default Greeting;
+
 
 
 

@@ -1,0 +1,47 @@
+.todo-form {
+  max-width: 800px; /* Adjust based on your design */
+  margin: auto;
+  padding: 20px;
+  background-color: #f0f0f0; /* Example background */
+  border-radius: 8px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between; /* Distribute space between fields */
+  margin-bottom: 20px; /* Space between rows */
+}
+
+.form-row > div {
+  width: 22%; /* Adjust the width to fit 4 items in a row */
+}
+
+/* Add styles for your form elements (input, select, textarea) to ensure they expand to fill their containers */
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px; /* Adjust or remove based on layout */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px; /* Adjust or remove based on layout */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}

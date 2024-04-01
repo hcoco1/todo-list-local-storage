@@ -27,3 +27,36 @@
 .logout-button:focus {
     box-shadow: 0 0 0 2px #e7f3ff; /* Focus ring for accessibility */
 }
+
+.btn {
+    padding: 10px 20px;
+    background-color: #18f26c; /* Facebook blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    display:flex;
+    user-select: none; /* Prevent text selection */
+    transition: background-color 0.3s, box-shadow 0.3s;
+    outline: none;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.btn:hover {
+    background-color: #166fe5; /* Slightly darker blue on hover */
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    background-color: #145cbd; /* Even darker blue when clicked */
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn:focus {
+    box-shadow: 0 0 0 2px #e7f3ff; /* Focus ring for accessibility */
+}
+

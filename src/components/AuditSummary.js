@@ -2,6 +2,7 @@ import React from 'react';
 import ChartComponent from './ChartComponent'; // Adjust the import path as necessary
 import TableComponent from './TableComponent'; // Adjust the import path as necessary
 import './AuditSummary.css'; // Styling for the app
+import Greeting from './Greeting';
 
 const calculateTotalsWithPeriods = (todos, key) => {
     return todos.reduce((acc, todo) => {
@@ -131,25 +132,26 @@ const AuditSummary = ({ todos }) => {
 
     return (
         <div className="audit-summary-container">
+           <Greeting todos={todos}/>
           {Object.keys(chartData).map((key, index) => (
             index % 2 === 0 && (
               <div className="row" key={key}>
                 <div className="chart-container">
                   <ChartComponent chartData={chartData[key]} chartOptions={chartOptions} />
                 </div>
-                <div className="table-container">
+{/*                 <div className="table-container">
                   <TableComponent data={tableData[key]} title={`${key} Totals`} />
-                </div>
+                </div> */}
                 {Object.keys(chartData)[index + 1] && (
                   <div className="chart-container">
                     <ChartComponent chartData={chartData[Object.keys(chartData)[index + 1]]} chartOptions={chartOptions} />
                   </div>
                 )}
-                {Object.keys(tableData)[index + 1] && (
+{/*                 {Object.keys(tableData)[index + 1] && (
                   <div className="table-container">
                     <TableComponent data={tableData[Object.keys(tableData)[index + 1]]} title={`${Object.keys(chartData)[index + 1]} Totals`} />
                   </div>
-                )}
+                )} */}
               </div>
             )
           ))}
