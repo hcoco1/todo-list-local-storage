@@ -49,7 +49,7 @@ function App() {
       setCurrentUser(user);
       if (user) {
         fetchTodos();
-        fetchAuditorName();
+     
       } else {
         setTodos([]);
 
@@ -63,18 +63,6 @@ function App() {
     const todosSnapshot = await getDocs(todosCollectionRef);
     const todosList = todosSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     setTodos(todosList);
-  };
-
-
-
-  const fetchAuditorName = async () => {
-    const docRef = doc(db, "settings", "auditorName");
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-
-    } else {
-      console.log("No auditor name set.");
-    }
   };
 
   const addTodo = async (e) => {

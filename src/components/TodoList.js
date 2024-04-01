@@ -3,11 +3,28 @@ import './TodoList.css';
 
 function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit }) {
   const [filterInput, setFilterInput] = useState("");
+  const [selectedAuditor, setSelectedAuditor] = useState('');
+  const [dateSince, setDateSince] = useState('');
+  const [dateUntil, setDateUntil] = useState('');
 
-  const filteredTodos = useMemo(() => todos.filter(todo =>
-    todo.username.toLowerCase().includes(filterInput.toLowerCase()) ||
-    (todo.auditor && todo.auditor.toLowerCase().includes(filterInput.toLowerCase()))
-  ), [todos, filterInput]);
+
+
+  const filteredTodos = todos.filter(todo => {
+    const matchesAuditor = selectedAuditor ? todo.auditor === selectedAuditor : true;
+
+    // Convert string dates to Date objects for comparison
+    const todoDate = new Date(todo.createdAt);
+    const sinceDate = dateSince ? new Date(dateSince) : null;
+    const untilDate = dateUntil ? new Date(dateUntil) : null;
+
+    // Check if the todo's date is within the "since" and "until" range
+    const matchesSince = sinceDate ? todoDate >= sinceDate : true;
+    const matchesUntil = untilDate ? todoDate <= untilDate : true;
+
+    return matchesAuditor && matchesSince && matchesUntil;
+  });
+
+
 
   function formatTimestampToUTC(timestamp) {
     const date = new Date(timestamp);
@@ -45,11 +62,31 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
 
   return (
     <div className="NotesContainer">
-      <input
-        value={filterInput}
-        onChange={(e) => setFilterInput(e.target.value)}
-        placeholder={"Search by AA or Auditor"}
-      />
+
+      <div>
+        <h3>Filter your audits by date, time and auditor name.</h3>
+      </div>
+      <div className="filter-container">
+
+
+        <div className="filter-item">
+          <input id="date-since" type="datetime-local" value={dateSince} onChange={e => setDateSince(e.target.value)} />
+        </div>
+        <div className="filter-item">
+          <input id="date-until" type="datetime-local" value={dateUntil} onChange={e => setDateUntil(e.target.value)} />
+        </div>
+        <div className="filter-item">
+          <select id="auditor-select" value={selectedAuditor} onChange={e => setSelectedAuditor(e.target.value)}>
+            <option value="">Select an Auditor</option>
+            <option value="Ivan">Ivan</option>
+            <option value="Yoanli">Yoanli</option>
+            <option value="Guest">Guest</option>
+          </select>
+        </div>
+      </div>
+
+
+
       {rows.map((row, rowIndex) => (
         <ul key={rowIndex}>
           {row.map((todo, index) => (

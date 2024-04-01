@@ -87,8 +87,8 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
           options={[
             { label: 'Error', value: '' },
             { label: 'Rebin Error Indicator', value: 'Rebin Error Indicator' },
-            { label: 'Ind Error Indicator', value: 'Induct Error Indicator' },
-            { label: 'Induct Shortage', value: 'Ind Shortage' },
+            { label: 'Induct Error Indicator', value: 'Induct Error Indicator' },
+            { label: 'Induct Shortage', value: 'Induct Shortage' },
             { label: 'Wrong Box', value: 'Wrong Box' },
             { label: 'Slam Kickout', value: 'Slam Kickout' },
             { label: 'Pack Item Missing', value: 'Pack Item Missing' },

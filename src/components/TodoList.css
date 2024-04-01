@@ -31,18 +31,15 @@ ul {
   flex-wrap: wrap;
   gap: 10px; /* Adjusts spacing between items */
   padding-bottom: 0.5rem;
- 
 }
 
 /* Styling for Text Elements */
-.NoteText {
-  flex-grow: 0;
-  flex-shrink: 0;
+.NoteText, p {
   margin: 0; /* Removes default margin */
   text-align: left;
   padding-right: 1rem;
   padding-bottom: 0.5rem;
-  font-size:1rem;
+  font-size: 1rem;
   cursor: pointer;
 }
 
@@ -55,20 +52,9 @@ ul {
 
 /* Styles for individual form fields (assuming they're wrapped in divs) */
 .form-row-group > div {
-  display: flex;
-  width: 100%; /* Default to full width */
+  flex: 1;
+  min-width: calc(50% - 10px); /* Adjust based on gap to prevent items from becoming too narrow */
 }
-
-/* First and Second Rows: 4 Items */
-.form-row-group:nth-of-type(1) > div, .form-row-group:nth-of-type(2) > div {
-  flex: 1 1 25%; /* Adjusts the item's base size to fill 1/4th of the row */
-}
-
-/* Third Row: 2 Items */
-.form-row-group:nth-of-type(3) > div {
-  flex: 1 1 50%; /* Adjusts the item's base size to fill half of the row */
-}
-
 
 /* Button Style Adjustments */
 .delete-btn {
@@ -81,6 +67,23 @@ ul {
   margin-top: 10px; /* Space from the last info group */
   align-self: flex-start; /* Aligns to the start of the flex container */
 }
-p {
-  font-size:1rem;
+
+/* Consolidated Filter Container and Item Styles */
+.filter-container, .NotesContainer .filter-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 1cap;
+}
+
+.filter-item, .NotesContainer .filter-item {
+  display: flex;
+
+  justify-content: center; /* Centers content within each filter-item vertically */
+}
+
+.filter-item input, .filter-item select {
+  height: 36px; /* Provides a consistent height for all input/select elements */
+  padding: 4px; /* Ensures padding is uniform */
 }
