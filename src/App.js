@@ -125,8 +125,8 @@ function App() {
       <div className="App">
       <div className="header">
           {currentUser && <LogOutButton />}
-          <button className="btn"><Link to="/dashboard">Charts</Link></button>
-          <button className="btn"><Link to="/">Audits</Link></button>
+          {currentUser &&  <button className="btn"><Link to="/dashboard">Charts</Link></button>}
+         {currentUser &&  <button className="btn"><Link to="/">Audits</Link></button>}
         </div>
         <Routes>
           <Route path="/signin" element={!currentUser ? <SignIn /> : <Navigate replace to="/" />} />
