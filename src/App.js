@@ -6,7 +6,7 @@ import './App.css';
 import Greeting from './components/Greeting';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
-import AuditSummary from './components/AuditSummary';
+/* import AuditSummary from './components/AuditSummary'; */
 import Footer from './components/Footer';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
@@ -111,13 +111,13 @@ function App() {
       <div className="App">
       <div className="header">
           {currentUser && <LogOutButton />}
-          {currentUser &&  <button className="btn"><Link to="/dashboard">Charts</Link></button>}
-         {currentUser &&  <button className="btn"><Link to="/">Audits</Link></button>}
+         {/*  {currentUser &&  <button className="btn"><Link to="/dashboard">Charts</Link></button>} */}
+         {/* {currentUser &&  <button className="btn"><Link to="/">Audits</Link></button>} */}
         </div>
         <Routes>
           <Route path="/signin" element={!currentUser ? <SignIn /> : <Navigate replace to="/" />} />
           <Route path="/signup" element={!currentUser ? <SignUp /> : <Navigate replace to="/signin" />} />
-          {currentUser && <Route path="/dashboard" element={<AuditSummary todos={todos}/>} />}
+          {/* {currentUser && <Route path="/dashboard" element={<AuditSummary todos={todos}/>} />} */}
           <Route path="/" element={currentUser ? (
             <main>
               <div className="orientation-message">For the best experience, please rotate your device to landscape mode.</div>
