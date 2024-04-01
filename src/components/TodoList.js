@@ -1,8 +1,7 @@
-import React, { useMemo, useState } from 'react';
+import React, {useState } from 'react';
 import './TodoList.css';
 
 function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit }) {
-  const [filterInput, setFilterInput] = useState("");
   const [selectedAuditor, setSelectedAuditor] = useState('');
   const [dateSince, setDateSince] = useState('');
   const [dateUntil, setDateUntil] = useState('');
@@ -67,8 +66,6 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
         <h3>Filter your audits by date, time and auditor name.</h3>
       </div>
       <div className="filter-container">
-
-
         <div className="filter-item">
           <input id="date-since" type="datetime-local" value={dateSince} onChange={e => setDateSince(e.target.value)} />
         </div>
@@ -77,13 +74,15 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
         </div>
         <div className="filter-item">
           <select id="auditor-select" value={selectedAuditor} onChange={e => setSelectedAuditor(e.target.value)}>
-            <option value="">Select an Auditor</option>
+            <option value="">All Auditors</option>
             <option value="Ivan">Ivan</option>
             <option value="Yoanli">Yoanli</option>
             <option value="Guest">Guest</option>
           </select>
         </div>
+        <h4>Filtered Audits: {filteredTodos.length}</h4>
       </div>
+
 
 
 

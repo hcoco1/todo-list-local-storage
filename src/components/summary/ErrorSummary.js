@@ -22,7 +22,6 @@ const ErrorSummary = ({ todos, className }) => {
     return todos.filter(note => note[field] === value).length;
   };
 
-  const totalErrors = fieldsToCount.reduce((acc, item) => acc + countNotes(item.field, item.value), 0);
 
   // Data for the pie chart
   const data = fieldsToCount.map(item => ({

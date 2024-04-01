@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from './components/firebase-config'; // Adjust according to your actual import
 import './App.css';
@@ -18,8 +18,6 @@ import {
   addDoc,
   getDocs,
   doc,
-
-  getDoc,
   deleteDoc
 } from "firebase/firestore";
 

@@ -14,7 +14,7 @@ function Greeting({ todos }) {
     return (
         <h1>
             Hello {userName || 'Guest'}! 
-            {todos && todos.length > 0 && ` Total Audits: ${todos.length}`}
+            
         </h1>
     );
 }
