@@ -25,7 +25,7 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
   }
 
   const copyTextOnClick = (coaching, observations) => {
-    const combinedText = `General Coaching: ${coaching}\nObservations: ${observations}`;
+    const combinedText = `${coaching}\nObservations: ${observations}`;
     navigator.clipboard.writeText(combinedText)
       .then(() => console.log('Text copied!'))
       .catch(err => console.error('Error copying text: ', err));
