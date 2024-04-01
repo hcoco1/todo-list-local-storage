@@ -24,7 +24,18 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
     }
   }
 
+  const copyTextOnClick = (coaching, observations) => {
+    const combinedText = `General Coaching: ${coaching}\nObservations: ${observations}`;
+    navigator.clipboard.writeText(combinedText)
+      .then(() => console.log('Text copied!'))
+      .catch(err => console.error('Error copying text: ', err));
+  };
 
+  const copyAssociateText = (associate) => {
+    navigator.clipboard.writeText(associate)
+      .then(() => console.log('Associate copied!'))
+      .catch(err => console.error('Error copying text: ', err));
+  };
 
   // Split filteredTodos into chunks for the layout
   const rows = [];
@@ -50,18 +61,30 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
                 <p className="NoteText"><strong>Period:</strong> {todo.period}</p>
               </div>
               <div className="info-group">
-                <p className="NoteText"><strong>Associate:</strong>{todo.username}</p>
+                <p className="NoteText" onClick={() => copyAssociateText(todo.username)}>
+                  <strong>Associate:</strong>{todo.username}
+                </p>
                 <p className="NoteText"><strong>AFE:</strong> {todo.afe}</p>
                 <p className="NoteText"><strong>Process:</strong> {todo.processPath}</p>
                 <p className="NoteText"><strong>Error:</strong> {todo.error}</p>
               </div>
               <div>
-                <p className="NoteText"><strong>General Coaching:</strong>{todo.coaching}</p>
+                {/* Clickable General Coaching text */}
+                <p className="NoteText" onClick={() => copyTextOnClick(todo.coaching, todo.durable)}>
+                  <strong>General Coaching:</strong>{todo.coaching}
+                </p>
               </div>
               <div>
-                <p className="NoteText"><strong>Observations:</strong>{todo.durable}</p>
+                {/* Clickable Observations text */}
+                <p className="NoteText" onClick={() => copyTextOnClick(todo.coaching, todo.durable)}>
+                  <strong>Observations:</strong>{todo.durable}
+                </p>
               </div>
-              <button className="delete-btn" onClick={() => deleteTodo(todo.id)}><strong>Delete Audit N:</strong> {index + 1 + rowIndex * 4}</button>
+              <div className="header">
+
+                <button className="delete-btn" onClick={() => deleteTodo(todo.id)}><strong>Delete Audit N:</strong> {index + 1 + rowIndex * 4}</button>
+              </div>
+
             </li>
           ))}
         </ul>
@@ -71,4 +94,6 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
 }
 
 export default TodoList;
+
+
 

@@ -43,6 +43,7 @@ ul {
   padding-right: 1rem;
   padding-bottom: 0.5rem;
   font-size:1rem;
+  cursor: pointer;
 }
 
 /* Styles for the container of each row of fields */

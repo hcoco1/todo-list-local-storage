@@ -1,109 +1,92 @@
-// Updated TodoForm.js
-import React from 'react';
-import FormInput from './form_components/FormInput';
-import FormSelect from './form_components/FormSelect';
-import FormTextarea from './form_components/FormTextarea';
-import './TodoForm.css'
+// AuditForm.js
+import React, { useState } from "react";
+import FormSelect from "./form/FormSelect";
+import FormInput from "./form/FormInput";
+import FormTextarea from "./form/FormTextarea";
 
-function TodoForm({ addTodo, newTodo, setNewTodo }) {
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewTodo({ ...newTodo, [name]: value });
-  };
+const AuditForm = ({ onSubmit }) => {
+    const [value,  setValue] = useState('');
+    
+    return (
 
-  return (
-    <form onSubmit={addTodo}>
+        <form margin="3rem 0" onSubmit={onSubmit}>
+        <div className="form">
 
-      <div className="form-row">
-
-      <FormSelect
+        <FormSelect
+        className="form-select"
           name="auditor"
-          value={newTodo.auditor}
-          onChange={handleInputChange}
+          onChange={(e) => setValue(e.target.value)}
           options={[
             { label: 'Auditor', value: '' },
             { label: 'Ivan', value: 'Ivan' },
             { label: 'Yoanli', value: 'Yoanli' },
             { label: 'Guest', value: 'Guest' },
-          
           ]}
         />
 
-
-
-      <FormSelect
-          name="period"
-          value={newTodo.period}
-          onChange={handleInputChange}
-          options={[
-            { label: 'Period', value: '' },
-            { label: '(6:30-10:00 PM)', value: '(6:30-10:00 PM)' },
-            { label: '(10:30 PM-02:00 AM)', value: '(10:30 PM-02:00 AM)' },
-            { label: '(2:30 AM-05:00 AM)', value: '(2:30 AM-05:00 AM)' },
-            { label: '(5:15 AM-07:00 AM)', value: '(5:15 AM-07:00 AM)' },
-          ]}
-        />
-        
-        <FormInput
-          name="username"
-          placeholder="Username"
-          value={newTodo.username}
-          onChange={handleInputChange}
-        />
-
-
-
-        <FormSelect
-          name="afe"
-          value={newTodo.afe}
-          onChange={handleInputChange}
-          options={[
-            { label: 'AFE', value: '' },
-            { label: 'AFE1', value: 'AFE1' },
-            { label: 'AFE2', value: 'AFE2' },
-            { label: 'AFE3', value: 'AFE3' },
-          ]}
-        />
-
-</div>
-<div className="form-row">
-        <FormSelect
-          name="processPath"
-          value={newTodo.processPath}
-          onChange={handleInputChange}
-          options={[
-            { label: 'Process', value: '' },
-            { label: 'Pack', value: 'Pack' },
-            { label: 'Induct', value: 'Induct' },
-            { label: 'Rebin', value: 'Rebin' },
-            { label: 'Pack Other', value: 'Other' },
-            { label: 'Smartpac', value: 'Smartpac' },
-          ]}
-        />
-        <FormSelect
-          name="error"
-          value={newTodo.error}
-          onChange={handleInputChange}
-          options={[
-            { label: 'Error', value: '' },
-            { label: 'Rebin Error Indicator', value: 'Rebin Error Indicator' },
-            { label: 'Ind Error Indicator', value: 'Induct Error Indicator' },
-            { label: 'Induct Shortage', value: 'Ind Shortage' },
-            { label: 'Wrong Box', value: 'Wrong Box' },
-            { label: 'Slam Kickout', value: 'Slam Kickout' },
-            { label: 'Pack Item Missing', value: 'Pack Item Missing' },
-            { label: 'Pack Item Damaged', value: 'Pack Item Damaged' },
-            { label: 'Pack Item Unscannable', value: 'Pack Item Unscannable' },
-            { label: 'Shipment Exception', value: 'Shipment Exception' },
-          ]}
-        />
-     
-      
-
-      <FormSelect
+         <FormSelect
+            className="form-select"
+            name="period"
+            onChange={(e) => setValue(e.target.value)}
+            options={[
+              { label: 'Period', value: '' },
+              { label: '(18:30-22:00)', value: '(18:30-22:00)' },
+              { label: '(22:30-02:00)', value: '(22:30-02:00)' },
+              { label: '(2:30-05:00)', value: '(2:30-05:00)' },
+              { label: '(5:15-07:00)', value: '(5:15-07:00)' },
+            ]}
+          />
+          <FormInput
+            className="form-input"
+            name="username"
+            placeholder="Username"
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <FormSelect
+            className="form-select"
+            name="afe"
+            onChange={(e) => setValue(e.target.value)}
+            options={[
+              { label: 'AFE', value: '' },
+              { label: 'AFE1', value: 'AFE1' },
+              { label: 'AFE2', value: 'AFE2' },
+              { label: 'AFE3', value: 'AFE3' },
+            ]}
+          />
+          <FormSelect
+            className="form-select"
+            name="process"
+            onChange={(e) => setValue(e.target.value)}
+            options={[
+              { label: 'Process', value: '' },
+              { label: 'Pack', value: 'Pack' },
+              { label: 'Induct', value: 'Induct' },
+              { label: 'Rebin', value: 'Rebin' },
+              { label: 'Pack Other', value: 'Other' },
+              { label: 'Smartpac', value: 'Smartpac' },
+            ]}
+          />
+          <FormSelect
+            className="form-select"
+            name="error"
+            onChange={(e) => setValue(e.target.value)}
+            options={[
+              { label: 'Error', value: '' },
+              { label: 'Rebin Error Indicator', value: 'Rebin Error Indicator' },
+              { label: 'Induct Error Indicator', value: 'Induct Error Indicator' },
+              { label: 'Induct Shortage', value: 'Induct Shortage' },
+              { label: 'Wrong Box', value: 'Wrong Box' },
+              { label: 'Slam Kickout', value: 'Slam Kickout' },
+              { label: 'Item Missing', value: 'Pack Item Missing' },
+              { label: 'Item Damaged', value: 'Pack Item Damaged' },
+              { label: 'Item Unscannable', value: 'Pack Item Unscannable' },
+              { label: 'Shipment Exception', value: 'Shipment Exception' },
+            ]}
+          />
+          <FormSelect
+            className="form-select"
             name="coaching"
-            value={newTodo.coaching}
-            onChange={handleInputChange}
+            onChange={(e) => setValue(e.target.value)}
             options={[
               { label: 'Coaching', value: '' },
               { label: 'Induct', value: "The auditor coached the associate, focusing on item shortages, scanning inaccuracies, placement errors, and the mishandling of damaged goods. The coaching emphasized enhancing observation, adhering to the 'one piece flow' principle for scanning accuracy, ensuring precise item placement in trays, and promptly reporting damaged items." },
@@ -119,23 +102,28 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
               { label: 'None', value: " " },
             ]}
           />
-      <FormTextarea
-        name="durable"
-        placeholder="Personalized Coaching"
-        value={newTodo.durable}
-        onChange={handleInputChange}
-        rows="2"
-      />
- </div>
 
-      <button type="submit">Add Audit</button>
-    </form>
-  );
-}
-
-export default TodoForm;
+          <FormTextarea
+            className="form-textarea form-textarea-large" // Assuming you have a separate component or logic to handle textareas
+            name="durable"
+            placeholder="Observations"
+            onChange={(e) => setValue(e.target.value)}
+          />
 
 
+        </div>
 
 
+      
 
+          <button type="submit">Add Audit</button>
+       
+
+
+      </form>
+
+      
+    );
+};
+
+export default AuditForm;
