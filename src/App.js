@@ -17,6 +17,7 @@ import {
   collection,
   addDoc,
   getDocs,
+  getDoc,
   doc,
   deleteDoc
 } from "firebase/firestore";
@@ -55,6 +56,7 @@ function App() {
   }, []);
 
   const fetchTodos = async () => {
+    console.log(currentUser);
     const todosCollectionRef = collection(db, "todos");
     const todosSnapshot = await getDocs(todosCollectionRef);
     const todosList = todosSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -67,8 +69,14 @@ function App() {
     const newTodoData = { ...newTodo, createdAt: currentEasternTime, isEditing: false };
 
     try {
-      await addDoc(collection(db, "todos"), newTodoData);
-      setTodos(prevTodos => [...prevTodos, { ...newTodoData, id: Date.now().toString() }]); // Placeholder ID, replaced upon re-fetch
+      const docRef = await addDoc(collection(db, "todos"), newTodoData);
+      console.log("Document written with ID: ", docRef.id);
+
+      // Update local state with the new todo, including the Firestore-generated ID
+      const addedTodo = { ...newTodoData, id: docRef.id };
+      setTodos(prevTodos => [...prevTodos, addedTodo]);
+      
+      // Reset form state
       setNewTodo({
         auditor: '',
         createdAt: '',
@@ -83,12 +91,43 @@ function App() {
     } catch (error) {
       console.error("Error adding document: ", error);
     }
-  };
+};
+
 
   const deleteTodo = async (id) => {
-    await deleteDoc(doc(db, "todos", id));
-    setTodos(todos.filter(todo => todo.id !== id));
+    if (!currentUser) {
+      console.log("No user signed in, cannot delete todo.");
+      return;
+    }
+  
+    // Fetch the todo document to check its auditor field
+    const todoRef = doc(db, "todos", id);
+    const todoSnap = await getDoc(todoRef);
+  
+    if (!todoSnap.exists()) {
+      console.log("Todo does not exist.");
+      return;
+    }
+  
+    const todoData = todoSnap.data();
+  
+    // Check if the currentUser's displayName matches the todo's auditor field
+    if (todoData.auditor !== currentUser.displayName) {
+      console.log("Current user does not have permission to delete this todo.");
+      return;
+    }
+  
+    // If the check passes, proceed to delete the todo
+    try {
+      await deleteDoc(todoRef);
+      setTodos(todos.filter(todo => todo.id !== id));
+      console.log("Todo deleted successfully.");
+    } catch (error) {
+      console.error("Error deleting todo: ", error);
+    }
   };
+  
+  
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
