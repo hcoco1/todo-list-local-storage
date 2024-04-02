@@ -45,8 +45,8 @@ function AuditSummary({ todos }) {
                     <div className="filter-item">
                         <select id="auditor-select" value={selectedAuditor} onChange={e => setSelectedAuditor(e.target.value)}>
                             <option value="">All Auditors</option>
-                            <option value="Ivan">Ivan</option>
-                            <option value="Yoanli">Yoanli</option>
+                            <option value="ariaivan">ariaivan</option>
+                            <option value="yoalugol">yoalugol</option>
                             <option value="Guest">Guest</option>
                         </select>
                     </div>
