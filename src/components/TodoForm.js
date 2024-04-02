@@ -22,8 +22,8 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
           onChange={handleInputChange}
           options={[
             { label: 'Auditor', value: '' },
-            { label: 'Ivan', value: 'Ivan' },
-            { label: 'Yoanli', value: 'Yoanli' },
+            { label: 'ariavan', value: 'ariaivan' },
+            { label: 'yoalugol', value: 'yoalugol' },
             { label: 'Guest', value: 'Guest' },
           
           ]}

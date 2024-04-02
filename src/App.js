@@ -23,8 +23,6 @@ import {
 
 
 function App() {
-
-
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [todos, setTodos] = useState([]);

@@ -40,7 +40,7 @@ function SignUp() {
             <form className="auth-form" onSubmit={handleSubmit}>
                 <h2>Sign Up</h2>
                 <div>
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name">Amazon Login</label>
                     <input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} required />
                 </div>
                 <div>
