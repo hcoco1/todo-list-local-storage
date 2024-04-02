@@ -13,7 +13,7 @@
   max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
-  background-color: white;
+  background-color: rgb(155, 225, 235);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }

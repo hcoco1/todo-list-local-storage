@@ -1,5 +1,6 @@
 import React from 'react';
 import '../App.css';
+import {  MDBBtn} from 'mdb-react-ui-kit';
 
 const ReportGenerator = ({ todos }) => {
   const generateReport = () => {
@@ -20,7 +21,7 @@ const ReportGenerator = ({ todos }) => {
   };
 
   return (
-    <button className='download-btn' onClick={generateReport}>Download Report</button>
+    <MDBBtn size='sm' color='primary'onClick={generateReport}>Download Report</MDBBtn>
   );
 };
 

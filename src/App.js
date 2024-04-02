@@ -11,7 +11,6 @@ import Footer from './components/Footer';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 import ReportGenerator from './components/ReportGenerator';
-
 import LogOutButton from './components/LogOutButton'; // Ensure this path is correct
 import {
   collection,
@@ -21,7 +20,7 @@ import {
   doc,
   deleteDoc
 } from "firebase/firestore";
-
+import {  MDBBtn} from 'mdb-react-ui-kit';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -114,6 +113,7 @@ function App() {
     // Check if the currentUser's displayName matches the todo's auditor field
     if (todoData.auditor !== currentUser.displayName) {
       console.log("Current user does not have permission to delete this todo.");
+      window.alert(`${currentUser.displayName} does not have permission to delete this todo.`);
       return;
     }
   
@@ -122,6 +122,7 @@ function App() {
       await deleteDoc(todoRef);
       setTodos(todos.filter(todo => todo.id !== id));
       console.log("Todo deleted successfully.");
+      window.alert("Todo deleted successfully.");
     } catch (error) {
       console.error("Error deleting todo: ", error);
     }
@@ -148,8 +149,11 @@ function App() {
       <div className="App">
       <div className="header">
           {currentUser && <LogOutButton />}
-          {currentUser &&  <button className="btn"><Link to="/">Audits</Link></button>} 
-          {currentUser &&  <button className="btn"><Link to="/dashboard">Charts</Link></button>} 
+          {currentUser &&  <MDBBtn size='lg' color='warning'><Link to="/">Audits</Link></MDBBtn>} 
+          {currentUser &&  <MDBBtn size='lg' color='secondary'><Link to="/dashboard">Charts</Link></MDBBtn>} 
+          
+
+          
          
         </div>
         <Routes>

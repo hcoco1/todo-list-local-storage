@@ -44,10 +44,10 @@ function AuditSummary({ todos }) {
                     </div>
                     <div className="filter-item">
                         <select id="auditor-select" value={selectedAuditor} onChange={e => setSelectedAuditor(e.target.value)}>
-                            <option value="">All Auditors</option>
-                            <option value="ariaivan">ariaivan</option>
-                            <option value="yoalugol">yoalugol</option>
-                            <option value="Guest">Guest</option>
+                            <option value="">Audits by all auditors</option>
+                            <option value="ariaivan">Audits by ariaivan</option>
+                            <option value="yoalugol">Audits by yoalugol</option>
+                            <option value="Guest">Audits by Guest</option>
                         </select>
                     </div>
                     <h4>Filtered Charts: {filteredTodos.length}</h4>

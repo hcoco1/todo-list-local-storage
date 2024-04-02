@@ -29,7 +29,7 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
     <div className="NotesContainer">
 
       <div>
-        <h3>Filter your audits by date, time and auditor name.</h3>
+        <h4>Click on the icon to filter audits by date, time and auditor name.</h4>
       </div>
       <div className="filter-container">
         <div className="filter-item">
@@ -40,10 +40,10 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
         </div>
         <div className="filter-item">
           <select id="auditor-select" value={selectedAuditor} onChange={e => setSelectedAuditor(e.target.value)}>
-            <option value="">All Auditors</option>
-            <option value="ariaivan">ariaivan</option>
-            <option value="yoalugol">yoalugol</option>
-            <option value="Guest">Guest</option>
+            <option value="">Audits by all auditors</option>
+            <option value="ariaivan">Audits by ariaivan</option>
+            <option value="yoalugol">Audits by yoalugol</option>
+            <option value="Guest">Audits by Guest</option>
           </select>
         </div>
         <h4>Filtered Audits: {filteredTodos.length}</h4>
