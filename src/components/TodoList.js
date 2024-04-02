@@ -29,7 +29,7 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
     <div className="NotesContainer">
 
       <div>
-        <h4>Click on the icon to filter audits by date, time and auditor name.</h4>
+        <h4>Click on the icon to filter audits by date (From - To), time and auditor name.</h4>
       </div>
       <div className="filter-container">
         <div className="filter-item">

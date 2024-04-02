@@ -32,10 +32,18 @@ function AuditSummary({ todos }) {
         <div div className="header-summary">
 
             <div>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80px' }}>
+                    <h5 style={{  textAlign: 'center' }}>
+                        Filter by date, time and auditor name to show the Charts.
+                    </h5>
+                </div>
 
-                <h3>Filter by date, time and auditor name to show the Charts.</h3>
+
+
+
 
                 <div className="filter-container">
+
                     <div className="filter-item">
                         <input id="date-since" type="datetime-local" value={dateSince} onChange={e => setDateSince(e.target.value)} />
                     </div>
