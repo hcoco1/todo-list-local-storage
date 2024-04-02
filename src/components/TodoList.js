@@ -43,7 +43,7 @@ function TodoList({ todos, deleteTodo, toggleEdit, handleEditChange, saveEdit })
             <option value="">Audits by all auditors</option>
             <option value="ariaivan">Audits by ariaivan</option>
             <option value="yoalugol">Audits by yoalugol</option>
-            <option value="Guest">Audits by Guest</option>
+            
           </select>
         </div>
         <h4>Filtered Audits: {filteredTodos.length}</h4>

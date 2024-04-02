@@ -12,6 +12,7 @@ import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 import ReportGenerator from './components/ReportGenerator';
 import LogOutButton from './components/LogOutButton'; // Ensure this path is correct
+import NavigationBar from './components/NaviagtionBar';
 import {
   collection,
   addDoc,
@@ -147,10 +148,10 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <NavigationBar />
       <div className="header">
-          {currentUser && <LogOutButton />}
-          {currentUser &&  <MDBBtn size='lg' color='warning'><Link to="/">Audits</Link></MDBBtn>} 
-          {currentUser &&  <MDBBtn size='lg' color='secondary'><Link to="/dashboard">Charts</Link></MDBBtn>} 
+          
+
           
 
           

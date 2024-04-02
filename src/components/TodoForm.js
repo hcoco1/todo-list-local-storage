@@ -24,7 +24,7 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
             { label: 'Auditor', value: '' },
             { label: 'ariavan', value: 'ariaivan' },
             { label: 'yoalugol', value: 'yoalugol' },
-            { label: 'Guest', value: 'Guest' },
+           
           
           ]}
         />

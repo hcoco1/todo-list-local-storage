@@ -9,7 +9,7 @@
 .form-row {
   display: flex;
   justify-content: space-between; /* Distribute space between fields */
-  margin-bottom: 20px; /* Space between rows */
+  margin-bottom: 0px; /* Space between rows */
 }
 
 .form-row > div {
