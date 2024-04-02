@@ -21,7 +21,7 @@ import {
   doc,
   deleteDoc
 } from "firebase/firestore";
-import {  MDBBtn} from 'mdb-react-ui-kit';
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -148,15 +148,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <NavigationBar />
-      <div className="header">
-          
-
-          
-
-          
-         
-        </div>
+      {currentUser && <NavigationBar />}
         <Routes>
           <Route path="/signin" element={!currentUser ? <SignIn /> : <Navigate replace to="/" />} />
           <Route path="/signup" element={!currentUser ? <SignUp /> : <Navigate replace to="/signin" />} />
