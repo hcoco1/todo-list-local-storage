@@ -28,7 +28,7 @@ const PeriodSummary = ({ filteredTodos, className }) => {
   return (
 
     <>
-      <h4 className="audits-summary-title">Period</h4>
+      <h4 className="audits-summary-title">Work Shift Hours</h4>
       <div className={`audits-summary-container ${className}`}>
         <div>
 

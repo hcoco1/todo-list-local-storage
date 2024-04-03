@@ -4,6 +4,8 @@ import AFESummary from './summary/AFESummary';
 import ErrorSummary from './summary/ErrorSummary';
 import moment from 'moment';
 import { MDBBtn } from 'mdb-react-ui-kit';
+import SubSummary from './summary/SubSummary';
+import './AuditSummary.css'
 
 
 function AuditSummary({ todos }) {
@@ -16,7 +18,7 @@ function AuditSummary({ todos }) {
         setSelectedAuditor('');
     };
 
-    const inlineStyle = { textAlign: 'center', color: 'black', fontWeight: 'bold', marginTop:'10px' }
+    const inlineStyle = { textAlign: 'center', color: 'black', fontWeight: 'bold', marginTop: '10px' }
 
 
 
@@ -38,11 +40,11 @@ function AuditSummary({ todos }) {
 
 
     return (
-        <div div className="header-summary">
+        <div className="NotesContainer">
 
-            <div>
+            <div className='chartsFilter'>
                 <div>
-                    <h4 style={inlineStyle}>Filter audits by:</h4>
+                    <h6>Filter charts data by:</h6>
                 </div>
                 <div className="filter-container">
                     <div className="filter-item">
@@ -63,27 +65,38 @@ function AuditSummary({ todos }) {
 
                     </div>
                     <div className="filter-item">
-                        <MDBBtn size='sm' className='mx-5' color='warning' onClick={resetFilters}>Reset</MDBBtn>
+                        <MDBBtn size='sm' color='warning' onClick={resetFilters}>Reset</MDBBtn>
                     </div>
                 </div>
 
 
                 <h6 style={inlineStyle}>
-                    <strong style={{ color: 'red', fontSize: '16px' }}>{filteredTodos.length} Audits found</strong>
+                    <strong style={{ color: 'red', fontSize: '16px' }}>{filteredTodos.length} Audits are visualized on the charts </strong>
                     {dateSince && ` from ${moment(dateSince).format('dddd, MMMM Do YYYY, h:mm a')} `}
                     {dateUntil && ` to ${moment(dateUntil).format('dddd, MMMM Do YYYY, h:mm a')} `}
-                    {selectedAuditor && ` by ${selectedAuditor}`}
+
                 </h6>
-                <div>
-
-                    <PeriodSummary filteredTodos={filteredTodos} />
-                    <AFESummary filteredTodos={filteredTodos} />
-                    <ErrorSummary filteredTodos={filteredTodos} />
-                </div>
-
             </div>
-        </div>
 
+
+
+
+
+
+
+
+
+          
+
+                <ErrorSummary filteredTodos={filteredTodos} />
+                <PeriodSummary filteredTodos={filteredTodos} />
+                <AFESummary filteredTodos={filteredTodos} />
+                <SubSummary filteredTodos={filteredTodos} />
+
+
+
+
+        </div>
 
     )
 }

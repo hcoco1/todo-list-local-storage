@@ -1,4 +1,12 @@
 /* General Styles for the Todo List Container */
+.auditsFilter {
+  border-style: groove;
+  border-color: #a5bfdc; 
+  padding: 2%;
+  border-radius: 4px;
+  margin-bottom: 2%;
+}
+
 .todo-list-container {
   max-width: 1000px;
   margin: auto;

@@ -34,45 +34,45 @@ const ErrorSummary = ({ filteredTodos, className }) => {
   return (
 
     <>
-    <h4 className="audits-summary-title">Errors</h4>
+      <h2 className="audits-summary-title">Errors</h2>
 
-        <div className={`audits-summary-container ${className}`}>
-      <div>
-        
-      </div>
-      
-      <div className="audits-summary-chart">
-        <PieChart width={600} height={400}>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            outerRadius={150}
-            fill="#8884d8"
-            dataKey="value"
-            nameKey="name"
-             /* label={({ percent }) => ` ${(percent * 100).toFixed(0)}%`}  */
-          >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-            ))}
-          </Pie>
-          <Tooltip />
-        
-          <Legend />
-        </PieChart>
-      </div>
+      <div className={`audits-summary-container ${className}`}>
+        <div>
 
-      {/* Display counts */}
-{/*       <div className="audits-summary-counts">
+        </div>
+
+        <div className="audits-summary-chart">
+          <PieChart width={600} height={400}>
+            <Pie
+              data={data}
+              cx="50%"
+              cy="50%"
+              labelLine={false}
+              outerRadius={150}
+              fill="#8884d8"
+              dataKey="value"
+              nameKey="name"
+            /* label={({ percent }) => ` ${(percent * 100).toFixed(0)}%`}  */
+            >
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+              ))}
+            </Pie>
+            <Tooltip />
+
+            <Legend />
+          </PieChart>
+        </div>
+
+        {/* Display counts */}
+        {/*       <div className="audits-summary-counts">
         {fieldsToCount.map(({ field, value }) => (
           <div key={`${field}-${value}`} className="audits-summary-item">
             <p>{`${value}: ${countNotes(field, value)}`}</p>
           </div>
         ))}
       </div> */}
-    </div>
+      </div>
     </>
 
   );

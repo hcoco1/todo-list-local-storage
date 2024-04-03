@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { auth } from './firebase-config';
+import './Greeting.css';
 
 function Greeting({ todos }) {
     const [userName, setUserName] = useState('');
@@ -12,14 +13,19 @@ function Greeting({ todos }) {
     }, []);
 
     return (
-        <h1>
-            Hello {userName || 'Guest'}! 
-            
-        </h1>
+        <h6>
+        
+                <strong>User:</strong>{userName || 'Guest'}
+       
+
+
+        </h6>
     );
 }
 
 export default Greeting;
+
+
 
 
 

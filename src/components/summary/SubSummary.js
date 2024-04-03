@@ -1,13 +1,15 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
-import './AFESummary.css'; // Import the CSS file
+import './SubSummary.css'; // Import the CSS file
 
-const AFESummary = ({ filteredTodos, className }) => {
+const SubSummary = ({ filteredTodos, className }) => {
   // Define the fields and values you want to count
   const fieldsToCount = [
-    { field: 'afe', value: 'AFE1' },
-    { field: 'afe', value: 'AFE2' },
-    { field: 'afe', value: 'AFE3' },
+    { field: 'processPath', value: 'Pack' },
+    { field: 'processPath', value: 'Induct' },
+    { field: 'processPath', value: 'Rebin' },
+    { field: 'processPath', value: 'Pack Other' },
+    { field: 'processPath', value: 'Smartpac' },
     // Extend this array based on your data model and requirements
   ];
 
@@ -22,18 +24,18 @@ const AFESummary = ({ filteredTodos, className }) => {
     count: countNotes(item.field, item.value)
   }));
 
-  const colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff7300', '#00bfff', '#ff4040', '#008080', '#800080', '#008000'];
+  const colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff5300', '#00bfff', '#ff4040', '#008080', '#800080', '#008000'];
 
   return (
     <>
-    
- <h4 className="audits-summary-title">Process</h4>
+
+      <h4 className="audits-summary-title">Sub Process</h4>
       <div className={`audits-summary-container ${className}`}>
 
         <div className="audits-summary-chart">
           <BarChart
             width={600}
-            height={300}
+            height={400}
             data={data}
             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
           >
@@ -43,10 +45,10 @@ const AFESummary = ({ filteredTodos, className }) => {
             <Tooltip />
 
 
-            <Bar dataKey="count" fill={colors[1]} />
+            <Bar dataKey="count" fill={colors[6]} />
           </BarChart>
 
-
+          </div>
 
 
         </div>
@@ -59,7 +61,7 @@ const AFESummary = ({ filteredTodos, className }) => {
           </div>
         ))}
       </div> */}
-      </div>
+    
 
 
     </>
@@ -67,7 +69,7 @@ const AFESummary = ({ filteredTodos, className }) => {
   );
 };
 
-export default AFESummary;
+export default SubSummary;
 
 
 

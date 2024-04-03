@@ -4,18 +4,14 @@
   border: 1px solid #dee2e6;
   border-radius: 8px;
   padding: 20px;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 20px;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.audits-summary-title {
-  color: #495057;
-  margin-bottom: 16px;
-  text-align: center;
-}
+
 
 .audits-summary-item {
   background-color: #e9ecef;

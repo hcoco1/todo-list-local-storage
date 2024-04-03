@@ -1,15 +1,26 @@
+form {
+  border-style: groove;
+  border-color: #a5bfdc; 
+  padding: 2%;
+  border-radius: 4px;
+  margin-top: 2%;
+}
+
+
 .todo-form {
   max-width: 800px; /* Adjust based on your design */
   margin: auto;
   padding: 20px;
-  background-color: #f0f0f0; /* Example background */
+  background-color: #822525; /* Example background */
   border-radius: 8px;
+  
 }
 
 .form-row {
   display: flex;
   justify-content: space-between; /* Distribute space between fields */
   margin-bottom: 0px; /* Space between rows */
+  
 }
 
 .form-row > div {

@@ -1,41 +1,43 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 import LogOutButton from './LogOutButton'; // Ensure this path is correct
+import Greeting from './Greeting'; // Import Greeting
 
 function NaviagtionBar() {
     return (
         <>
-<nav class="navbar navbar-expand-lg bg-light rounded-3">
-    <div class="container-fluid justify-content-between">
-    <img src="/favicon.ico" alt="Bootstrap"/>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item me-3">
-                    <Link to="/" style={{ fontSize: '18px', color: 'black', backgroundColor: 'orange', padding: '10px', borderRadius: '5px' }}>Audits</Link>
-                </li>
-                <li class="nav-item">
-                    <Link to="/dashboard" style={{ fontSize: '18px', color: 'white', backgroundColor: 'green', padding: '10px', borderRadius: '5px' }}>Charts</Link>
-                </li>
-            </ul>
-            <ul class="navbar-nav"> {/* Wrap Logout button in its own nav-item for alignment */}
-                <li class="nav-item">
-                    <LogOutButton />
-                </li>
-            </ul>
-        </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</nav>
-
-
+            <nav className="navbar navbar-expand-lg bg-light rounded-3">
+                <div className="container-fluid justify-content-between">
+                    <div className="d-flex align-items-center"> {/* Added for better alignment */}
+                        <img src="/favicon.ico" alt="Bootstrap" />
+                        <Greeting /> {/* Greeting Component beside the image */}
+                    </div>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav mx-auto">
+                            <li className="nav-item me-3">
+                                <Link to="/" style={{ fontSize: '18px', color: 'black', backgroundColor: 'orange', padding: '10px', borderRadius: '5px' }}>Audits</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/dashboard" style={{ fontSize: '18px', color: 'white', backgroundColor: 'green', padding: '10px', borderRadius: '5px' }}>Charts</Link>
+                            </li>
+                        </ul>
+                        <ul className="navbar-nav"> {/* Wrap Logout button in its own nav-item for alignment */}
+                            <li className="nav-item">
+                                <LogOutButton />
+                            </li>
+                        </ul>
+                    </div>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
         </>
-
-    )
+    );
 }
 
-export default NaviagtionBar
+export default NaviagtionBar;
+
 
 
 

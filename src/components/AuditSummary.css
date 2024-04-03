@@ -1,5 +1,14 @@
 /* AuditSummary.css */
 
+.chartsFilter {
+  border-style: groove;
+  border-color: #a5bfdc; 
+  padding: 2%;
+  border-radius: 4px;
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+
 .audit-summary-container {
   display: flex;
   flex-direction: column; /* Arrange items in columns */
@@ -26,10 +35,13 @@
 
 
 .audits-summary-title {
-  
-  font-size: 12px;
-  /* Other styling properties */
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+ 
 }
+
+
 
 
 /* Responsive adjustments */

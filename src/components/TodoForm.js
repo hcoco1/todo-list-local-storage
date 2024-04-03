@@ -12,95 +12,99 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
   };
 
   return (
-    <form onSubmit={addTodo}>
+    <>
 
-      <div className="form-row">
+      <form onSubmit={addTodo}>
+        <div>
+          <h6>Fill out the form to add a new audit:</h6>
+        </div>
+        <div className="form-row">
 
-      <FormSelect
-          name="auditor"
-          value={newTodo.auditor}
-          onChange={handleInputChange}
-          options={[
-            { label: 'Auditor', value: '' },
-            { label: 'ariavan', value: 'ariaivan' },
-            { label: 'yoalugol', value: 'yoalugol' },
-           
-          
-          ]}
-        />
+          <FormSelect
+            name="auditor"
+            value={newTodo.auditor}
+            onChange={handleInputChange}
+            options={[
+              { label: 'Auditor', value: '' },
+              { label: 'ariavan', value: 'ariaivan' },
+              { label: 'yoalugol', value: 'yoalugol' },
 
 
-
-      <FormSelect
-          name="period"
-          value={newTodo.period}
-          onChange={handleInputChange}
-          options={[
-            { label: 'Period', value: '' },
-            { label: '(6:30-10:00 PM)', value: '(6:30-10:00 PM)' },
-            { label: '(10:30 PM-02:00 AM)', value: '(10:30 PM-02:00 AM)' },
-            { label: '(2:30 AM-05:00 AM)', value: '(2:30 AM-05:00 AM)' },
-            { label: '(5:15 AM-07:00 AM)', value: '(5:15 AM-07:00 AM)' },
-          ]}
-        />
-        
-        <FormInput
-          name="username"
-          placeholder="Username"
-          value={newTodo.username}
-          onChange={handleInputChange}
-        />
+            ]}
+          />
 
 
 
-        <FormSelect
-          name="afe"
-          value={newTodo.afe}
-          onChange={handleInputChange}
-          options={[
-            { label: 'AFE', value: '' },
-            { label: 'AFE1', value: 'AFE1' },
-            { label: 'AFE2', value: 'AFE2' },
-            { label: 'AFE3', value: 'AFE3' },
-          ]}
-        />
+          <FormSelect
+            name="period"
+            value={newTodo.period}
+            onChange={handleInputChange}
+            options={[
+              { label: 'Work Shift Hours', value: '' },
+              { label: '6:30-10:00 PM', value: '(6:30-10:00 PM)' },
+              { label: '10:30 PM-02:00 AM', value: '(10:30 PM-02:00 AM)' },
+              { label: '2:30 AM-05:00 AM', value: '(2:30 AM-05:00 AM)' },
+              { label: '5:15 AM-07:00 AM', value: '(5:15 AM-07:00 AM)' },
+            ]}
+          />
 
-</div>
-<div className="form-row">
-        <FormSelect
-          name="processPath"
-          value={newTodo.processPath}
-          onChange={handleInputChange}
-          options={[
-            { label: 'Process', value: '' },
-            { label: 'Pack', value: 'Pack' },
-            { label: 'Induct', value: 'Induct' },
-            { label: 'Rebin', value: 'Rebin' },
-            { label: 'Pack Other', value: 'Other' },
-            { label: 'Smartpac', value: 'Smartpac' },
-          ]}
-        />
-        <FormSelect
-          name="error"
-          value={newTodo.error}
-          onChange={handleInputChange}
-          options={[
-            { label: 'Error', value: '' },
-            { label: 'Rebin Error Indicator', value: 'Rebin Error Indicator' },
-            { label: 'Induct Error Indicator', value: 'Induct Error Indicator' },
-            { label: 'Induct Shortage', value: 'Induct Shortage' },
-            { label: 'Wrong Box', value: 'Wrong Box' },
-            { label: 'Slam Kickout', value: 'Slam Kickout' },
-            { label: 'Pack Item Missing', value: 'Pack Item Missing' },
-            { label: 'Pack Item Damaged', value: 'Pack Item Damaged' },
-            { label: 'Pack Item Unscannable', value: 'Pack Item Unscannable' },
-            { label: 'Shipment Exception', value: 'Shipment Exception' },
-          ]}
-        />
-     
-      
+          <FormInput
+            name="username"
+            placeholder="Username"
+            value={newTodo.username}
+            onChange={handleInputChange}
+          />
 
-      <FormSelect
+
+
+          <FormSelect
+            name="afe"
+            value={newTodo.afe}
+            onChange={handleInputChange}
+            options={[
+              { label: 'Process', value: '' },
+              { label: 'AFE1', value: 'AFE1' },
+              { label: 'AFE2', value: 'AFE2' },
+              { label: 'AFE3', value: 'AFE3' },
+            ]}
+          />
+
+        </div>
+        <div className="form-row">
+          <FormSelect
+            name="processPath"
+            value={newTodo.processPath}
+            onChange={handleInputChange}
+            options={[
+              { label: 'Sub Process', value: '' },
+              { label: 'Pack', value: 'Pack' },
+              { label: 'Induct', value: 'Induct' },
+              { label: 'Rebin', value: 'Rebin' },
+              { label: 'Pack Other', value: 'Pack Other' },
+              { label: 'Smartpac', value: 'Smartpac' },
+            ]}
+          />
+          <FormSelect
+            name="error"
+            value={newTodo.error}
+            onChange={handleInputChange}
+            options={[
+              { label: 'Error', value: '' },
+              { label: 'Rebin Error Indicator', value: 'Rebin Error Indicator' },
+              { label: 'Induct Error Indicator', value: 'Induct Error Indicator' },
+              { label: 'Induct Shortage', value: 'Induct Shortage' },
+              { label: 'Wrong Box', value: 'Wrong Box' },
+              { label: 'Slam Kickout', value: 'Slam Kickout' },
+              { label: 'Pack Item Missing', value: 'Pack Item Missing' },
+              { label: 'Pack Item Damaged', value: 'Pack Item Damaged' },
+              { label: 'Pack Item Unscannable', value: 'Pack Item Unscannable' },
+              { label: 'Shipment Exception', value: 'Shipment Exception' },
+            ]}
+          />
+
+
+
+          <FormSelect
             name="coaching"
             value={newTodo.coaching}
             onChange={handleInputChange}
@@ -119,17 +123,20 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
               { label: 'None', value: " " },
             ]}
           />
-      <FormTextarea
-        name="durable"
-        placeholder="Personalized Coaching"
-        value={newTodo.durable}
-        onChange={handleInputChange}
-        rows="2"
-      />
- </div>
+          <FormTextarea
+            name="durable"
+            placeholder="Personalized Coaching"
+            value={newTodo.durable}
+            onChange={handleInputChange}
+            rows="2"
+          />
+        </div>
 
-      <button type="submit">Add Audit</button>
-    </form>
+        <button type="submit">Add Audit</button>
+      </form>
+    </>
+
+
   );
 }
 
