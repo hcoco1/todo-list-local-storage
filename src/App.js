@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from './components/firebase-config'; // Adjust according to your actual import
 import './App.css';
-import Greeting from './components/Greeting';
+
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
  import AuditSummary from './components/AuditSummary'; 
@@ -52,6 +52,7 @@ function App() {
       }
     });
     return unsubscribe; // Cleanup on unmount
+    // eslint-disable-next-line 
   }, []);
 
   const fetchTodos = async () => {
@@ -161,8 +162,7 @@ function App() {
           <Route path="/" element={currentUser ? (
             <main>
               <div className="orientation-message">For the best experience, please rotate your device to landscape mode.</div>
-             {/*  <h1>Notes-Taking App</h1> */}
-             <Greeting todos={todos}/>
+
               <TodoForm addTodo={addTodo} newTodo={newTodo} setNewTodo={setNewTodo} />
               <TodoList todos={todos} deleteTodo={deleteTodo} />
               <ReportGenerator todos={todos} />
