@@ -10,6 +10,7 @@ import {
 } from 'mdb-react-ui-kit';
 
 function TodoCard({ todo, onDelete }) {
+  const inlineStyle = { marginRight: '60px' }
 
  
   const handleTextClick = (text) => {
@@ -29,14 +30,16 @@ function TodoCard({ todo, onDelete }) {
         
         <span
           style={{ cursor: 'pointer' }}          > 
-          <strong>Period: </strong>{todo.period} {/* Change 'otherField' to the actual field you want to display */}
+          <strong>Work Shift Hours: </strong>{todo.period.startsWith('(') && todo.period.endsWith(')') ? todo.period.slice(1, -1) : todo.period}
         </span>
       </MDBCardHeader>
       <MDBCardBody>
-        <MDBCardSubTitle className="mb-1 text-start">
-          {/* Here, showing the period, AFE, process, and error without copy functionality */}
-          <strong>- AFE:</strong> {todo.afe} <strong>- Process:</strong> {todo.processPath} <strong>- Error:</strong> {todo.error}
-        </MDBCardSubTitle>
+      <MDBCardSubTitle className="mb-1 text-start">
+      <span style={inlineStyle}><strong>- AFE:</strong> {todo.afe}</span>
+      <span style={inlineStyle}><strong>- Process:</strong> {todo.processPath}</span>
+      <span style={inlineStyle}><strong>- Error:</strong> {todo.error}</span>
+    </MDBCardSubTitle>
+
         <MDBCardText>
           <span
             style={{ cursor: 'pointer' }}
@@ -50,7 +53,9 @@ function TodoCard({ todo, onDelete }) {
             onClick={() => handleTextClick(todo.durable)}>
             <strong>- Observations:</strong>{todo.durable}
           </span>
-        </MDBCardText>           
+          
+        </MDBCardText>
+         
       </MDBCardBody>
       <MDBCardFooter className=" d-flex justify-content-between text-muted" tag="p">
         <span
@@ -61,7 +66,11 @@ function TodoCard({ todo, onDelete }) {
         
         <span
           style={{ cursor: 'pointer' }}          > 
-          <MDBBtn size='sm' color='danger' onClick={() => onDelete(todo.id)}>Delete</MDBBtn> {/* Change 'otherField' to the actual field you want to display */}
+          <strong>Created at: </strong>{todo.createdAt}
+        </span>
+        <span
+          style={{ cursor: 'pointer' }}          > 
+          <MDBBtn size='sm' color='danger' onClick={() => onDelete(todo.id)}>Delete</MDBBtn> 
         </span>
       </MDBCardFooter>
     </MDBCard>

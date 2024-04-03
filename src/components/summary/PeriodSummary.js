@@ -19,7 +19,7 @@ const PeriodSummary = ({ filteredTodos, className }) => {
 
   // Data for the bar chart
   const data = fieldsToCount.map(item => ({
-    name: item.value,
+    name: item.value.startsWith('(') && item.value.endsWith(')') ? item.value.slice(1, -1) : item.value,
     count: countNotes(item.field, item.value)
   }));
 

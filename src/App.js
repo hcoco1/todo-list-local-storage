@@ -11,7 +11,6 @@ import Footer from './components/Footer';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 import ReportGenerator from './components/ReportGenerator';
-import LogOutButton from './components/LogOutButton'; // Ensure this path is correct
 import NavigationBar from './components/NaviagtionBar';
 import {
   collection,
@@ -65,6 +64,12 @@ function App() {
 
   const addTodo = async (e) => {
     e.preventDefault();
+
+    if (newTodo.auditor !== currentUser.displayName) {
+      console.log("Attempt to create todo for another user blocked.");
+      window.alert("You do not have permission to create todos for other users.");
+      return; // Exit the function if the auditor does not match the current user
+    }
     const currentEasternTime = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
     const newTodoData = { ...newTodo, createdAt: currentEasternTime, isEditing: false };
 

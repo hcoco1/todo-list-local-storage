@@ -75,7 +75,7 @@ ul {
   justify-content:space-between;
   align-items:first baseline;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 5px;
   margin-top: 1cap;
 }
 
@@ -88,4 +88,23 @@ ul {
 .filter-item input, .filter-item select {
   height: 36px; /* Provides a consistent height for all input/select elements */
   padding: 4px; /* Ensures padding is uniform */
+}
+
+
+
+.filter-item {
+  display: flex;
+  align-items: center; /* This vertically centers the label with the input */
+  justify-content: space-between; /* This places the label on the left and the input on the right */
+  margin-bottom: 10px; /* Adds some space between each filter item */
+}
+
+.filter-item label {
+  margin-right: 10px; /* Adds some space between the label and the input */
+  padding-bottom: 2%;
+}
+
+input[type="datetime-local"],
+select {
+  flex-grow: 1; /* Allows the input/select to grow and fill available space */
 }
