@@ -15,15 +15,21 @@
 
 ## Project: Audits Tool 🔧
 
-### Live App: https://audits.hcoco1.com/
+### <a href="https://audits.hcoco1.com/" target="_blank">Live App</a> https://audits.hcoco1.com/
 
-### Blog Post 😁 https://www.hcoco1.com/blog/2024-03-13-audits-tool
+### <a href="https://www.hcoco1.com/blog/2024-03-13-audits-tool" target="_blank">Blog Post</a> 
 
 >Audits Tool is a React-based solution designed to streamline the process of storing and managing audit data in a user-friendly manner. It allows users to input audit details such as usernames, process paths, and audit descriptions, which are then saved locally and can be viewed or deleted. Additionally, the app offers a feature to generate and download comprehensive audit reports, enhancing the efficiency of audit compilation and review.
 
 ---
 
 ![alt text](https://github.com/hcoco1/todo-list-local-storage/blob/main/audit_tool.png?raw=true)
+
+---
+
+---
+
+![alt text](https://github.com/hcoco1/todo-list-local-storage/blob/main/audit_tool_1.png?raw=true)
 
 ---
 
