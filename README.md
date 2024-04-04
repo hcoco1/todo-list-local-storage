@@ -15,11 +15,11 @@
 
 ## Project: Audits Tool 🔧
 
-### <a href="https://audits.hcoco1.com/" target="_blank">Live App</a> https://audits.hcoco1.com/
+### <a href="https://audits.hcoco1.com/" target="_blank">Live App</a> 
 
 ### <a href="https://www.hcoco1.com/blog/2024-03-13-audits-tool" target="_blank">Blog Post</a> 
 
->Audits Tool is a React-based solution designed to streamline the process of storing and managing audit data in a user-friendly manner. It allows users to input audit details such as usernames, process paths, and audit descriptions, which are then saved locally and can be viewed or deleted. Additionally, the app offers a feature to generate and download comprehensive audit reports, enhancing the efficiency of audit compilation and review.
+>The Audits Tool is a React-based application designed to enhance the efficiency of audit data management. It offers a user-friendly interface for storing and managing audit details, such as usernames, process paths, and audit descriptions. This information is saved ina Firebase database and can be easily viewed or deleted as needed. Additionally, the tool features functionality to generate and download comprehensive audit reports, streamlining the audit compilation and review process.
 
 ---
 
@@ -53,9 +53,6 @@
 
 - Manages side effects, especially for persisting state changes to `localStorage`. Separate effects are defined for `todos` and `auditorName`, demonstrating controlled effect execution through the dependency array.
 
-### Persistence Mechanism
-
-- Leverages the Web Storage API (`localStorage`) to persist the todos list and auditor's name across sessions, enhancing user experience by maintaining the application state post-browser session.
 
 ## Component Composition and Reusability
 
@@ -89,38 +86,4 @@ GitHub Pages: Utilized for its simplicity in deploying static sites directly fro
 
 Custom Subdomain Configuration: Involves setting a CNAME record in GoDaddy’s DNS settings to point the chosen subdomain (audits.hcoco1.com) to the GitHub Pages URL. This process exemplifies domain management and the integration of external DNS services with GitHub-hosted projects.
 
-## Directories (Project Structure)
 
-```bash
-tree -L 3 -I node_modules
-.
-├── CNAME
-├── LICENSE.md
-├── README.md
-├── audit_tool.png
-├── build
-├── package-lock.json
-├── package.json
-├── public
-└── src
-    ├── App.css
-    ├── App.js
-    ├── components
-    │   ├── AuditSummary.css
-    │   ├── AuditSummary.js
-    │   ├── AuditorNameForm.js
-    │   ├── Footer.js
-    │   ├── ReportGenerator.js
-    │   ├── SocialMediaLink.js
-    │   ├── TodoForm.js
-    │   ├── TodoItem.js
-    │   ├── TodoList.js
-    │   └── form_components
-    └── index.js
-```
-
-## Future enhancements
-
-- Adding authentication
-
-- Adding a database
