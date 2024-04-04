@@ -42,18 +42,6 @@
 - Utilized for initializing and managing the component's state, enabling tracking of the todos list, new todo input fields, auditor's name, and the editing state of the auditor's name.
 - Facilitates local state management within functional components, essential for dynamically handling user inputs and application data.
 
-### State Initialization
-
-- Initial state values for todos and auditor's name are derived from `localStorage`, showcasing a pattern for initializing state with data from external sources.
-- A function passed to `useState` fetches and parses data from `localStorage`, ensuring state synchronization with persisted data.
-
-## Side Effects with useEffect Hook
-
-### useEffect Hook
-
-- Manages side effects, especially for persisting state changes to `localStorage`. Separate effects are defined for `todos` and `auditorName`, demonstrating controlled effect execution through the dependency array.
-
-
 ## Component Composition and Reusability
 
 ### Child Components
