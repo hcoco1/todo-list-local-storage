@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SignIn.css'; // Ensure your CSS styles are appropriate for the SignUp form as well
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "./firebase-config";
+import { auth } from "../config/firebase-config";
 import { Link, useNavigate } from 'react-router-dom';
 
 function SignUp() {

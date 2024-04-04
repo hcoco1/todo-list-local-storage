@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth, db } from './components/firebase-config'; // Adjust according to your actual import
+import { auth, db } from './components/config/firebase-config'; // Adjust according to your actual import
 import './App.css';
-
-import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
- import AuditSummary from './components/AuditSummary'; 
+import SignIn from './components/auth/SignIn';
+import SignUp from './components/auth/SignUp';
+import AuditSummary from './components/summary/AuditSummary'; 
 import Footer from './components/Footer';
-import TodoForm from './components/TodoForm';
-import TodoList from './components/TodoList';
+import TodoForm from './components/form_components/TodoForm';
+import TodoList from './components/todos/TodoList';
 import ReportGenerator from './components/ReportGenerator';
 import NavigationBar from './components/NaviagtionBar';
 import {

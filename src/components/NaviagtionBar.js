@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogOutButton from './LogOutButton'; // Ensure this path is correct
+import LogOutButton from './auth/LogOutButton'; // Ensure this path is correct
 import Greeting from './Greeting'; // Import Greeting
 
 function NaviagtionBar({currentUser}) {
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-light rounded-3">
+            <nav className="navbar navbar-expand-sm bg-light rounded-3">
                 <div className="container-fluid justify-content-between">
                     <div className="nav-item"> 
                       {/*   <img src="/favicon.ico" alt="Bootstrap" /> */}   

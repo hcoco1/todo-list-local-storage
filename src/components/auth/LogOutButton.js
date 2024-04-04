@@ -1,7 +1,7 @@
 import React from 'react';
 import './LogOutButton.css'; // Assuming you have a simple button CSS
 import { signOut } from "firebase/auth";
-import { auth } from "./firebase-config"; // Adjust the import path as necessary
+import { auth } from "../config/firebase-config"; // Adjust the import path as necessary
 
 function LogOutButton() {
     const handleLogout = async () => {

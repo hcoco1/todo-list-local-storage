@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import PeriodSummary from './summary/PeriodSummary';
-import AFESummary from './summary/AFESummary';
-import ErrorSummary from './summary/ErrorSummary';
+import PeriodSummary from './PeriodSummary';
+import AFESummary from './AFESummary';
+import ErrorSummary from './ErrorSummary';
 import moment from 'moment';
 import { MDBBtn } from 'mdb-react-ui-kit';
-import SubSummary from './summary/SubSummary';
+import SubSummary from './SubSummary';
 import './AuditSummary.css'
 
 
 function AuditSummary({ todos, currentUser }) {
-    const [selectedAuditor, setSelectedAuditor] = useState('');
+/*     const [selectedAuditor, setSelectedAuditor] = useState(''); */
     const [dateSince, setDateSince] = useState('');
     const [dateUntil, setDateUntil] = useState('');
     const [selectedUsername, setSelectedUsername] = useState('');
@@ -17,6 +17,7 @@ function AuditSummary({ todos, currentUser }) {
     const resetFilters = () => {
         setDateSince('');
         setDateUntil('');
+        setSelectedUsername('');
         
 
     };
@@ -60,15 +61,16 @@ function AuditSummary({ todos, currentUser }) {
                         <input id="date-until" type="datetime-local" value={dateUntil} onChange={e => setDateUntil(e.target.value)} />
                     </div>
 
-                    {/*                     <div className="filter-item">
-                        <label htmlFor="auditor-select">Auditor:</label>
-                        <select id="auditor-select" value={selectedAuditor} onChange={e => setSelectedAuditor(e.target.value)}>
-                            <option value="">Audits by all auditors</option>
-                            <option value="ariaivan">Audits by ariaivan</option>
-                            <option value="yoalugol">Audits by yoalugol</option>
-                        </select>
+                    <div className="filter-item">
+        <label htmlFor="username-select">Associate:</label>
+        <input
+          id="username-select"
+          type="text"
+          value={selectedUsername}
+          onChange={e => setSelectedUsername(e.target.value)}
+        />
 
-                    </div> */}
+      </div>
                     <div className="filter-item">
                         <MDBBtn size='sm' color='warning' onClick={resetFilters}>Reset</MDBBtn>
                     </div>

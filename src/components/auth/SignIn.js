@@ -3,7 +3,7 @@ import './SignIn.css'; // Update this line with the correct path to your CSS fil
 
 /* import './AuthForm.css'; // Assuming similar styling for all auth forms */
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase-config"; // Adjust the import path as necessary
+import { auth } from "../config/firebase-config"; // Adjust the import path as necessary
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 function SignIn() {

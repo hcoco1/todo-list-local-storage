@@ -6,12 +6,12 @@ import { MDBBtn } from 'mdb-react-ui-kit';
 
 function TodoList({ todos, deleteTodo, currentUser  }) {
 
-  const [selectedAuditor, setSelectedAuditor] = useState('');
+/*   const [selectedAuditor, setSelectedAuditor] = useState(''); */
   const [dateSince, setDateSince] = useState('');
   const [dateUntil, setDateUntil] = useState('');
   const [selectedUsername, setSelectedUsername] = useState('');
 
-  console.log({ dateSince, dateUntil, selectedAuditor });
+  console.log({ dateSince, dateUntil });
 
   const resetFilters = () => {
     setDateSince('');
@@ -94,7 +94,7 @@ function TodoList({ todos, deleteTodo, currentUser  }) {
         <strong style={{ color: 'red', }}>Total Audits found: {filteredTodos.length} </strong>
         {dateSince && ` from ${moment(dateSince).format('dddd, MMMM Do YYYY, h:mm a')} `}
         {dateUntil && ` to ${moment(dateUntil).format('dddd, MMMM Do YYYY, h:mm a')} `}
-        {selectedAuditor && ` by ${selectedAuditor}`}
+       {/*  {selectedAuditor && ` by ${selectedAuditor}`} */}
       </h6>
 
 

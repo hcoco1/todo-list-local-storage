@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { auth } from './firebase-config';
+import { auth } from './config/firebase-config';
 import './Greeting.css';
 
 function Greeting({ todos }) {

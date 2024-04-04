@@ -1,8 +1,8 @@
 // Updated TodoForm.js
 import React from 'react';
-import FormInput from './form_components/FormInput';
-import FormSelect from './form_components/FormSelect';
-import FormTextarea from './form_components/FormTextarea';
+import FormInput from './FormInput';
+import FormSelect from './FormSelect';
+import FormTextarea from './FormTextarea';
 import './TodoForm.css'
 
 function TodoForm({ addTodo, newTodo, setNewTodo }) {
