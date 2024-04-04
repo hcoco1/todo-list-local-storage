@@ -4,7 +4,7 @@ import TodoCard from './TodoCard';
 import moment from 'moment';
 import { MDBBtn } from 'mdb-react-ui-kit';
 
-function TodoList({ todos, deleteTodo }) {
+function TodoList({ todos, deleteTodo, currentUser  }) {
 
   const [selectedAuditor, setSelectedAuditor] = useState('');
   const [dateSince, setDateSince] = useState('');
@@ -16,7 +16,7 @@ function TodoList({ todos, deleteTodo }) {
   const resetFilters = () => {
     setDateSince('');
     setDateUntil('');
-    setSelectedAuditor('');
+    setSelectedUsername('');
   };
 
 
@@ -25,16 +25,20 @@ function TodoList({ todos, deleteTodo }) {
 
 
   const filteredTodos = todos.filter(todo => {
-    const matchesAuditor = selectedAuditor ? todo.auditor === selectedAuditor : true;
-    const matchesUsername = selectedUsername ? todo.username === selectedUsername : true; // New filter condition
+    // This line ensures we're only looking at todos where the auditor matches the current user
+    const matchesAuditor = todo.auditor === currentUser.displayName;
+  
+    const matchesUsername = selectedUsername ? todo.username === selectedUsername : true;
     const todoDate = new Date(todo.createdAt);
     const sinceDate = dateSince ? new Date(dateSince) : null;
     const untilDate = dateUntil ? new Date(dateUntil) : null;
     const matchesSince = sinceDate ? todoDate >= sinceDate : true;
     const matchesUntil = untilDate ? todoDate <= untilDate : true;
-
-    return matchesAuditor && matchesSince && matchesUntil && matchesUsername; // Include new filter in return
+  
+    // Now, the return statement includes the matchesAuditor condition as well
+    return matchesAuditor && matchesUsername && matchesSince && matchesUntil;
   });
+  
 
   return (
     <div className="NotesContainer">
@@ -54,6 +58,19 @@ function TodoList({ todos, deleteTodo }) {
             <input id="date-until" type="datetime-local" value={dateUntil} onChange={e => setDateUntil(e.target.value)} />
           </div>
           <div className="filter-item">
+        <label htmlFor="username-select">Associate:</label>
+        <input
+          id="username-select"
+          type="text"
+          value={selectedUsername}
+          onChange={e => setSelectedUsername(e.target.value)}
+        />
+
+      </div>
+
+
+
+{/*           <div className="filter-item">
             <label htmlFor="auditor-select">Auditor:</label>
             <select id="auditor-select" value={selectedAuditor} onChange={e => setSelectedAuditor(e.target.value)}>
               <option value="">Audits by all auditors</option>
@@ -61,7 +78,7 @@ function TodoList({ todos, deleteTodo }) {
               <option value="yoalugol">Audits by yoalugol</option>
             </select>
 
-          </div>
+          </div> */}
           <div className="filter-item">
             <MDBBtn size='sm' color='warning' onClick={resetFilters}>Reset</MDBBtn>
           </div>
@@ -71,16 +88,7 @@ function TodoList({ todos, deleteTodo }) {
 
       </div>
 
-      <div className="auditsFilter">
-        <label htmlFor="username-select">Filter audits by associate:</label>
-        <input
-          id="username-select"
-          type="text"
-          value={selectedUsername}
-          onChange={e => setSelectedUsername(e.target.value)}
-        />
 
-      </div>
 
       <h6 style={inlineStyle}>
         <strong style={{ color: 'red', }}>Total Audits found: {filteredTodos.length} </strong>

@@ -8,33 +8,37 @@ import SubSummary from './summary/SubSummary';
 import './AuditSummary.css'
 
 
-function AuditSummary({ todos }) {
+function AuditSummary({ todos, currentUser }) {
     const [selectedAuditor, setSelectedAuditor] = useState('');
     const [dateSince, setDateSince] = useState('');
     const [dateUntil, setDateUntil] = useState('');
+    const [selectedUsername, setSelectedUsername] = useState('');
+
     const resetFilters = () => {
         setDateSince('');
         setDateUntil('');
-        setSelectedAuditor('');
+        
+
     };
+
 
     const inlineStyle = { textAlign: 'center', color: 'black', fontWeight: 'bold', marginTop: '10px' }
 
 
 
     const filteredTodos = todos.filter(todo => {
-        const matchesAuditor = selectedAuditor ? todo.auditor === selectedAuditor : true;
+        // This line ensures we're only looking at todos where the auditor matches the current user
+        const matchesAuditor = todo.auditor === currentUser.displayName;
 
-        // Convert string dates to Date objects for comparison
+        const matchesUsername = selectedUsername ? todo.username === selectedUsername : true;
         const todoDate = new Date(todo.createdAt);
         const sinceDate = dateSince ? new Date(dateSince) : null;
         const untilDate = dateUntil ? new Date(dateUntil) : null;
-
-        // Check if the todo's date is within the "since" and "until" range
         const matchesSince = sinceDate ? todoDate >= sinceDate : true;
         const matchesUntil = untilDate ? todoDate <= untilDate : true;
 
-        return matchesAuditor && matchesSince && matchesUntil;
+        // Now, the return statement includes the matchesAuditor condition as well
+        return matchesAuditor && matchesUsername && matchesSince && matchesUntil;
     });
 
 
@@ -55,7 +59,8 @@ function AuditSummary({ todos }) {
                         <label htmlFor="date-until">To:</label>
                         <input id="date-until" type="datetime-local" value={dateUntil} onChange={e => setDateUntil(e.target.value)} />
                     </div>
-                    <div className="filter-item">
+
+                    {/*                     <div className="filter-item">
                         <label htmlFor="auditor-select">Auditor:</label>
                         <select id="auditor-select" value={selectedAuditor} onChange={e => setSelectedAuditor(e.target.value)}>
                             <option value="">Audits by all auditors</option>
@@ -63,7 +68,7 @@ function AuditSummary({ todos }) {
                             <option value="yoalugol">Audits by yoalugol</option>
                         </select>
 
-                    </div>
+                    </div> */}
                     <div className="filter-item">
                         <MDBBtn size='sm' color='warning' onClick={resetFilters}>Reset</MDBBtn>
                     </div>
@@ -86,12 +91,12 @@ function AuditSummary({ todos }) {
 
 
 
-          
 
-                <ErrorSummary filteredTodos={filteredTodos} />
-                <PeriodSummary filteredTodos={filteredTodos} />
-                <AFESummary filteredTodos={filteredTodos} />
-                <SubSummary filteredTodos={filteredTodos} />
+
+            <ErrorSummary filteredTodos={filteredTodos} />
+            <PeriodSummary filteredTodos={filteredTodos} />
+            <AFESummary filteredTodos={filteredTodos} />
+            <SubSummary filteredTodos={filteredTodos} />
 
 
 

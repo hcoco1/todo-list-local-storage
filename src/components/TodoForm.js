@@ -20,7 +20,7 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
         </div>
         <div className="form-row">
 
-          <FormSelect
+{/*           <FormSelect
             name="auditor"
             value={newTodo.auditor}
             onChange={handleInputChange}
@@ -31,7 +31,7 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
 
 
             ]}
-          />
+          /> */}
 
 
 
@@ -69,8 +69,6 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
             ]}
           />
 
-        </div>
-        <div className="form-row">
           <FormSelect
             name="processPath"
             value={newTodo.processPath}
@@ -84,6 +82,12 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
               { label: 'Smartpac', value: 'Smartpac' },
             ]}
           />
+
+
+
+        </div>
+        <div className="form-row">
+
           <FormSelect
             name="error"
             value={newTodo.error}

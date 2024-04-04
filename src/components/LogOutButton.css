@@ -65,3 +65,19 @@
  
 }
 
+.user-button {
+    padding: 5px 10px;
+    background-color: #cbd4cd;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+  
+    transition: background-color 0.3s, box-shadow 0.3s;
+    outline: none;
+}
+

@@ -30,16 +30,16 @@ form {
 /* Add styles for your form elements (input, select, textarea) to ensure they expand to fill their containers */
 input, select, textarea {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 10px; /* Adjust or remove based on layout */
+  padding: 0px;
+  margin-bottom: 5px; /* Adjust or remove based on layout */
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 input[type="text"] {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 10px; /* Adjust or remove based on layout */
+  padding: px;
+  margin-bottom: 5px; /* Adjust or remove based on layout */
   border: 1px solid #ccc;
   border-radius: 4px;
 }

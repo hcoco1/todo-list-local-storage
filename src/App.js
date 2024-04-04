@@ -65,19 +65,20 @@ function App() {
 
   const addTodo = async (e) => {
     e.preventDefault();
-
-    if (newTodo.auditor !== currentUser.displayName) {
-      console.log("Attempt to create todo for another user blocked.");
-      window.alert("You do not have permission to create todos for other users.");
-      return; // Exit the function if the auditor does not match the current user
-    }
+  
+    // Assign current user's displayName as the auditor for the newTodo.
+    const updatedNewTodo = {
+      ...newTodo,
+      auditor: currentUser.displayName, // This ensures auditor is always the current user
+    };
+  
     const currentEasternTime = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
-    const newTodoData = { ...newTodo, createdAt: currentEasternTime, isEditing: false };
-
+    const newTodoData = { ...updatedNewTodo, createdAt: currentEasternTime, isEditing: false };
+  
     try {
       const docRef = await addDoc(collection(db, "todos"), newTodoData);
       console.log("Document written with ID: ", docRef.id);
-
+  
       // Update local state with the new todo, including the Firestore-generated ID
       const addedTodo = { ...newTodoData, id: docRef.id };
       setTodos(prevTodos => [...prevTodos, addedTodo]);
@@ -97,15 +98,12 @@ function App() {
     } catch (error) {
       console.error("Error adding document: ", error);
     }
-};
+  };
+  
 
 
   const deleteTodo = async (id) => {
-    if (!currentUser) {
-      console.log("No user signed in, cannot delete todo.");
-      return;
-    }
-  
+ 
     // Fetch the todo document to check its auditor field
     const todoRef = doc(db, "todos", id);
     const todoSnap = await getDoc(todoRef);
@@ -154,17 +152,17 @@ function App() {
   return (
     <Router>
       <div className="App">
-      {currentUser && <NavigationBar />}
+      {currentUser && <NavigationBar currentUser={currentUser} todos={todos}/>}
         <Routes>
           <Route path="/signin" element={!currentUser ? <SignIn /> : <Navigate replace to="/" />} />
           <Route path="/signup" element={!currentUser ? <SignUp /> : <Navigate replace to="/signin" />} />
-           {currentUser && <Route path="/dashboard" element={<AuditSummary todos={todos}/>} />} 
+           {currentUser && <Route path="/dashboard" element={<AuditSummary todos={todos} currentUser={currentUser}/>} />} 
           <Route path="/" element={currentUser ? (
             <main>
               <div className="orientation-message">For the best experience, please rotate your device to landscape mode.</div>
 
               <TodoForm addTodo={addTodo} newTodo={newTodo} setNewTodo={setNewTodo} />
-              <TodoList todos={todos} deleteTodo={deleteTodo} />
+              <TodoList todos={todos} deleteTodo={deleteTodo} currentUser={currentUser} />
               <ReportGenerator todos={todos} />
             </main>
           ) : <Navigate replace to="/signin" />} />

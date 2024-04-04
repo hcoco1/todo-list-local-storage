@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import LogOutButton from './LogOutButton'; // Ensure this path is correct
 import Greeting from './Greeting'; // Import Greeting
 
-function NaviagtionBar() {
+function NaviagtionBar({currentUser}) {
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-light rounded-3">
                 <div className="container-fluid justify-content-between">
-                    <div className="d-flex align-items-center"> {/* Added for better alignment */}
-                        <img src="/favicon.ico" alt="Bootstrap" />
-                        <Greeting /> {/* Greeting Component beside the image */}
+                    <div className="nav-item"> 
+                      {/*   <img src="/favicon.ico" alt="Bootstrap" /> */}   
+                        <Greeting /> 
                     </div>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav mx-auto">
@@ -18,7 +18,7 @@ function NaviagtionBar() {
                                 <Link to="/" style={{ fontSize: '18px', color: 'black', backgroundColor: 'orange', padding: '10px', borderRadius: '5px' }}>Audits</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/dashboard" style={{ fontSize: '18px', color: 'white', backgroundColor: 'green', padding: '10px', borderRadius: '5px' }}>Charts</Link>
+                                <Link to="/dashboard" style={{ fontSize: '18px', color: 'black', backgroundColor: 'rgb(190, 253, 128)', padding: '10px', borderRadius: '5px' }}>Charts</Link>
                             </li>
                         </ul>
                         <ul className="navbar-nav"> {/* Wrap Logout button in its own nav-item for alignment */}

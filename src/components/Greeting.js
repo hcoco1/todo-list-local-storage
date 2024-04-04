@@ -13,13 +13,14 @@ function Greeting({ todos }) {
     }, []);
 
     return (
-        <h6>
+    
         
-                <strong>User:</strong>{userName || 'Guest'}
+                
+                <button className="user-button">User: <strong style={{ color: 'red' }}> {userName || 'Guest'} </strong></button>
        
 
 
-        </h6>
+    
     );
 }
 
