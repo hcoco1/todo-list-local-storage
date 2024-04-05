@@ -65,7 +65,7 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
               { label: 'Process', value: '' },
               { label: 'AFE1', value: 'AFE1' },
               { label: 'AFE2', value: 'AFE2' },
-              { label: 'AFE3', value: 'AFE3' },
+              { label: 'Pack Singles', value: 'Pack Singles' },
             ]}
           />
 
@@ -97,7 +97,7 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
               { label: 'Rebin Error Indicator', value: 'Rebin Error Indicator' },
               { label: 'Induct Error Indicator', value: 'Induct Error Indicator' },
               { label: 'Induct Shortage', value: 'Induct Shortage' },
-              { label: 'Wrong Box', value: 'Wrong Box' },
+              { label: 'Pack Wrong Box', value: 'Pack Wrong Box' },
               { label: 'Slam Kickout', value: 'Slam Kickout' },
               { label: 'Pack Item Missing', value: 'Pack Item Missing' },
               { label: 'Pack Item Damaged', value: 'Pack Item Damaged' },

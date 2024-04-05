@@ -7,7 +7,7 @@ const AFESummary = ({ filteredTodos, className }) => {
   const fieldsToCount = [
     { field: 'afe', value: 'AFE1' },
     { field: 'afe', value: 'AFE2' },
-    { field: 'afe', value: 'AFE3' },
+    { field: 'afe', value: 'Pack Singles' },
     // Extend this array based on your data model and requirements
   ];
 
