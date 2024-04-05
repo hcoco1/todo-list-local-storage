@@ -48,25 +48,12 @@
 
 - Integrates reusable child components (`TodoForm`, `TodoList`, `Footer`, `ReportGenerator`, and `AuditorNameForm`), highlighting React's component composition model for a modular and maintainable codebase.
 
-### Props and Callbacks
-
-- Interaction between `App` and child components is facilitated through props, including function props for adding, deleting, and editing todos, promoting a unidirectional data flow and decoupled parent-child communication.
-
 ## Event Handling and State Updates
 
 ### Form Submission
 
 - Processes new todo additions and auditor name submissions via form submission handlers, preventing default form behavior and updating the state with new data.
 
-### Editing and Deleting Todos
-
-- Implements editing and deleting todos through state updates that manipulate the todos array, adhering to the immutability principle for efficient UI re-rendering.
-
-## Localization and Date Handling
-
-### Date Formatting
-
-- Formats the current date and time to Eastern Time using `toLocaleString` when adding a new todo, addressing date handling and localization within React applications.
 
 ## Deployment and Custom Domain Configuration
 
