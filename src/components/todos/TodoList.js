@@ -26,7 +26,8 @@ function TodoList({ todos, deleteTodo, currentUser  }) {
 
   const filteredTodos = todos.filter(todo => {
     const matchesAuditor = todo.auditor === currentUser.displayName;
-    const matchesUsername = selectedUsername ? todo.username === selectedUsername : true;
+    // Update the matchesUsername to check for a partial match using .includes()
+    const matchesUsername = selectedUsername ? todo.username.toLowerCase().includes(selectedUsername.toLowerCase()) : true;
     const todoDate = new Date(todo.createdAt);
     const sinceDate = dateSince ? new Date(dateSince) : null;
     const untilDate = dateUntil ? new Date(dateUntil) : null;
@@ -34,7 +35,8 @@ function TodoList({ todos, deleteTodo, currentUser  }) {
     const matchesUntil = untilDate ? todoDate <= untilDate : true;
   
     return matchesAuditor && matchesUsername && matchesSince && matchesUntil;
-  }).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+}).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
   
 
   return (
