@@ -7,6 +7,7 @@ function LogOutButton() {
     const handleLogout = async () => {
         try {
             await signOut(auth);
+            navigate('/signin');
 
         } catch (error) {
             // Handle logout error if necessary
