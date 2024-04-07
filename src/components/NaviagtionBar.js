@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import LogOutButton from './auth/LogOutButton'; // Make sure the path is correct
+import LogOutButton from '../components/auth/LogOutButton'; // Make sure the path is correct
 
 const NavigationBar = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -15,7 +15,7 @@ const NavigationBar = () => {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-light bg-light">
+    <nav className="navbar navbar-expand-sm navbar-light bg-light rounded">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           {currentUser && currentUser.photoURL && (
