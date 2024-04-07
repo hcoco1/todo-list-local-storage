@@ -1,42 +1,62 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import LogOutButton from './auth/LogOutButton'; // Ensure this path is correct
-import Greeting from './Greeting'; // Import Greeting
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import LogOutButton from './auth/LogOutButton'; // Make sure the path is correct
 
-function NaviagtionBar({currentUser}) {
-    return (
-        <>
-            <nav className="navbar navbar-expand-sm bg-light rounded-3">
-                <div className="container-fluid justify-content-between">
-                    <div className="nav-item"> 
-                      {/*   <img src="/favicon.ico" alt="Bootstrap" /> */}   
-                        <Greeting /> 
-                    </div>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav mx-auto">
-                            <li className="nav-item me-3">
-                                <Link to="/" style={{ fontSize: '18px', color: 'black', backgroundColor: 'orange', padding: '10px', borderRadius: '5px' }}>Audits</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to="/dashboard" style={{ fontSize: '18px', color: 'black', backgroundColor: 'rgb(190, 253, 128)', padding: '10px', borderRadius: '5px' }}>Charts</Link>
-                            </li>
-                        </ul>
-                        <ul className="navbar-nav"> {/* Wrap Logout button in its own nav-item for alignment */}
-                            <li className="nav-item">
-                                <LogOutButton />
-                            </li>
-                        </ul>
-                    </div>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-            </nav>
-        </>
-    );
-}
+const NavigationBar = () => {
+  const [currentUser, setCurrentUser] = useState(null);
 
-export default NaviagtionBar;
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user); // user will be null if not logged in
+    });
+    return () => unsubscribe(); // Cleanup subscription on unmount
+  }, []);
+
+  return (
+    <nav className="navbar navbar-expand-sm navbar-light bg-light">
+      <div className="container-fluid">
+        <Link className="navbar-brand" to="/">
+          {currentUser && currentUser.photoURL && (
+            <img
+              src={currentUser.photoURL}
+              alt="Profile"
+              style={{ width: "30px", height: "30px", borderRadius: "50%", marginRight: "10px" }}
+            />
+          )}
+          {currentUser?.displayName || 'Guest'}
+        </Link>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav mx-auto">
+            <li className="nav-item me-3">
+              <Link to="/" className="nav-link" style={{ fontSize: '14px', color: 'black', backgroundColor: 'orange', padding: '5px', borderRadius: '5px' }}>Audits</Link>
+            </li>
+            <li className="nav-item me-3">
+              <Link to="/dashboard" className="nav-link" style={{ fontSize: '14px', color: 'black', backgroundColor: 'rgb(190, 253, 128)', padding: '5px', borderRadius: '5px' }}>Charts</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/profile" className="nav-link" style={{ fontSize: '14px', color: 'black', backgroundColor: 'rgb(120, 253, 178)', padding: '5px', borderRadius: '5px' }}>Profile</Link>
+            </li>
+          </ul>
+          {currentUser && (
+            <div className="navbar-nav">
+              <div className="nav-item d-flex align-items-center justify-content-center">
+                <LogOutButton />
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default NavigationBar;
+
 
 
 

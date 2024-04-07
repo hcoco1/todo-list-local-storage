@@ -25,9 +25,7 @@ function TodoList({ todos, deleteTodo, currentUser  }) {
 
 
   const filteredTodos = todos.filter(todo => {
-    // This line ensures we're only looking at todos where the auditor matches the current user
     const matchesAuditor = todo.auditor === currentUser.displayName;
-  
     const matchesUsername = selectedUsername ? todo.username === selectedUsername : true;
     const todoDate = new Date(todo.createdAt);
     const sinceDate = dateSince ? new Date(dateSince) : null;
@@ -35,9 +33,8 @@ function TodoList({ todos, deleteTodo, currentUser  }) {
     const matchesSince = sinceDate ? todoDate >= sinceDate : true;
     const matchesUntil = untilDate ? todoDate <= untilDate : true;
   
-    // Now, the return statement includes the matchesAuditor condition as well
     return matchesAuditor && matchesUsername && matchesSince && matchesUntil;
-  });
+  }).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   
 
   return (

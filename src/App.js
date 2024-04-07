@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, getAuth } from 'firebase/auth';
 import { auth, db } from './components/config/firebase-config'; // Adjust according to your actual import
 import './App.css';
 import SignIn from './components/auth/SignIn';
@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import TodoForm from './components/form_components/TodoForm';
 import TodoList from './components/todos/TodoList';
 import ReportGenerator from './components/ReportGenerator';
+import PersonalProfile from './components/profile/PersonalProfile'
 import NavigationBar from './components/NaviagtionBar';
 import {
   collection,
@@ -38,29 +39,36 @@ function App() {
   });
 
 
-  // Authentication state management
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, user => {
-      setCurrentUser(user);
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        fetchTodos();
-     
+        setCurrentUser(user);
+        fetchTodos(); // Move fetchTodos inside here if it depends on currentUser
       } else {
-        setTodos([]);
-
+        setCurrentUser(null);
+        setTodos([]); // Optionally clear todos if there's no user
       }
+      setLoading(false);
     });
-    return unsubscribe; // Cleanup on unmount
-    // eslint-disable-next-line 
+    return () => unsubscribe();
   }, []);
+  
 
-  const fetchTodos = async () => {
-    console.log(currentUser);
-    const todosCollectionRef = collection(db, "todos");
-    const todosSnapshot = await getDocs(todosCollectionRef);
-    const todosList = todosSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    setTodos(todosList);
-  };
+// In App.js or your state managing component
+const updateUserProfileInApp = (newData) => {
+  setCurrentUser((currentUser) => ({ ...currentUser, ...newData }));
+};
+
+  
+
+const fetchTodos = async () => {
+  console.log(currentUser);
+  const todosCollectionRef = collection(db, "todos");
+  const todosSnapshot = await getDocs(todosCollectionRef);
+  const todosList = todosSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  setTodos(todosList);
+};
 
   const addTodo = async (e) => {
     e.preventDefault();
@@ -146,7 +154,11 @@ function App() {
     return <div>Loading...</div>; // Or any other loading indicator
   }
  
-
+  const user = {
+    name: 'Jane Doe',
+    bio: 'ICQA Auditor',
+    
+  };
 
   return (
     <Router>
@@ -156,10 +168,12 @@ function App() {
           <Route path="/signin" element={!currentUser ? <SignIn /> : <Navigate replace to="/" />} />
           <Route path="/signup" element={!currentUser ? <SignUp /> : <Navigate replace to="/signin" />} />
            {currentUser && <Route path="/dashboard" element={<AuditSummary todos={todos} currentUser={currentUser}/>} />} 
+           {currentUser && <Route path="/profile" element={<PersonalProfile user={currentUser} updateUserProfileInApp={updateUserProfileInApp} />} />} 
+
           <Route path="/" element={currentUser ? (
             <main>
               <div className="orientation-message">For the best experience, please rotate your device to landscape mode.</div>
-
+             
               <TodoForm addTodo={addTodo} newTodo={newTodo} setNewTodo={setNewTodo} />
               <TodoList todos={todos} deleteTodo={deleteTodo} currentUser={currentUser} />
               <ReportGenerator todos={todos} />
