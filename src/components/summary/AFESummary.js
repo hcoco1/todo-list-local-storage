@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import './AFESummary.css'; // Import the CSS file
 
 const AFESummary = ({ filteredTodos, className }) => {
@@ -26,44 +26,25 @@ const AFESummary = ({ filteredTodos, className }) => {
 
   return (
     <>
-    
- <h4 className="audits-summary-title">Process</h4>
+      <h4 className="audits-summary-title">Process</h4>
       <div className={`audits-summary-container ${className}`}>
-
         <div className="audits-summary-chart">
-          <BarChart
-            width={600}
-            height={300}
-            data={data}
-            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-
-
-            <Bar dataKey="count" fill={colors[1]} />
-          </BarChart>
-
-
-
-
+          {/* Wrap BarChart in ResponsiveContainer */}
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart
+              data={data}
+              margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name"  tick={{ fontSize: '12px' }} />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="count" fill={colors[1]} barSize={80} />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
-
-        {/* Display counts */}
-        {/*       <div className="audits-summary-counts">
-        {fieldsToCount.map(({ field, value }) => (
-          <div key={`${field}-${value}`} className="audits-summary-item">
-            <p>{`${value}: ${countNotes(field, value)}`}</p>
-          </div>
-        ))}
-      </div> */}
       </div>
-
-
     </>
-
   );
 };
 

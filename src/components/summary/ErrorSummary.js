@@ -1,5 +1,5 @@
 import React from 'react';
-import { PieChart, Pie, Tooltip, Legend, Cell } from 'recharts';
+import { PieChart, Pie, Tooltip, Legend, Cell, ResponsiveContainer } from 'recharts';
 import './ErrorSummary.css'; // Import the CSS file
 
 const ErrorSummary = ({ filteredTodos, className }) => {
@@ -32,17 +32,11 @@ const ErrorSummary = ({ filteredTodos, className }) => {
   const colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff7300', '#00bfff', '#ff4040', '#008080', '#800080', '#008000'];
 
   return (
-
     <>
       <h2 className="audits-summary-title">Errors</h2>
-
       <div className={`audits-summary-container ${className}`}>
-        <div>
-
-        </div>
-
-        <div className="audits-summary-chart">
-          <PieChart width={600} height={400}>
+        <ResponsiveContainer width="100%" height={300}>
+          <PieChart>
             <Pie
               data={data}
               cx="50%"
@@ -52,29 +46,17 @@ const ErrorSummary = ({ filteredTodos, className }) => {
               fill="#8884d8"
               dataKey="value"
               nameKey="name"
-            /* label={({ percent }) => ` ${(percent * 100).toFixed(0)}%`}  */
             >
               {data.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
               ))}
             </Pie>
             <Tooltip />
-
-            <Legend />
+            <Legend align="left" verticalAlign="top" layout="vertical" />
           </PieChart>
-        </div>
-
-        {/* Display counts */}
-        {/*       <div className="audits-summary-counts">
-        {fieldsToCount.map(({ field, value }) => (
-          <div key={`${field}-${value}`} className="audits-summary-item">
-            <p>{`${value}: ${countNotes(field, value)}`}</p>
-          </div>
-        ))}
-      </div> */}
+        </ResponsiveContainer>
       </div>
     </>
-
   );
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import './PeriodSummary.css'; // Import the CSS file
 
 const PeriodSummary = ({ filteredTodos, className }) => {
@@ -11,6 +11,7 @@ const PeriodSummary = ({ filteredTodos, className }) => {
     { field: 'period', value: '(5:15 AM-07:00 AM)' },
     // Extend this array based on your data model and requirements
   ];
+  console.log(filteredTodos)
 
   // Function to count the occurrences of a value in a given field
   const countNotes = (field, value) => {
@@ -23,44 +24,27 @@ const PeriodSummary = ({ filteredTodos, className }) => {
     count: countNotes(item.field, item.value)
   }));
 
-  const colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff7300', '#00bfff', '#ff4040', '#008080', '#800080', '#008000'];
+const colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff7300', '#00bfff', '#ff4040', '#008080', '#800080', '#008000'];
 
   return (
-
     <>
       <h4 className="audits-summary-title">Work Shift Hours</h4>
       <div className={`audits-summary-container ${className}`}>
-        <div>
-
-        </div>
-
-        <div className="audits-summary-chart">
+        {/* Wrapping the BarChart with ResponsiveContainer */}
+        <ResponsiveContainer width="100%" height={300}>
           <BarChart
-            width={600}
-            height={300}
             data={data}
-            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+            margin={{ top: 20, right: 1, left: 1, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" tick={{ fontSize: '12px' }}/>
+            <XAxis dataKey="name" tick={{ fontSize: '11px' }} />
             <YAxis />
             <Tooltip />
-
             <Bar dataKey="count" fill={colors[5]} />
           </BarChart>
-        </div>
-
-        {/* Display counts */}
-        {/*         <div className="audits-summary-counts">
-          {fieldsToCount.map(({ field, value }) => (
-            <div key={`${field}-${value}`} className="audits-summary-item">
-              <p>{`${value}: ${countNotes(field, value)}`}</p>
-            </div>
-          ))}
-        </div> */}
+        </ResponsiveContainer>
       </div>
     </>
-
   );
 };
 

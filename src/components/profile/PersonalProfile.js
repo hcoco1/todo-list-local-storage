@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { storage } from '../config/firebase-config';
 import { getAuth, updateProfile } from "firebase/auth";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import ChangePassword from '../auth/ChangePassword';
 import './PersonalProfile.css';
 
 const UserProfile = ({ user, updateUserProfileInApp }) => {
@@ -78,8 +79,7 @@ const handleUpload = async () => {
           </button>
         </>
       )}
-      <div className="profileName">{user.displayName || 'No name'}</div>
-      <div className="profileBio">{user.bio || 'ICQA Auditor'}</div>
+<ChangePassword />
     </div>
   );
 };

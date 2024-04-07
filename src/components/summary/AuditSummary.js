@@ -9,7 +9,7 @@ import './AuditSummary.css'
 
 
 function AuditSummary({ todos, currentUser }) {
-/*     const [selectedAuditor, setSelectedAuditor] = useState(''); */
+    /*     const [selectedAuditor, setSelectedAuditor] = useState(''); */
     const [dateSince, setDateSince] = useState('');
     const [dateUntil, setDateUntil] = useState('');
     const [selectedUsername, setSelectedUsername] = useState('');
@@ -18,7 +18,7 @@ function AuditSummary({ todos, currentUser }) {
         setDateSince('');
         setDateUntil('');
         setSelectedUsername('');
-        
+
 
     };
 
@@ -62,15 +62,15 @@ function AuditSummary({ todos, currentUser }) {
                     </div>
 
                     <div className="filter-item">
-        <label htmlFor="username-select">Associate:</label>
-        <input
-          id="username-select"
-          type="text"
-          value={selectedUsername}
-          onChange={e => setSelectedUsername(e.target.value)}
-        />
+                        <label htmlFor="username-select">Associate:</label>
+                        <input
+                            id="username-select"
+                            type="text"
+                            value={selectedUsername}
+                            onChange={e => setSelectedUsername(e.target.value)}
+                        />
 
-      </div>
+                    </div>
                     <div className="filter-item">
                         <MDBBtn size='sm' color='warning' onClick={resetFilters}>Reset</MDBBtn>
                     </div>
@@ -86,21 +86,12 @@ function AuditSummary({ todos, currentUser }) {
             </div>
 
 
-
-
-
-
-
-
-
-
-
-            <ErrorSummary filteredTodos={filteredTodos} />
-            <PeriodSummary filteredTodos={filteredTodos} />
-            <AFESummary filteredTodos={filteredTodos} />
-            <SubSummary filteredTodos={filteredTodos} />
-
-
+            <div className="notesContainer">
+  <div className="chartComponent"><ErrorSummary filteredTodos={filteredTodos} /></div>
+  <div className="chartComponent"><PeriodSummary filteredTodos={filteredTodos} /></div>
+  <div className="chartComponent"><AFESummary filteredTodos={filteredTodos} /></div>
+  <div className="chartComponent"><SubSummary filteredTodos={filteredTodos} /></div>
+</div>
 
 
         </div>

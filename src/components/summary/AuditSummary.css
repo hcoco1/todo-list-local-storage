@@ -25,10 +25,6 @@
 
 
 
-.chart,
-.table {
-  width: 90%; /* Ensure charts and tables take full width */
-}
 
 
 
@@ -40,6 +36,18 @@
   font-weight: bold;
  
 }
+
+.notesContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  grid-gap: 20px; /* Adjust the gap between the items */
+  margin: 20px; /* Optional: Adds some margin around the grid */
+}
+
+.chartComponent {
+  /* Optional: Additional styles for each chart component */
+}
+
 
 
 

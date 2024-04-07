@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import './SubSummary.css'; // Import the CSS file
 
 const SubSummary = ({ filteredTodos, className }) => {
@@ -28,48 +28,30 @@ const SubSummary = ({ filteredTodos, className }) => {
 
   return (
     <>
-
       <h4 className="audits-summary-title">Sub Process</h4>
       <div className={`audits-summary-container ${className}`}>
-
         <div className="audits-summary-chart">
-          <BarChart
-            width={600}
-            height={400}
-            data={data}
-            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-
-
-            <Bar dataKey="count" fill={colors[6]} />
-          </BarChart>
-
-          </div>
-
-
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart
+              data={data}
+              margin={{ top: 20, right: 1, left: 1, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name"  tick={{ fontSize: '12px' }} />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="count" fill={colors[6]} />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
-
-        {/* Display counts */}
-        {/*       <div className="audits-summary-counts">
-        {fieldsToCount.map(({ field, value }) => (
-          <div key={`${field}-${value}`} className="audits-summary-item">
-            <p>{`${value}: ${countNotes(field, value)}`}</p>
-          </div>
-        ))}
-      </div> */}
-    
-
-
+      </div>
     </>
-
   );
 };
 
 export default SubSummary;
+
+
 
 
 
