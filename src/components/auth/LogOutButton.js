@@ -5,8 +5,9 @@ import { auth } from "../config/firebase-config"; // Adjust the import path as n
 import { useNavigate } from 'react-router-dom';
 
 function LogOutButton() {
+    const navigate = useNavigate();
     const handleLogout = async () => {
-        const navigate = useNavigate();
+        
         try {
             await signOut(auth);
             navigate('/signin');
