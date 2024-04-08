@@ -41,10 +41,14 @@ function App() {
 
   useEffect(() => {
     const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setCurrentUser(user);
-        fetchTodos(); // Move fetchTodos inside here if it depends on currentUser
+        // Now fetchTodos is directly inside the useEffect, ensuring it has access to the current scope
+        const todosCollectionRef = collection(db, "todos");
+        const todosSnapshot = await getDocs(todosCollectionRef);
+        const todosList = todosSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setTodos(todosList);
       } else {
         setCurrentUser(null);
         setTodos([]); // Optionally clear todos if there's no user
@@ -61,15 +65,6 @@ const updateUserProfileInApp = (newData) => {
 };
 
   
-
-const fetchTodos = async () => {
-  console.log(currentUser);
-  const todosCollectionRef = collection(db, "todos");
-  const todosSnapshot = await getDocs(todosCollectionRef);
-  const todosList = todosSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-  setTodos(todosList);
-};
-
   const addTodo = async (e) => {
     e.preventDefault();
   
@@ -154,11 +149,7 @@ const fetchTodos = async () => {
     return <div>Loading...</div>; // Or any other loading indicator
   }
  
-  const user = {
-    name: 'Jane Doe',
-    bio: 'ICQA Auditor',
-    
-  };
+
 
   return (
     <Router>

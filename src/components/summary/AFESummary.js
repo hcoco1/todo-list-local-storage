@@ -27,7 +27,7 @@ const AFESummary = ({ filteredTodos, className }) => {
   return (
     <>
       <h4 className="audits-summary-title">Process</h4>
-      <div className={`audits-summary-container ${className}`}>
+     
         <div className="audits-summary-chart">
           {/* Wrap BarChart in ResponsiveContainer */}
           <ResponsiveContainer width="100%" height={300}>
@@ -39,11 +39,11 @@ const AFESummary = ({ filteredTodos, className }) => {
               <XAxis dataKey="name"  tick={{ fontSize: '12px' }} />
               <YAxis />
               <Tooltip />
-              <Bar dataKey="count" fill={colors[1]} barSize={80} />
+              <Bar dataKey="count" fill={colors[0]} barSize={80} />
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </div>
+  
     </>
   );
 };

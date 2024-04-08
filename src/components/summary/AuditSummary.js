@@ -87,11 +87,11 @@ function AuditSummary({ todos, currentUser }) {
 
 
             <div className="notesContainer">
-  <div className="chartComponent"><ErrorSummary filteredTodos={filteredTodos} /></div>
-  <div className="chartComponent"><PeriodSummary filteredTodos={filteredTodos} /></div>
-  <div className="chartComponent"><AFESummary filteredTodos={filteredTodos} /></div>
-  <div className="chartComponent"><SubSummary filteredTodos={filteredTodos} /></div>
-</div>
+                <div className="chartComponent"><ErrorSummary filteredTodos={filteredTodos} /></div>
+                <div className="chartComponent"><PeriodSummary filteredTodos={filteredTodos} /></div>
+                <div className="chartComponent"><AFESummary filteredTodos={filteredTodos} /></div>
+                <div className="chartComponent"><SubSummary filteredTodos={filteredTodos} /></div>
+            </div>
 
 
         </div>

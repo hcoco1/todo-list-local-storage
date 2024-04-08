@@ -26,3 +26,14 @@
   color: #212529;
   font-weight: bold;
 }
+
+/* styles.css */
+.legend-hide-small {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .recharts-legend-wrapper {
+    display: none !important; /* Hide the legend on small screens */
+  }
+}

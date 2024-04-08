@@ -11,7 +11,6 @@ function TodoList({ todos, deleteTodo, currentUser  }) {
   const [dateUntil, setDateUntil] = useState('');
   const [selectedUsername, setSelectedUsername] = useState('');
 
-  console.log({ dateSince, dateUntil });
 
   const resetFilters = () => {
     setDateSince('');
@@ -69,15 +68,7 @@ function TodoList({ todos, deleteTodo, currentUser  }) {
 
 
 
-{/*           <div className="filter-item">
-            <label htmlFor="auditor-select">Auditor:</label>
-            <select id="auditor-select" value={selectedAuditor} onChange={e => setSelectedAuditor(e.target.value)}>
-              <option value="">Audits by all auditors</option>
-              <option value="ariaivan">Audits by ariaivan</option>
-              <option value="yoalugol">Audits by yoalugol</option>
-            </select>
 
-          </div> */}
           <div className="filter-item">
             <MDBBtn size='sm' color='warning' onClick={resetFilters}>Reset</MDBBtn>
           </div>

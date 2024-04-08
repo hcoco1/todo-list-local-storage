@@ -29,7 +29,7 @@ const SubSummary = ({ filteredTodos, className }) => {
   return (
     <>
       <h4 className="audits-summary-title">Sub Process</h4>
-      <div className={`audits-summary-container ${className}`}>
+      
         <div className="audits-summary-chart">
           <ResponsiveContainer width="100%" height={300}>
             <BarChart
@@ -40,11 +40,11 @@ const SubSummary = ({ filteredTodos, className }) => {
               <XAxis dataKey="name"  tick={{ fontSize: '12px' }} />
               <YAxis />
               <Tooltip />
-              <Bar dataKey="count" fill={colors[6]} />
+              <Bar dataKey="count" fill={colors[4]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </div>
+ 
     </>
   );
 };

@@ -34,7 +34,7 @@ const ErrorSummary = ({ filteredTodos, className }) => {
   return (
     <>
       <h2 className="audits-summary-title">Errors</h2>
-      <div className={`audits-summary-container ${className}`}>
+    
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
             <Pie
@@ -42,7 +42,7 @@ const ErrorSummary = ({ filteredTodos, className }) => {
               cx="50%"
               cy="50%"
               labelLine={false}
-              outerRadius={150}
+              outerRadius={125}
               fill="#8884d8"
               dataKey="value"
               nameKey="name"
@@ -52,10 +52,10 @@ const ErrorSummary = ({ filteredTodos, className }) => {
               ))}
             </Pie>
             <Tooltip />
-            <Legend align="left" verticalAlign="top" layout="vertical" />
+            <Legend align="left" verticalAlign="top" layout="vertical"  wrapperStyle={{ fontSize: '12px' }}  />
           </PieChart>
         </ResponsiveContainer>
-      </div>
+  
     </>
   );
 };

@@ -11,7 +11,7 @@ const PeriodSummary = ({ filteredTodos, className }) => {
     { field: 'period', value: '(5:15 AM-07:00 AM)' },
     // Extend this array based on your data model and requirements
   ];
-  console.log(filteredTodos)
+
 
   // Function to count the occurrences of a value in a given field
   const countNotes = (field, value) => {
@@ -29,8 +29,8 @@ const colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff7300', '#00bfff', '#ff4040'
   return (
     <>
       <h4 className="audits-summary-title">Work Shift Hours</h4>
-      <div className={`audits-summary-container ${className}`}>
-        {/* Wrapping the BarChart with ResponsiveContainer */}
+      
+       
         <ResponsiveContainer width="100%" height={300}>
           <BarChart
             data={data}
@@ -39,11 +39,11 @@ const colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff7300', '#00bfff', '#ff4040'
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" tick={{ fontSize: '11px' }} />
             <YAxis />
-            <Tooltip />
+            <Tooltip  />
             <Bar dataKey="count" fill={colors[5]} />
           </BarChart>
         </ResponsiveContainer>
-      </div>
+  
     </>
   );
 };

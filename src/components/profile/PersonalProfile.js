@@ -8,7 +8,7 @@ import './PersonalProfile.css';
 const UserProfile = ({ user, updateUserProfileInApp }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [isUploaded, setIsUploaded] = useState(false);
-  
+
   // Effect to synchronize isUploaded state with user's photoURL presence
   useEffect(() => {
     if (user?.photoURL) {
@@ -22,38 +22,40 @@ const UserProfile = ({ user, updateUserProfileInApp }) => {
     setSelectedFile(event.target.files[0]);
   };
 
-// In UserProfile.js
-const handleUpload = async () => {
-  if (!selectedFile) {
-    alert('Please select a file first!');
-    return;
-  }
+  // In UserProfile.js
+  const handleUpload = async () => {
+    if (!selectedFile) {
+      alert('Please select a file first!');
+      return;
+    }
 
-  const fileRef = ref(storage, `profile_photos/${user.uid}_${selectedFile.name}`);
-  try {
-    await uploadBytes(fileRef, selectedFile);
-    const downloadURL = await getDownloadURL(fileRef);
+    const fileRef = ref(storage, `profile_photos/${user.uid}_${selectedFile.name}`);
+    try {
+      await uploadBytes(fileRef, selectedFile);
+      const downloadURL = await getDownloadURL(fileRef);
 
-    const auth = getAuth();
-    await updateProfile(auth.currentUser, {
-      photoURL: downloadURL
-    });
-    console.log("Profile updated successfully.");
+      const auth = getAuth();
+      await updateProfile(auth.currentUser, {
+        photoURL: downloadURL
+      });
+      console.log("Profile updated successfully.");
 
-    setIsUploaded(true); // Local state to reflect upload success
+      setIsUploaded(true); // Local state to reflect upload success
 
-    // Here you need to invoke a method passed from a parent component to update the global currentUser state.
-    // This part is missing in your provided code snippet. It should look something like this:
-    updateUserProfileInApp({ photoURL: downloadURL }); // This method should be provided as a prop to UserProfile.
+      // Here you need to invoke a method passed from a parent component to update the global currentUser state.
+      // This part is missing in your provided code snippet. It should look something like this:
+      updateUserProfileInApp({ photoURL: downloadURL }); // This method should be provided as a prop to UserProfile.
 
-  } catch (error) {
-    console.error("Error uploading file:", error);
-  }
-};
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
+  };
 
 
   return (
-    <div className="profileContainer">
+
+    <>
+        <div className="profileContainer">
       {!isUploaded && (
         <>
           <input
@@ -79,8 +81,11 @@ const handleUpload = async () => {
           </button>
         </>
       )}
-<ChangePassword />
+      
     </div>
+    <ChangePassword />
+    
+    </>
   );
 };
 

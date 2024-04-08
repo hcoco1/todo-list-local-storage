@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './SignIn.css'; // Update this line with the correct path to your CSS file
-
-/* import './AuthForm.css'; // Assuming similar styling for all auth forms */
+import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase-config"; // Adjust the import path as necessary
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 function SignIn() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -18,6 +18,7 @@ function SignIn() {
 
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            navigate('/');
             // User is signed in
             // Redirect user to the homepage or dashboard after successful sign in
             console.log(userCredential.user); // For demonstration; remove or replace with redirect
