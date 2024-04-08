@@ -46,7 +46,7 @@ ul {
   margin: 0; /* Removes default margin */
   text-align: left;
   padding-right: 1rem;
-  padding-bottom: 0.5rem;
+
   font-size: 0.9rem;
   cursor: pointer;
 }

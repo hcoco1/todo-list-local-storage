@@ -1,0 +1,28 @@
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Adjust gap between cards */
+  padding: 20px; /* Padding around the cards container */
+}
+
+.card {
+  flex: 1 1 300px; /* Grow to fill space, basis at 300px */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Simple shadow for styling */
+  margin: 10px; /* Margin around each card */
+  max-width: calc(50% - 40px); /* Adjust based on gap and margin for two columns */
+}
+
+.card-content {
+  padding: 20px; /* Padding inside each card */
+}
+
+.card-content h5 {
+  margin-top: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    max-width: calc(100% - 20px); /* Full width on smaller screens */
+  }
+}

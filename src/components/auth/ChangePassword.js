@@ -36,7 +36,7 @@ function ChangePassword() {
 
   return (
     <div className="change-password-container">
-      <h6>Change Password: </h6>
+      <p className="text-center">Change Password</p>
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
         <div>

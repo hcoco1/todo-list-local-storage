@@ -79,6 +79,10 @@ const UserProfile = ({ user, updateUserProfileInApp }) => {
           <button onClick={() => setIsUploaded(false)} className="editButton">
             Edit Photo
           </button>
+          <div>
+          <p><strong>Email:</strong> {user.email || 'Guest'}</p>
+      {/* Add more content as needed */}
+    </div>
         </>
       )}
       

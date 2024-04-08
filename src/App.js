@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
 import { auth, db } from './components/config/firebase-config'; // Adjust according to your actual import
+
 import './App.css';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
@@ -12,6 +13,7 @@ import TodoList from './components/todos/TodoList';
 import ReportGenerator from './components/ReportGenerator';
 import PersonalProfile from './components/profile/PersonalProfile'
 import NavigationBar from './components/NaviagtionBar';
+import LinkCards from './components/LinkCards';
 import {
   collection,
   addDoc,
@@ -148,7 +150,8 @@ const updateUserProfileInApp = (newData) => {
   if (loading) {
     return <div>Loading...</div>; // Or any other loading indicator
   }
- 
+
+
 
 
   return (
@@ -160,6 +163,7 @@ const updateUserProfileInApp = (newData) => {
           <Route path="/signup" element={!currentUser ? <SignUp /> : <Navigate replace to="/signin" />} />
            {currentUser && <Route path="/dashboard" element={<AuditSummary todos={todos} currentUser={currentUser}/>} />} 
            {currentUser && <Route path="/profile" element={<PersonalProfile user={currentUser} updateUserProfileInApp={updateUserProfileInApp} />} />} 
+           {currentUser && <Route path="/links" element={<LinkCards />} />} 
 
           <Route path="/" element={currentUser ? (
             <main>
@@ -178,4 +182,6 @@ const updateUserProfileInApp = (newData) => {
 }
 
 export default App;
+
+
 

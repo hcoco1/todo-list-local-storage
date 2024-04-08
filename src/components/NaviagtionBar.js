@@ -32,14 +32,17 @@ const NavigationBar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mx-auto">
-            <li className="nav-item me-3">
+            <li className="nav-item me-4">
               <Link to="/" className="nav-link" style={{ fontSize: '14px', color: 'black', backgroundColor: 'orange', padding: '5px', borderRadius: '5px' }}>Audits</Link>
             </li>
-            <li className="nav-item me-3">
+            <li className="nav-item me-4">
               <Link to="/dashboard" className="nav-link" style={{ fontSize: '14px', color: 'black', backgroundColor: 'rgb(190, 253, 128)', padding: '5px', borderRadius: '5px' }}>Charts</Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item me-4">
               <Link to="/profile" className="nav-link" style={{ fontSize: '14px', color: 'black', backgroundColor: 'rgb(120, 253, 178)', padding: '5px', borderRadius: '5px' }}>Profile</Link>
+            </li>
+            <li className="nav-item me-4">
+              <Link to="/links" className="nav-link" style={{ fontSize: '14px', color: 'black', backgroundColor: 'rgb(220, 153, 178)', padding: '5px', borderRadius: '5px' }}>Links</Link>
             </li>
           </ul>
           {currentUser && (
