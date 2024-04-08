@@ -1,4 +1,4 @@
-.cards-container {
+.cards-container1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -6,9 +6,10 @@
   padding: 20px; /* Padding around the cards container */
 }
 
-.card {
+.card1 {
   flex: 1 1 300px; /* Grow to fill space, basis at 300px */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Simple shadow for styling */
+  background-color: #FFFFFF;
+  border-radius: 10px;
   margin: 10px; /* Margin around each card */
   max-width: calc(50% - 40px); /* Adjust based on gap and margin for two columns */
 }

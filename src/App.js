@@ -14,6 +14,7 @@ import ReportGenerator from './components/ReportGenerator';
 import PersonalProfile from './components/profile/PersonalProfile'
 import NavigationBar from './components/NaviagtionBar';
 import LinkCards from './components/LinkCards';
+
 import {
   collection,
   addDoc,
@@ -171,11 +172,14 @@ const updateUserProfileInApp = (newData) => {
              
               <TodoForm addTodo={addTodo} newTodo={newTodo} setNewTodo={setNewTodo} />
               <TodoList todos={todos} deleteTodo={deleteTodo} currentUser={currentUser} />
+              
               <ReportGenerator todos={todos} />
             </main>
           ) : <Navigate replace to="/signin" />} />
         </Routes>
+        
         <Footer />
+        
       </div>
     </Router>
   );

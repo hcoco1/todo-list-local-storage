@@ -3,10 +3,11 @@ import './TodoList.css';
 import TodoCard from './TodoCard';
 import moment from 'moment';
 import { MDBBtn } from 'mdb-react-ui-kit';
+import Pagination from '../Pagination';
 
-function TodoList({ todos, deleteTodo, currentUser  }) {
+function TodoList({ todos, deleteTodo, currentUser }) {
 
-/*   const [selectedAuditor, setSelectedAuditor] = useState(''); */
+  /*   const [selectedAuditor, setSelectedAuditor] = useState(''); */
   const [dateSince, setDateSince] = useState('');
   const [dateUntil, setDateUntil] = useState('');
   const [selectedUsername, setSelectedUsername] = useState('');
@@ -32,17 +33,23 @@ function TodoList({ todos, deleteTodo, currentUser  }) {
     const untilDate = dateUntil ? new Date(dateUntil) : null;
     const matchesSince = sinceDate ? todoDate >= sinceDate : true;
     const matchesUntil = untilDate ? todoDate <= untilDate : true;
-  
-    return matchesAuditor && matchesUsername && matchesSince && matchesUntil;
-}).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
-  
+    return matchesAuditor && matchesUsername && matchesSince && matchesUntil;
+  }).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+  const todosPerPage = 10; // Adjust as needed
+  const [currentPage, setCurrentPage] = useState(1);
+  const indexOfLastTodo = currentPage * todosPerPage;
+  const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
+  const currentTodos = filteredTodos.slice(indexOfFirstTodo, indexOfLastTodo);
+  const totalPages = Math.ceil(filteredTodos.length / todosPerPage);
 
   return (
-    <div className="NotesContainer">
 
+    
+    <>
+        <div className="NotesContainer">
       <div className="auditsFilter">
-
         <div>
           <h6>Filter audits by:</h6>
         </div>
@@ -56,50 +63,40 @@ function TodoList({ todos, deleteTodo, currentUser  }) {
             <input id="date-until" type="datetime-local" value={dateUntil} onChange={e => setDateUntil(e.target.value)} />
           </div>
           <div className="filter-item">
-        <label htmlFor="username-select">Associate:</label>
-        <input
-          id="username-select"
-          type="text"
-          value={selectedUsername}
-          onChange={e => setSelectedUsername(e.target.value)}
-        />
+            <label htmlFor="username-select">Associate:</label>
+            <input
+              id="username-select"
+              type="text"
+              value={selectedUsername}
+              onChange={e => setSelectedUsername(e.target.value)}
+            />
 
-      </div>
-
-
-
-
+          </div>
           <div className="filter-item">
             <MDBBtn size='sm' color='warning' onClick={resetFilters}>Reset</MDBBtn>
           </div>
         </div>
-
-
-
       </div>
-
-
-
       <h6 style={inlineStyle}>
         <strong style={{ color: 'red', }}>Total Audits found: {filteredTodos.length} </strong>
         {dateSince && ` from ${moment(dateSince).format('dddd, MMMM Do YYYY, h:mm a')} `}
         {dateUntil && ` to ${moment(dateUntil).format('dddd, MMMM Do YYYY, h:mm a')} `}
-       {/*  {selectedAuditor && ` by ${selectedAuditor}`} */}
+        {/*  {selectedAuditor && ` by ${selectedAuditor}`} */}
       </h6>
-
-
-
-
-
-      {filteredTodos.map((todo, index) => (
+      {currentTodos.map((todo, index) => (
         <TodoCard key={todo.id}
           todo={todo}
           onDelete={deleteTodo}
         />
       ))}
-
-
+      
     </div>
+    <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        setCurrentPage={setCurrentPage} // Pass the setter function directly
+      />
+    </>
   );
 }
 

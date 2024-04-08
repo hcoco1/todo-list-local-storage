@@ -6,7 +6,7 @@ const ReportGenerator = ({ todos }) => {
   const generateReport = () => {
     // Generating report content with all specified fields
     const reportContent = todos.map((todo, index) =>
-      `${index + 1}. Username: ${todo.username}, AFE: ${todo.afe}, Process Path: ${todo.processPath}, Error: ${todo.error}, Coaching: ${todo.coaching} Observations: ${todo.durable}, Date: ${todo.date}`
+      `${index + 1}. Associate: ${todo.username}, Process: ${todo.afe}, Sub Process: ${todo.processPath}, Error: ${todo.error}, General Coaching: ${todo.coaching} Observations: ${todo.durable}, Date: ${todo.createdAt}`
     ).join('\n');
 
     const blob = new Blob([reportContent], { type: 'text/plain;charset=utf-8' });

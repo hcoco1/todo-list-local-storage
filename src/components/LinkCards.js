@@ -17,9 +17,9 @@ const LinkCards = () => {
   };
 
   return (
-    <div className="cards-container">
+    <div className="cards-container1">
       {links.map(({ id, title, description, url }) => (
-        <div key={id} className="card">
+        <div key={id} className="card1">
           <div className="card-content">
             <h5>{title}</h5>
             <p>{description}</p>
@@ -27,7 +27,7 @@ const LinkCards = () => {
               <>
                 <input
                   type="text"
-                  placeholder="Enter required string"
+                  placeholder="Type associate login"
                   value={userInput[id] || ''}
                   onChange={(e) => handleInputChange(e, id)}
                   style={{marginBottom: "10px"}}
