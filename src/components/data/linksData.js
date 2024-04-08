@@ -14,7 +14,7 @@ const links = [
     {
       id: 3,
       title: "Durables",
-      description: "Engagaements and Durables ",
+      description: "AFE Employee Engagement Portal",
       url: "https://getbootstrap.com/",
     },
     {
@@ -32,11 +32,33 @@ const links = [
       {
         id: 6,
         title: "Atlas",
-        description: "Atlas Track Tool",
+        description: "Atlas Tracking Tool",
         url: "https://getbootstrap.com/",
       },
+      {
+        id: 6,
+        title: "Slack",
+        description: "Sign in to Slack",
+        url: "https://slack.com/signin#/signin",
+      },
+      {
+        id: 6,
+        title: "Amazon A to Z Portal",
+        description: "Get started with Amazon A to Z",
+        url: "https://atoz-login.amazon.work/",
+      },
+      {
+        id: 6,
+        title: "Tickets Creation Tool",
+        description: "Get started with Amazon A to Z",
+        url: "https://atoz-login.amazon.work/",
+      },
+
+
    
   ];
   
   export default links;
+
+  
   
