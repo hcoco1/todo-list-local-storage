@@ -23,13 +23,31 @@
 
 ---
 
-![alt text](https://github.com/hcoco1/todo-list-local-storage/blob/main/audit_tool.png?raw=true)
-
----
-
----
-
 ![alt text](https://github.com/hcoco1/todo-list-local-storage/blob/main/audit_tool_1.png?raw=true)
+
+---
+
+---
+
+![alt text](https://github.com/hcoco1/todo-list-local-storage/blob/main/audit_tool_2.png?raw=true)
+
+---
+
+---
+
+![alt text](https://github.com/hcoco1/todo-list-local-storage/blob/main/audit_tool_3.png?raw=true)
+
+---
+
+---
+
+![alt text](https://github.com/hcoco1/todo-list-local-storage/blob/main/audit_tool_4.png?raw=true)
+
+---
+
+---
+
+![alt text](https://github.com/hcoco1/todo-list-local-storage/blob/main/audit_tool_5.png?raw=true)
 
 ---
 
