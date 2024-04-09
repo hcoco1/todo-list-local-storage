@@ -15,7 +15,7 @@
 
 ## Project: Audits Tool 🔧
 
-### <a href="https://audits.hcoco1.com/" target="_blank">Live App</a>
+### <a href="https://www.audits.hcoco1.com/" target="_blank">Live App</a>
 
 ### <a href="https://www.hcoco1.com/blog/2024-03-13-audits-tool" target="_blank">Blog Post</a>
 
