@@ -15,9 +15,9 @@
 
 ## Project: Audits Tool 🔧
 
-### <a href="https://audits.hcoco1.com/" target="_blank">Live App</a> 
+### <a href="https://audits.hcoco1.com/" target="_blank">Live App</a>
 
-### <a href="https://www.hcoco1.com/blog/2024-03-13-audits-tool" target="_blank">Blog Post</a> 
+### <a href="https://www.hcoco1.com/blog/2024-03-13-audits-tool" target="_blank">Blog Post</a>
 
 >The Audits Tool is a React-based application designed to enhance the efficiency of audit data management. It offers a user-friendly interface for storing and managing audit details, such as usernames, process paths, and audit descriptions. This information is saved ina Firebase database and can be easily viewed or deleted as needed. Additionally, the tool features functionality to generate and download comprehensive audit reports, streamlining the audit compilation and review process.
 
