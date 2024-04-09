@@ -65,7 +65,7 @@ const UserProfile = ({ user, updateUserProfileInApp }) => {
             className="fileInput"
           />
           <button onClick={handleUpload} className="uploadButton">
-            Upload Photo
+            Upload
           </button>
         </>
       )}
@@ -77,7 +77,7 @@ const UserProfile = ({ user, updateUserProfileInApp }) => {
             className="profileImage"
           />
           <button onClick={() => setIsUploaded(false)} className="editButton">
-            Edit Photo
+            Edit
           </button>
           <div>
           <p><strong>Email:</strong> {user.email || 'Guest'}</p>

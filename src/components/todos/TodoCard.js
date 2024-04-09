@@ -70,7 +70,9 @@ function TodoCard({ todo, onDelete }) {
         </span>
         <span
           style={{ cursor: 'pointer' }}          > 
-          <MDBBtn size='sm' color='danger' onClick={() => onDelete(todo.id)}>Delete</MDBBtn> 
+          <MDBBtn size='sm' color='danger' onClick={() => onDelete(todo.id)}>
+  <i className="fa-solid fa-trash-can"></i></MDBBtn>
+
         </span>
       </MDBCardFooter>
     </MDBCard>

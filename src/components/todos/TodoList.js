@@ -78,7 +78,7 @@ function TodoList({ todos, deleteTodo, currentUser }) {
         </div>
       </div>
       <h6 style={inlineStyle}>
-        <strong style={{ color: 'red', }}>Total Audits found: {filteredTodos.length} </strong>
+        <strong style={{ color: 'black', }}>Total Audits: {filteredTodos.length} </strong>
         {dateSince && ` from ${moment(dateSince).format('dddd, MMMM Do YYYY, h:mm a')} `}
         {dateUntil && ` to ${moment(dateUntil).format('dddd, MMMM Do YYYY, h:mm a')} `}
         {/*  {selectedAuditor && ` by ${selectedAuditor}`} */}
