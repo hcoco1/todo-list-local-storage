@@ -276,6 +276,13 @@ textarea {
   flex-grow: 0; /* Prevent the button from growing */
 }
 
+
+/* Add this to your CSS file */
+.nav-link-active {
+  border: 2px solid blue; /* Example active style, customize as needed */
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
 
