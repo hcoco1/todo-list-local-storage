@@ -15,7 +15,7 @@ const links = [
       id: 3,
       title: "Durables",
       description: "AFE Employee Engagement Portal",
-      url: "https://getbootstrap.com/",
+      url: "https://durable.corp.amazon.com/MCO1/dire",
     },
     {
       id: 4,
@@ -27,13 +27,13 @@ const links = [
         id: 5,
         title: "Box Configuration",
         description: "All details about Boxes",
-        url: "https://reactjs.org/",
+        url: "https://box-web-iad.amazon.com/BoxConfiguration/boxConfiguration?warehouseId=MCO1",
       },
       {
         id: 6,
         title: "Atlas",
         description: "Atlas Tracking Tool",
-        url: "https://getbootstrap.com/",
+        url: "https://atlas.corp.amazon.com/en_US/reporting",
       },
       {
         id: 6,
@@ -49,9 +49,9 @@ const links = [
       },
       {
         id: 6,
-        title: "Tickets Creation Tool",
-        description: "Get started with Amazon A to Z",
-        url: "https://atoz-login.amazon.work/",
+        title: "FC Research",
+        description: "Get started with FC Research",
+        url: "http://fcresearch-na.aka.amazon.com/MCO1/search",
       },
 
 
