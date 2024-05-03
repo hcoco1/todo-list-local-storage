@@ -12,26 +12,14 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
   };
 
   return (
-    <>
+    <div className="todo-form">
 
       <form onSubmit={addTodo}>
         <div>
           <h6>Fill out the form to add a new audit:</h6>
         </div>
+
         <div className="form-row">
-
-{/*           <FormSelect
-            name="auditor"
-            value={newTodo.auditor}
-            onChange={handleInputChange}
-            options={[
-              { label: 'Auditor', value: '' },
-              { label: 'ariavan', value: 'ariaivan' },
-              { label: 'yoalugol', value: 'yoalugol' },
-
-
-            ]}
-          /> */}
 
 
 
@@ -69,6 +57,14 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
             ]}
           />
 
+
+
+
+
+        </div>
+
+        <div className="form-row">
+
           <FormSelect
             name="processPath"
             value={newTodo.processPath}
@@ -82,11 +78,6 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
               { label: 'Smartpac', value: 'Smartpac' },
             ]}
           />
-
-
-
-        </div>
-        <div className="form-row">
 
           <FormSelect
             name="error"
@@ -132,18 +123,24 @@ function TodoForm({ addTodo, newTodo, setNewTodo }) {
               { label: 'None', value: " " },
             ]}
           />
+
+        </div>
+        <div className="form-row">
+
           <FormTextarea
+          className="full-width-textarea"
             name="durable"
             placeholder="Personalized Coaching"
             value={newTodo.durable}
             onChange={handleInputChange}
             rows="2"
           />
+
         </div>
 
         <button type="submit">Add Audit</button>
       </form>
-    </>
+    </div>
 
 
   );
