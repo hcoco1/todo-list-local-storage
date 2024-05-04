@@ -4,28 +4,44 @@ import './TodoList.css';
 import TodoCard from './TodoCard';
 import { MDBBtn } from 'mdb-react-ui-kit';
 import Pagination from '../Pagination';
-import { debounce } from 'lodash';
 
 function TodoList({ todos, deleteTodo, currentUser }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Read parameters from URL using URLSearchParams
-  const searchParams = new URLSearchParams(location.search);
-  const [dateSince, setDateSince] = useState(searchParams.get('dateSince') || '');
-  const [dateUntil, setDateUntil] = useState(searchParams.get('dateUntil') || '');
-  const [selectedUsername, setSelectedUsername] = useState(searchParams.get('selectedUsername') || '');
-
-  // Debounce function to handle username filter updates
-  const debouncedSetUsername = debounce((value) => {
-    setSelectedUsername(value);
-  }, 300);
-
-  // Pagination state
+  // Initialize state from local storage or set defaults
+  const [dateSince, setDateSince] = useState(() => localStorage.getItem('dateSince') || '');
+  const [dateUntil, setDateUntil] = useState(() => localStorage.getItem('dateUntil') || '');
+  const [selectedUsername, setSelectedUsername] = useState(() => localStorage.getItem('selectedUsername') || '');
   const [currentPage, setCurrentPage] = useState(1);
   const todosPerPage = 10;
 
-  // Filter and sort todos based on criteria
+  // Effect for handling local storage and URL synchronization
+  useEffect(() => {
+    // Function to update local storage
+    const updateLocalStorage = () => {
+      localStorage.setItem('dateSince', dateSince);
+      localStorage.setItem('dateUntil', dateUntil);
+      localStorage.setItem('selectedUsername', selectedUsername);
+    };
+
+    // Function to update URL parameters
+    const updateUrlParams = () => {
+      const params = new URLSearchParams();
+      if (dateSince) params.set('dateSince', dateSince);
+      if (dateUntil) params.set('dateUntil', dateUntil);
+      if (selectedUsername) params.set('selectedUsername', selectedUsername);
+      navigate({
+        pathname: location.pathname,
+        search: params.toString()
+      }, { replace: true });
+    };
+
+    updateLocalStorage();
+    updateUrlParams();
+  }, [dateSince, dateUntil, selectedUsername, navigate, location.pathname]);
+
+  // Calculate filtered todos
   const filteredTodos = todos.filter(todo => {
     const matchesAuditor = todo.auditor === currentUser.displayName;
     const matchesUsername = selectedUsername ? todo.username.toLowerCase().includes(selectedUsername.toLowerCase()) : true;
@@ -43,23 +59,15 @@ function TodoList({ todos, deleteTodo, currentUser }) {
   const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
   const currentTodos = filteredTodos.slice(indexOfFirstTodo, indexOfLastTodo);
 
-  // Effect to update URL when filters change
-  useEffect(() => {
-    const params = new URLSearchParams();
-    if (dateSince) params.set('dateSince', dateSince);
-    if (dateUntil) params.set('dateUntil', dateUntil);
-    if (selectedUsername) params.set('selectedUsername', selectedUsername);
-    navigate({
-      pathname: location.pathname,
-      search: params.toString()
-    }, { replace: true });
-  }, [dateSince, dateUntil, selectedUsername, navigate, location.pathname]);
-
-  // Reset filters and clear URL parameters
+  // Reset filters and clear local storage
   const resetFilters = () => {
     setDateSince('');
     setDateUntil('');
     setSelectedUsername('');
+    localStorage.removeItem('dateSince');
+    localStorage.removeItem('dateUntil');
+    localStorage.removeItem('selectedUsername');
+    setCurrentPage(1); // Resetting to the first page after filter reset
     navigate(location.pathname); // Navigate without search parameters
   };
 
@@ -93,7 +101,7 @@ function TodoList({ todos, deleteTodo, currentUser }) {
                 id="username-select"
                 type="text"
                 value={selectedUsername}
-                onChange={e => debouncedSetUsername(e.target.value)}
+                onChange={e => setSelectedUsername(e.target.value)}
               />
             </div>
             <div className="filter-item">
