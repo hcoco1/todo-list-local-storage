@@ -108,7 +108,7 @@ function AuditSummary({ todos, currentUser }) {
             </div>
           </div>
         </div>
-        <h3>Total Audits: <strong>{filteredTodos.length}</strong></h3>
+        <h3>Audits {currentUser.displayName}: <strong>{filteredTodos.length}</strong></h3>
 
 
 

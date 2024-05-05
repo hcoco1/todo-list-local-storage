@@ -22,40 +22,55 @@ const ErrorSummary = ({ filteredTodos, className }) => {
     return filteredTodos.filter(note => note[field] === value).length;
   };
 
-
   // Data for the pie chart
   const data = fieldsToCount.map(item => ({
     name: item.value,
     value: countNotes(item.field, item.value) // 'value' is used by Pie chart
   }));
 
-  const colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff7300', '#00bfff', '#ff4040', '#008080', '#800080', '#008000'];
+  const colors = [
+    '#4E79A7',  // Bluish
+    '#F28E2B',  // Orange
+    '#E15759',  // Red
+    '#76B7B2',  // Teal
+    '#59A14F',  // Green
+    '#EDC948',  // Yellow
+    '#B07AA1',  // Purple
+    '#FF9DA7',  // Pink
+    '#9C755F',  // Brown
+    '#BAB0AC'   // Grey
+];
+
+
+  // Formatter function for the legend
+  const renderColorfulLegendText = (value, entry) => {
+    const { color } = entry;
+    return <span style={{ color }}>{value} ({entry.payload.value})</span>;
+  };
 
   return (
     <>
-      <h2 className="audits-summary-title">Errors</h2>
-    
-        <ResponsiveContainer width="100%" height={300}>
-          <PieChart>
-            <Pie
-              data={data}
-              cx="50%"
-              cy="50%"
-              labelLine={false}
-              outerRadius={125}
-              fill="#8884d8"
-              dataKey="value"
-              nameKey="name"
-            >
-              {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend align="left" verticalAlign="top" layout="vertical"  wrapperStyle={{ fontSize: '12px' }}  />
-          </PieChart>
-        </ResponsiveContainer>
-  
+      <h2 className={`audits-summary-title ${className}`}>Total audits by Errors</h2>
+      <ResponsiveContainer width="100%" height={300}>
+        <PieChart>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            outerRadius={125}
+            fill="#8884d8"
+            dataKey="value"
+            nameKey="name"
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend formatter={renderColorfulLegendText} align="left" verticalAlign="top" layout="vertical" wrapperStyle={{ fontSize: '14px' }} />
+        </PieChart>
+      </ResponsiveContainer>
     </>
   );
 };

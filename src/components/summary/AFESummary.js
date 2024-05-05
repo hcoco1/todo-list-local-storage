@@ -1,54 +1,76 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import './AFESummary.css'; // Import the CSS file
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import './AFESummary.css'; // Make sure this is correctly linked
+
+const CustomLegend = ({ data }) => {
+  return (
+    <div className="legend-container">
+      <ul style={{ listStyleType: "none", padding: 0 }}>
+        {data.map((entry, index) => (
+          <li key={index} style={{ color: entry.color, marginBottom: 1 }}>
+            {entry.name}: {entry.count}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 const AFESummary = ({ filteredTodos, className }) => {
-  // Define the fields and values you want to count
   const fieldsToCount = [
     { field: 'afe', value: 'AFE1' },
     { field: 'afe', value: 'AFE2' },
     { field: 'afe', value: 'Pack Singles' },
-    // Extend this array based on your data model and requirements
   ];
 
-  // Function to count the occurrences of a value in a given field
   const countNotes = (field, value) => {
     return filteredTodos.filter(note => note[field] === value).length;
   };
 
-  // Data for the bar chart
   const data = fieldsToCount.map(item => ({
     name: item.value,
-    count: countNotes(item.field, item.value)
+    count: countNotes(item.field, item.value),
+    color: ['#4E79A7',  // Bluish
+      '#F28E2B',  // Orange
+      '#E15759',  // Red
+      '#76B7B2',  // Teal
+      '#59A14F',  // Green
+      '#EDC948',  // Yellow
+      '#B07AA1',  // Purple
+      '#FF9DA7',  // Pink
+      '#9C755F',  // Brown
+      '#BAB0AC'][fieldsToCount.indexOf(item) % 9]
   }));
 
-  const colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff7300', '#00bfff', '#ff4040', '#008080', '#800080', '#008000'];
+
+
 
   return (
     <>
-      <h4 className="audits-summary-title">Process</h4>
-     
-        <div className="audits-summary-chart">
-          {/* Wrap BarChart in ResponsiveContainer */}
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart
-              data={data}
-              margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name"  tick={{ fontSize: '12px' }} />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="count" fill={colors[0]} barSize={80} />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-  
+      <h3 className={`audits-summary-title ${className}`}>
+        Total audits by Process:
+      </h3>
+      <CustomLegend data={data} />
+      <div className="audits-summary-chart">
+        <ResponsiveContainer>
+          <BarChart
+            data={data}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" tick={{ fontSize: '12px' }} />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="count" fill="#8884d8" barSize={80}>
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.color} />
+              ))}
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     </>
   );
 };
 
 export default AFESummary;
-
-
-
